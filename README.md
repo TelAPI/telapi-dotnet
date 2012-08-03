@@ -1,6 +1,6 @@
 ## TelAPI .NET Wrapper
 
-This TelAPI .NET wrapper is an open source tool built for easy access to the [TelAPI.com](http://telapi.com) API infrastructure. TelAPI is a powerful cloud communications API built to enable your apps to send and receive SMS messages and phone calls — all while controlling the call flow. Some features are conferencing, phone calls, text-to-speech, recordings, transcriptions and much more.
+This TelAPI .NET wrapper is an open source tool built for easy access to the [TelAPI.com](http://telapi.com) API infrastructure. TelAPI is a powerful cloud communications API built to enable your apps to send and receive SMS messages and phone calls, all while controlling the call flow. Some features are conferencing, phone calls, text-to-speech, recordings, transcriptions and much more.
 
 For more information about what TelAPI is, please visit: [TelAPI Features](http://www.telapi.com/features) or [TelAPI REST documentation](http://www.telapi.com/docs/api/rest/)
 
