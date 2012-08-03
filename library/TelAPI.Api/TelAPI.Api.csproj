@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A3649E48-7A76-402D-B9A7-E1BC4490A952}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TelAPI.Api</RootNamespace>
+    <AssemblyName>TelAPI.Api</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.103.4\lib\net35-client\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accounts.cs" />
+    <Compile Include="Calls.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Call.cs" />
+    <Compile Include="Model\CallListOptions.cs" />
+    <Compile Include="Model\CallOptions.cs" />
+    <Compile Include="Model\CallResult.cs" />
+    <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
+    <Compile Include="Model\Enum\AccountStatus.cs" />
+    <Compile Include="Model\Enum\CallStatus.cs" />
+    <Compile Include="Model\Enum\HangupCallStatus.cs" />
+    <Compile Include="Model\Enum\SmsMessageStatus.cs" />
+    <Compile Include="Model\Resources\RequestUri.cs" />
+    <Compile Include="Model\RestException.cs" />
+    <Compile Include="Model\SmsMessageListOptions.cs" />
+    <Compile Include="Model\SmsMessage.cs" />
+    <Compile Include="Model\SmsMessageResult.cs" />
+    <Compile Include="Model\TelAPIBase.cs" />
+    <Compile Include="Model\TelAPIException.cs" />
+    <Compile Include="Model\TelAPIListBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sms.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
