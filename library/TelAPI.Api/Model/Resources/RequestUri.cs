@@ -46,6 +46,31 @@ namespace TelAPI
         /// Uri to finish current call
         /// </summary>
         public const string HangupCallUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+        /// <summary>
+        /// Uri to interrupt live call
+        /// </summary>
+        public const string InterruptLiveCallUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+        /// <summary>
+        /// Uri to send digits to call
+        /// </summary>
+        public const string SendDigitsUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+        /// <summary>
+        /// Uri to play audio on call
+        /// </summary>
+        public const string PlayAudioUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+        /// <summary>
+        /// Uri to add voice effects
+        /// </summary>
+        public const string VoiceEffectsUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+        /// <summary>
+        /// Uri to start/stop recording call
+        /// </summary>
+        public const string RecordCallUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
     }
 
     /// <summary>

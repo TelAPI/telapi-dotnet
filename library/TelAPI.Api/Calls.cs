@@ -103,7 +103,137 @@ namespace TelAPI
         }
 
         /// <summary>
-        /// Helper method to create populate Rest params
+        /// To change the behavior of live calls, TelAPI provides the ability to interrupt calls in real time and end or redirect them to InboundXML for execution.
+        /// </summary>
+        /// <param name="callSid">An alphanumeric string used for identification of calls</param>
+        /// <param name="url">The URL in-progress calls can be forwarded to.</param>
+        /// <param name="httpMethod">Specifies the HTTP method used to request forwarding URL. Allowed Value: POST or GET. Default Value: POST</param>
+        /// <param name="status">The status used to end the call. canceled only ends queued/ringing calls while completed ends in-progress calls as well as queued/ringing calls. Allowed Value: canceled or completed</param>
+        /// <returns></returns>
+        public Call InterruptLiveCall(string callSid, string url, HttpMethod httpMethod, HangupCallStatus status)
+        {
+            Require.Argument("CallSid", callSid);
+            Require.Argument("Url", url);
+            Require.Argument("Method", httpMethod);
+            Require.Argument("Status", status);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = RequestUri.InterruptLiveCallUri;
+            request.AddUrlSegment(RequestUriParams.CallSid, callSid);
+            request.AddParameter("Url", url);
+            request.AddParameter("Method", httpMethod.ToString().ToLower());
+            request.AddParameter("Status", status.ToString().ToLower());
+
+            return Execute<Call>(request);
+        }
+
+        /// <summary>
+        /// DTMFs, aka touch tone signals, can be sent to a call
+        /// </summary>
+        /// <param name="callSid">An alphanumeric string used for identification of calls</param>
+        /// <param name="playDtmf">Specifies which touch tone signals to send to a call. W or w can be used to include half second pauses within the digit transmission. For example: wwww1234 waits two seconds before sending the digits and 12wwww34 waits two seconds in between the sending of 12 and 34. Allowed Value: the digits 0-9, W, or w</param>
+        /// <param name="dtmfLeg">Specifies which leg of the call digits will be sent to. 'aleg' leg is the originator of the call, 'bleg' is the recipient of the call.</param>
+        /// <returns></returns>
+        public Call SendDigits(string callSid, string playDtmf, PlayDtmfLeg? dtmfLeg)
+        {
+            Require.Argument("CallSid", callSid);
+            Require.Argument("PlayDtmf", playDtmf);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = RequestUri.SendDigitsUri;
+            request.AddUrlSegment(RequestUriParams.CallSid, callSid);
+            request.AddParameter("PlayDtmf", playDtmf);
+            if (dtmfLeg.HasValue) request.AddParameter("PlayDtmfLeg", dtmfLeg.ToString().ToLower());
+
+            return Execute<Call>(request);
+        }
+
+        public Call PlayAudio(string callSid, string soundUrl)
+        {
+            return PlayAudio(callSid, new PlayAudioOptions
+                {
+                    Sounds = soundUrl
+                });
+        }
+
+        /// <summary>
+        /// TelAPI allows you to play an audio file during a call. This is useful for playing hold music, providing IVR prompts, etc.
+        /// </summary>
+        /// <param name="callSid">An alphanumeric string used for identification of calls</param>
+        /// <param name="audioOptions">Audio options</param>
+        /// <returns></returns>
+        public Call PlayAudio(string callSid, PlayAudioOptions audioOptions)
+        {
+            Require.Argument("CallSid", callSid);
+            Require.Argument("Sounds", audioOptions.Sounds);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = RequestUri.PlayAudioUri;
+            request.AddUrlSegment(RequestUriParams.CallSid, callSid);
+
+            CreatePlayAudioOptions(audioOptions, request);
+
+            return Execute<Call>(request);
+        }
+
+        /// <summary>
+        /// With TelAPI you can modify the way a callers voice sounds by changing things such as speed and pitch of the audio.
+        /// </summary>
+        /// <param name="callSid">An alphanumeric string used for identification of calls</param>
+        /// <param name="effectOptions">Voice effect options</param>
+        /// <returns></returns>
+        public Call VoiceEffects(string callSid, VoiceEffectOptions effectOptions)
+        {
+            Require.Argument("CallSid", callSid);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = RequestUri.VoiceEffectsUri;
+            request.AddUrlSegment(RequestUriParams.CallSid, callSid);
+
+            CreateVoiceEffectsOptions(effectOptions, request);
+
+            return Execute<Call>(request);
+        }
+
+        /// <summary>
+        /// TelAPI offers a way to both initiate or end a call recording
+        /// </summary>
+        /// <param name="callSid">An alphanumeric string used for identification of calls</param>
+        /// <param name="isRecording">Specifies if call recording should beging or end. To start recording a call, value must be true. To stop recording a call, value must be false.</param>
+        /// <returns></returns>
+        public Call RecordCall(string callSid, bool isRecording)
+        {
+            return RecordCall(callSid, isRecording, null, null);
+        }
+
+        /// <summary>
+        /// TelAPI offers a way to both initiate or end a call recording
+        /// </summary>
+        /// <param name="callSid">An alphanumeric string used for identification of calls</param>
+        /// <param name="isRecording">Specifies if call recording should beging or end. To start recording a call, value must be true. To stop recording a call, value must be false.</param>
+        /// <param name="timeLimit">The time in seconds the duration a call recording should not exceed. If no value specified, recordings are 60 seconds by default.</param>
+        /// <param name="callbackUrl">URL where recording information will be relayed to after it has completed.</param>
+        /// <returns></returns>
+        public Call RecordCall(string callSid, bool isRecording, int? timeLimit, string callbackUrl)
+        {
+            Require.Argument("CallSid", callSid);
+            Require.Argument("Record", isRecording);
+
+            var request = new RestRequest(Method.POST);
+            request.Resource = RequestUri.RecordCallUri;
+            request.AddUrlSegment(RequestUriParams.CallSid, callSid);
+            request.AddParameter("Record", isRecording);
+
+            if (timeLimit.HasValue) request.AddParameter("TimeLimit", timeLimit);
+            if (callbackUrl.HasValue()) request.AddParameter("CallbackUrl", callbackUrl);
+
+            return Execute<Call>(request);
+        }
+
+        #region Options helpers
+
+        /// <summary>
+        /// Helper method to populate Rest params
         /// </summary>
         /// <param name="callOptions">Call options</param>
         /// <param name="request">Rest Request</param>
@@ -125,7 +255,7 @@ namespace TelAPI
         }
 
         /// <summary>
-        /// Helper method to create populate Rest params
+        /// Helper method to populate Rest params
         /// </summary>
         /// <param name="callOptions">Call options</param>
         /// <param name="request">Rest Request</param>
@@ -138,6 +268,35 @@ namespace TelAPI
             if (callListOptions.Page.HasValue) request.AddParameter("Page", callListOptions.Page);
             if (callListOptions.PageSize.HasValue) request.AddParameter("PageSize", callListOptions.PageSize);
         }
+
+        /// <summary>
+        /// Helper method to populate Rest params
+        /// </summary>
+        /// <param name="callOptions">Audio options</param>
+        /// <param name="request">Rest Request</param>
+        private void CreatePlayAudioOptions(PlayAudioOptions audioOptions, RestRequest request)
+        {
+            if (audioOptions.Length.HasValue) request.AddParameter("Length", audioOptions.Length);
+            if (audioOptions.Leg.HasValue) request.AddParameter("Legs", audioOptions.Leg.ToString().ToLower());
+            if (audioOptions.Loop.HasValue) request.AddParameter("Loop", audioOptions.Loop);
+            if (audioOptions.Mix.HasValue) request.AddParameter("Mix", audioOptions.Mix);
+        }
+
+        /// <summary>
+        /// Helper method to populate Rest params
+        /// </summary>
+        /// <param name="callOptions">Voice effect options</param>
+        /// <param name="request">Rest Request</param>
+        private void CreateVoiceEffectsOptions(VoiceEffectOptions voiceOptions, RestRequest request)
+        {
+            if (voiceOptions.AudioDirection.HasValue) request.AddParameter("AudioDirection", voiceOptions.AudioDirection.ToString().ToLower());
+            if (voiceOptions.Pitch.HasValue) request.AddParameter("Pitch", voiceOptions.Pitch);
+            if (voiceOptions.PitchSemiTones.HasValue) request.AddParameter("PitchSemiTones", voiceOptions.PitchSemiTones);
+            if (voiceOptions.PitchOctaves.HasValue) request.AddParameter("PitchOctaves", voiceOptions.PitchOctaves);
+            if (voiceOptions.Rate.HasValue) request.AddParameter("Rate", voiceOptions.Rate);
+        }
+
+        #endregion
         
     }
 }
