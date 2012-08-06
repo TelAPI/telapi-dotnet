@@ -71,6 +71,16 @@ namespace TelAPI
         /// Uri to start/stop recording call
         /// </summary>
         public const string RecordCallUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+
+        /// <summary>
+        /// Uri to get notification
+        /// </summary>
+        public const string NotificationUri = "Accounts/{AccountSid}/Notifications.json";
+
+        /// <summary>
+        /// Uri to get call notifications
+        /// </summary>
+        public const string CallNotificationUri = "Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json";
     }
 
     /// <summary>
@@ -87,5 +97,10 @@ namespace TelAPI
         /// Call Sid
         /// </summary>
         public const string CallSid = "CallSid";
+
+        /// <summary>
+        /// Notification Sid
+        /// </summary>
+        public const string NotificationSid = "NotificationSid";
     }
 }
