@@ -81,6 +81,11 @@ namespace TelAPI
         /// Uri to get call notifications
         /// </summary>
         public const string CallNotificationUri = "Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json";
+
+        /// <summary>
+        /// Uri to get avaliable phone numbers
+        /// </summary>
+        public const string AvaliablePhoneNumbersUri = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json";
     }
 
     /// <summary>
@@ -102,5 +107,10 @@ namespace TelAPI
         /// Notification Sid
         /// </summary>
         public const string NotificationSid = "NotificationSid";
+
+        /// <summary>
+        /// Iso country code
+        /// </summary>
+        public const string IsoCountryCode = "IsoCountryCode";
     }
 }

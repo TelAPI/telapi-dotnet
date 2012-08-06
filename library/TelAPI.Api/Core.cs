@@ -77,9 +77,9 @@ namespace TelAPI
 		/// <returns></returns>
         public T Execute<T>(RestRequest request) where T : new()
 		{
-            IRestResponse<T> response;
             request.RequestFormat = DataFormat.Json;
-            
+
+            IRestResponse<T> response;
             response = _client.Execute<T>(request);
 
             switch ((int)response.StatusCode)
