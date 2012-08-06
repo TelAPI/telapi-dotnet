@@ -2,7 +2,7 @@
 
 namespace TelAPI
 {
-    public class AvaliablePhoneNumber : TelAPIBase
+    public class AvailablePhoneNumber : TelAPIBase
     {
         /// <summary>
         /// Domestic format version of the available phone number

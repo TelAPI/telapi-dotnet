@@ -85,7 +85,7 @@ namespace TelAPI
         /// <summary>
         /// Uri to get avaliable phone numbers
         /// </summary>
-        public const string AvaliablePhoneNumbersUri = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json";
+        public const string AvailablePhoneNumbersUri = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json";
     }
 
     /// <summary>

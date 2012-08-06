@@ -47,8 +47,8 @@
     <Compile Include="Calls.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\AvaliablePhoneNumber.cs" />
-    <Compile Include="Model\AvaliablePhoneNumberResult.cs" />
+    <Compile Include="Model\AvailablePhoneNumber.cs" />
+    <Compile Include="Model\AvailablePhoneNumberResult.cs" />
     <Compile Include="Model\Call.cs" />
     <Compile Include="Model\CallListOptions.cs" />
     <Compile Include="Model\CallOptions.cs" />
