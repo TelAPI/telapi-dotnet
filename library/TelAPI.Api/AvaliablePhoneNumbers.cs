@@ -4,9 +4,6 @@ using RestSharp.Validation;
 using RestSharp.Extensions;
 using RestSharp;
 
-// [TODO] : Fix roblem with deserialization of AvailablePhoneNumberResult. 
-//          Data is received fine, but deserialization always returns NULL
-
 namespace TelAPI
 {
     public partial class TelAPIRestClient

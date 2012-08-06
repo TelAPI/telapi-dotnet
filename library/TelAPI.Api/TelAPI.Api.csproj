@@ -46,6 +46,7 @@
     <Compile Include="AvaliablePhoneNumbers.cs" />
     <Compile Include="Calls.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\AvailablePhoneNumber.cs" />
     <Compile Include="Model\AvailablePhoneNumberResult.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Model\CallListOptions.cs" />
     <Compile Include="Model\CallOptions.cs" />
     <Compile Include="Model\CallResult.cs" />
+    <Compile Include="Model\Capabilites.cs" />
     <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
     <Compile Include="Model\Enum\AccountStatus.cs" />
     <Compile Include="Model\Enum\AudioDirection.cs" />
@@ -63,6 +65,8 @@
     <Compile Include="Model\Enum\PlayAudioLeg.cs" />
     <Compile Include="Model\Enum\PlayDtmfLeg.cs" />
     <Compile Include="Model\Enum\SmsMessageStatus.cs" />
+    <Compile Include="Model\IncomingPhoneNumber.cs" />
+    <Compile Include="Model\IncomingPhoneNumberResult.cs" />
     <Compile Include="Model\Notification.cs" />
     <Compile Include="Model\NotificationResult.cs" />
     <Compile Include="Model\PlayAudioOptions.cs" />

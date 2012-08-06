@@ -86,6 +86,31 @@ namespace TelAPI
         /// Uri to get avaliable phone numbers
         /// </summary>
         public const string AvailablePhoneNumbersUri = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json";
+
+        /// <summary>
+        /// Uri to get incoming phone number
+        /// </summary>
+        public const string IncomingPhoneNumberUri = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+
+       /// <summary>
+       /// Uri to get incoming phone numbers
+       /// </summary>
+        public const string IncomingPhoneNumbersUri = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
+
+        /// <summary>
+        /// Uri to create Incoming phone number
+        /// </summary>
+        public const string CreateIncomingPhoneNumber = "Accounts/{AccountSid}/IncomingPhoneNumbers.json";
+
+        /// <summary>
+        /// Uri to delete Incoming phone number
+        /// </summary>
+        public const string DeleteIncomingPhoneNumberUri = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+
+        /// <summary>
+        /// Uri to update Incoming phone number
+        /// </summary>
+        public const string UpdateIncomingPhoneNumberUri = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
     }
 
     /// <summary>
@@ -112,5 +137,10 @@ namespace TelAPI
         /// Iso country code
         /// </summary>
         public const string IsoCountryCode = "IsoCountryCode";
+
+        /// <summary>
+        /// Incoming phone number
+        /// </summary>
+        public const string IncomingPhoneNumber = "IncomingPhoneNumberSid";
     }
 }
