@@ -126,6 +126,62 @@ namespace TelAPI.Example
             var hangupCall = telApi.HangupCall(call.Sid);
             Console.WriteLine("Call {0} ended", hangupCall.Sid);
 
+            try
+            {
+                //var notification = telApi.GetNotification("neki-fake-sid");
+            }
+            catch (TelAPIException e)
+            {
+                Console.WriteLine("Notification : {0}", e.Message);
+            }
+
+            Console.WriteLine("Account Notification - GET");
+            var accountNotifications = telApi.GetAccountNotifications(NotificationLog.Info, 1, 2);
+            foreach (var an in accountNotifications.Notifications)
+            {
+                Console.WriteLine("Account notification : {0}", an.ErrorCode);
+            }
+
+            Console.WriteLine("Avaliable phone numbers - GET");
+            var avaliableNum = telApi.GetAvailablePhoneNumbers("US");
+            foreach (var a in avaliableNum.AvailablePhoneNumbers)
+            {
+                Console.WriteLine("Avaliable phone number : {0}", a.PhoneNumber);
+            }
+
+            Console.WriteLine("Incoming phone numbers - GET LIST");
+            var numbers = telApi.GetIncomingPhoneNumbers();
+            foreach (var num in numbers.IncomingPhoneNumbers)
+            {
+                Console.WriteLine("Incoming phone numbers : {0}", num.PhoneNumber);
+            }
+
+            Console.WriteLine("Buy incoming phone number - ADD");
+            try
+            {
+                //var buy = telApi.AddIncomingPhoneNumber(avaliableNum.AvailablePhoneNumbers[0].PhoneNumber, avaliableNum.AvailablePhoneNumbers[0].NPA);
+                //Console.WriteLine("New number : {0} ({1})", buy.PhoneNumber, buy.DateCreated);
+            }
+            catch (TelAPIException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            try
+            {
+                //var delete = telApi.DeleteIncomingPhoneNumber(numbers.IncomingPhoneNumbers[0].Sid);
+                //Console.WriteLine("Delete phone number : {0} ({1}", delete.PhoneNumber, delete.DateUpdated);
+            }
+            catch (TelAPIException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            var n = numbers.IncomingPhoneNumbers[0];
+            n.SmsFallbackUrl = "http://www.fakeaddress.com/sms-fallback";
+            var updatedNumber = telApi.UpdateIncomingPhoneNumber(n);
+            Console.WriteLine("Updated number : {0} ({1}", updatedNumber.SmsFallbackUrl, updatedNumber.DateUpdated);
+
             Console.ReadKey();   
          
             // the end :)

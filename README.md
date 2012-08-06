@@ -18,6 +18,9 @@ Just replace `{AccountSid}` and `{AuthToken}` with the values from your [TelAPI 
 * **accounts**                  - Fetch account details
 * **sms_messages**              - Send or view SMS messages
 * **calls**                     - View or place calls
+* **notifications**             - View notifications
+* **avaliable phone numbers**   - View avaliable phone numbers
+* **incoming phone numbers**    - Buy, delete and update incoming phone numbers
 
 ##### Example usage - Sending an SMS
 
