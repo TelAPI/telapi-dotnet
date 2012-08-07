@@ -111,6 +111,31 @@ namespace TelAPI
         /// Uri to update Incoming phone number
         /// </summary>
         public const string UpdateIncomingPhoneNumberUri = "Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}.json";
+
+        /// <summary>
+        /// Uri to get application data
+        /// </summary>
+        public const string ApplicationUri = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
+
+        /// <summary>
+        /// Uri to get list of applications
+        /// </summary>
+        public const string ApplicationsUri = "Accounts/{AccountSid}/Applications.json";
+
+        /// <summary>
+        /// Uri to create new application
+        /// </summary>
+        public const string CreateApplicationUri = "Accounts/{AccountSid}/Applications.json";
+
+        /// <summary>
+        /// Uri to update application data
+        /// </summary>
+        public const string UpdateApplicationUri = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
+
+        /// <summary>
+        /// Uri to delete application
+        /// </summary>
+        public const string DeleteApplicationUri = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
     }
 
     /// <summary>
@@ -142,5 +167,10 @@ namespace TelAPI
         /// Incoming phone number
         /// </summary>
         public const string IncomingPhoneNumber = "IncomingPhoneNumberSid";
+
+        /// <summary>
+        /// Application Sid
+        /// </summary>
+        public const string ApplicationSid = "ApplicationSid";
     }
 }
