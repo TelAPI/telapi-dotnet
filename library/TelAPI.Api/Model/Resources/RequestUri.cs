@@ -151,6 +151,36 @@ namespace TelAPI
         /// Uri to call recordings
         /// </summary>
         public const string CallRecordingsUri = "Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json";
+
+        /// <summary>
+        /// Uri to transcription
+        /// </summary>
+        public const string TranscriptionUri = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json";
+
+        /// <summary>
+        /// Uri to transcription text
+        /// </summary>
+        public const string TranscriptionTextUri = "Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.txt";
+
+        /// <summary>
+        /// Uri to account transcriptions
+        /// </summary>
+        public const string AccountTranscriptionsUri = "Accounts/{AccountSid}/Transcriptions.json";
+
+        /// <summary>
+        /// Uri to recording transcriptions
+        /// </summary>
+        public const string RecordingTranscriptionsUri = "Accounts/{AccountSid}/{RecordingSid}/Transcriptions.json";
+
+        /// <summary>
+        /// Uri to start transcribe of recording
+        /// </summary>
+        public const string TranscribeRecordingUri = "Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json";
+
+        /// <summary>
+        /// Uri to start transcribe of external audio url
+        /// </summary>
+        public const string TranscribeAudioUri = "Accounts/{AccountSid}/Transcriptions.json";
     }
 
     /// <summary>
@@ -192,5 +222,10 @@ namespace TelAPI
         /// Recording Sid
         /// </summary>
         public const string RecordingSid = "RecordingSid";
+
+        /// <summary>
+        /// Transcription Sid
+        /// </summary>
+        public const string TranscriptionSid = "TranscriptionSid";
     }
 }
