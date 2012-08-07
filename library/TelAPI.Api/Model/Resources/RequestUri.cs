@@ -136,6 +136,21 @@ namespace TelAPI
         /// Uri to delete application
         /// </summary>
         public const string DeleteApplicationUri = "Accounts/{AccountSid}/Applications/{ApplicationSid}.json";
+
+        /// <summary>
+        /// Uri to recording
+        /// </summary>
+        public const string RecordingUri = "Accounts/{AccountSid}/Recordings/{RecordingSid}.json";
+
+        /// <summary>
+        /// Uri to account recordings
+        /// </summary>
+        public const string AccountRecordingsUri = "Accounts/{AccountSid}/Recordings.json";
+
+        /// <summary>
+        /// Uri to call recordings
+        /// </summary>
+        public const string CallRecordingsUri = "Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json";
     }
 
     /// <summary>
@@ -172,5 +187,10 @@ namespace TelAPI
         /// Application Sid
         /// </summary>
         public const string ApplicationSid = "ApplicationSid";
+
+        /// <summary>
+        /// Recording Sid
+        /// </summary>
+        public const string RecordingSid = "RecordingSid";
     }
 }
