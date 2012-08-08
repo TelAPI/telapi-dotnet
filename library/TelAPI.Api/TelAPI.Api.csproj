@@ -49,6 +49,7 @@
     <Compile Include="CarrierServices.cs" />
     <Compile Include="Conferences.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="Frauds.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Application.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="Model\Enum\SmsMessageStatus.cs" />
     <Compile Include="Model\Enum\TranscriptionStatus.cs" />
     <Compile Include="Model\Enum\TranscriptionType.cs" />
+    <Compile Include="Model\Fraud.cs" />
+    <Compile Include="Model\FraudResult.cs" />
     <Compile Include="Model\IncomingPhoneNumber.cs" />
     <Compile Include="Model\IncomingPhoneNumberResult.cs" />
     <Compile Include="Model\Member.cs" />

@@ -251,6 +251,31 @@ namespace TelAPI
         /// Uri to stop recording conference call
         /// </summary>
         public const string ConferenceStopRecording = "Accounts/{AccountSid}/Conferences/{ConferenceName}/RecordStop.json";
+
+        /// <summary>
+        /// Uri to get all fraud control resources
+        /// </summary>
+        public const string FraudControlResourcesUri = "Accounts/{AccountSid}/Fraud.json";
+
+        /// <summary>
+        /// Uri to authorize destination
+        /// </summary>
+        public const string FraudAuthorizeDestination = "Accounts/{AccountSid}/Fraud/Authorize/{CountryCode}.json";
+
+        /// <summary>
+        /// Uri to block destination
+        /// </summary>
+        public const string FraudBlockDestination = "Accounts/{AccountSid}/Fraud/Block/{CountryCode}.json";
+
+        /// <summary>
+        /// Uri to extend authorization of destination
+        /// </summary>
+        public const string FraudExtendDestinationAuthUri = "Accounts/{AccountSid}/Fraud/Extend/{CountryCode}.json";
+
+        /// <summary>
+        /// Uri to whitelist destination
+        /// </summary>
+        public const string FraudWhitelistDestination = "Accounts/{AccountSid}/Fraud/Whitelist/{CountryCode}.json";
     }
 
     /// <summary>
