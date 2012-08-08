@@ -182,6 +182,61 @@ namespace TelAPI.Example
             var updatedNumber = telApi.UpdateIncomingPhoneNumber(n);
             Console.WriteLine("Updated number : {0} ({1}", updatedNumber.SmsFallbackUrl, updatedNumber.DateUpdated);
 
+            Console.WriteLine("New application - GET");
+            //var app = telApi.CreateApplication(new Application
+            //{
+            //    FriendlyName = "renato app #2"
+            //});
+            //Console.WriteLine("APP : {0}", app.DateCreated);
+
+            Console.WriteLine("List app - GET");
+            //var singleApp = telApi.GetApplication("adsfasdfasdfasd");
+            //Console.WriteLine("APP :");
+
+            Console.WriteLine("Applications - GET LIST");
+            var apps = telApi.GetApplications();
+            foreach (var a in apps.Applications)
+            {
+                Console.WriteLine("App : {0}", a.FriendlyName);
+            }
+
+            //var applicationEdit = apps.Applications[1];
+            //applicationEdit.FriendlyName = "renato edit putem api-ja";
+            //applicationEdit.HangupCallbackMethod = "GET";
+            //telApi.UpdateApplication(applicationEdit);
+
+            //telApi.DeleteApplication(applicationEdit.Sid);
+
+            var recordings = telApi.GetAccountRecordings();
+            foreach (var r in recordings.Recordings)
+            {
+                Console.WriteLine("Record : {0}", r.RecordingUrl);
+            }
+
+            var transcription = telApi.GetAccountTranscriptions();
+            foreach (var t in transcription.Transcriptions)
+            {
+                Console.WriteLine("Transcription : {0}", t.TranscriptionText);
+            }
+
+            var text = telApi.GetTranscriptionText(transcription.Transcriptions[1].Sid);
+            Console.WriteLine("Text : {0}", text);
+
+            //var transcribe = telApi.TranscribeAudio("http://www.freeinfosociety.com/media/sounds/13.mp3");
+            //Console.WriteLine("Transcribe started : {0}", transcribe.TranscriptionText);
+
+            //var carrier = telApi.CarrierLookup("+12408446005");
+            //Console.WriteLine("Carrier : {0}, {1}", carrier.Carrier, carrier.Country);
+
+            //var cnam = telApi.CNAMLookup("+12408446005");
+            //Console.WriteLine("CNAM : {0}, {1}", cnam.Body, cnam.Price);
+
+            var frauds = telApi.GetFraudControlResources();
+            foreach (var f in frauds.Frauds)
+            {
+                Console.WriteLine("Resources : {0}", f.Outbound.MaxOutboundRate);
+            }
+
             Console.ReadKey();   
          
             // the end :)

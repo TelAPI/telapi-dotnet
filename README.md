@@ -15,12 +15,19 @@ Just replace `{AccountSid}` and `{AuthToken}` with the values from your [TelAPI 
 
 ##### Currently available REST API resources
 
-* **accounts**                  - Fetch account details
+* **accounts**                  - Fetch or set account details
+* **notifications**             - View notifications, such as application errors
+* **recordings**                - List recordings
 * **sms_messages**              - Send or view SMS messages
+* **transcriptions**            - View or submit a recording for transcribing to text
 * **calls**                     - View or place calls
-* **notifications**             - View notifications
-* **avaliable phone numbers**   - View avaliable phone numbers
-* **incoming phone numbers**    - Buy, delete and update incoming phone numbers
+* **carrier**                   - Lookup the carrier for a number
+* **cnam**                      - Look up the caller ID for a number
+* **incoming_phone_numbers**    - List or purchase a phone number
+* **available_phone_numbers**   - Search for available phone numbers
+* **conferences**               - List conference details
+* **fraud**                     - Manage destinations and grant/rewoke priviledge access priviledges
+* **applications**              - Automate common number configurations for one or many phone numbers
 
 ##### Example usage - Sending an SMS
 
