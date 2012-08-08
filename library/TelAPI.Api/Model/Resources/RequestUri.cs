@@ -181,6 +181,16 @@ namespace TelAPI
         /// Uri to start transcribe of external audio url
         /// </summary>
         public const string TranscribeAudioUri = "Accounts/{AccountSid}/Transcriptions.json";
+
+        /// <summary>
+        /// Uri to carrier lookup   
+        /// </summary>
+        public const string CarrierLookupUri = "Accounts/{AccountSid}/Carrier.json";
+
+        /// <summary>
+        /// Uri to CNAM lookup
+        /// </summary>
+        public const string CNAMLookupUri = "Accounts/{AccountSid}/CNAM.json";
     }
 
     /// <summary>
@@ -227,5 +237,10 @@ namespace TelAPI
         /// Transcription Sid
         /// </summary>
         public const string TranscriptionSid = "TranscriptionSid";
+
+        /// <summary>
+        /// Phone number
+        /// </summary>
+        public const string PhoneNumber = "PhoneNumber";
     }
 }

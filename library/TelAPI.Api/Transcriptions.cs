@@ -34,7 +34,7 @@ namespace TelAPI
             Require.Argument("TranscriptionSid", transcriptionSid);
 
             var request = new RestRequest();
-            request.Resource = RequestUri.TranscriptionUri;
+            request.Resource = RequestUri.TranscriptionTextUri;
             request.AddUrlSegment(RequestUriParams.TranscriptionSid, transcriptionSid);
 
             return Execute(request).Content;
@@ -176,7 +176,7 @@ namespace TelAPI
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.TranscribeAudioUri;
-            request.AddUrlSegment("AudioUrl", audioUrl);
+            request.AddParameter("AudioUrl", audioUrl);
 
             if (quality.HasValue) request.AddParameter("Quality", quality.ToString().ToLower());
             if (transcribeCallback.HasValue()) request.AddParameter("TranscribeCallback", transcribeCallback);

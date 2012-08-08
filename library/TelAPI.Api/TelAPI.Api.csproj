@@ -46,6 +46,7 @@
     <Compile Include="Applications.cs" />
     <Compile Include="AvaliablePhoneNumbers.cs" />
     <Compile Include="Calls.cs" />
+    <Compile Include="CarrierServices.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Model\Account.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Model\CallOptions.cs" />
     <Compile Include="Model\CallResult.cs" />
     <Compile Include="Model\Capabilites.cs" />
+    <Compile Include="Model\CarrierLookup.cs" />
+    <Compile Include="Model\CNAMLookup.cs" />
     <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
     <Compile Include="Model\Enum\AccountStatus.cs" />
     <Compile Include="Model\Enum\AudioDirection.cs" />
