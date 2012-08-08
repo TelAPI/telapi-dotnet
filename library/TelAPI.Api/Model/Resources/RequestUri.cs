@@ -191,6 +191,66 @@ namespace TelAPI
         /// Uri to CNAM lookup
         /// </summary>
         public const string CNAMLookupUri = "Accounts/{AccountSid}/CNAM.json";
+
+        /// <summary>
+        /// Uri to conference
+        /// </summary>
+        public const string ConferenceUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}.json";
+
+        /// <summary>
+        /// Uri to conferences
+        /// </summary>
+        public const string ConferencesUri = "Accounts/{AccountSid}/Conferences.json";
+
+        /// <summary>
+        /// Uri to mute member in conference call
+        /// </summary>
+        public const string ConferenceMuteMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Mute.json";
+
+        /// <summary>
+        /// Uri to unmute member in conference call
+        /// </summary>
+        public const string ConferenceUnmuteMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/UnMute.json";
+
+        /// <summary>
+        /// Uri to deaf member in conference call
+        /// </summary>
+        public const string ConferenceDeafMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Deaf.json";
+
+        /// <summary>
+        /// Uri to undeaf member in conference call
+        /// </summary>
+        public const string ConferenceUndeafMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/UnDeaf.json";
+
+        /// <summary>
+        /// Uri to hangup member in conference call
+        /// </summary>
+        public const string ConferenceHangupMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Hangup.json";
+
+        /// <summary>
+        /// Uri to kick member from conference call
+        /// </summary>
+        public const string ConferenceKickMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Kick.json";
+
+        /// <summary>
+        /// Uri to speach text to member in conference call
+        /// </summary>
+        public const string ConferenceSpeachTextToMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Say.json";
+
+        /// <summary>
+        /// Uri to play audio to member in conference call
+        /// </summary>
+        public const string ConferencePlayAudioToMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Play.json";
+
+        /// <summary>
+        /// Uri to start recording conference call
+        /// </summary>
+        public const string ConferenceStartRecordingUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/RecordStart.json";
+
+        /// <summary>
+        /// Uri to stop recording conference call
+        /// </summary>
+        public const string ConferenceStopRecording = "Accounts/{AccountSid}/Conferences/{ConferenceName}/RecordStop.json";
     }
 
     /// <summary>
@@ -242,5 +302,10 @@ namespace TelAPI
         /// Phone number
         /// </summary>
         public const string PhoneNumber = "PhoneNumber";
+
+        /// <summary>
+        /// Conference name
+        /// </summary>
+        public const string ConferenceName = "ConferenceName";
     }
 }

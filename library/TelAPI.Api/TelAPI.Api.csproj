@@ -47,6 +47,7 @@
     <Compile Include="AvaliablePhoneNumbers.cs" />
     <Compile Include="Calls.cs" />
     <Compile Include="CarrierServices.cs" />
+    <Compile Include="Conferences.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="IncomingPhoneNumbers.cs" />
     <Compile Include="Model\Account.cs" />
@@ -61,6 +62,8 @@
     <Compile Include="Model\Capabilites.cs" />
     <Compile Include="Model\CarrierLookup.cs" />
     <Compile Include="Model\CNAMLookup.cs" />
+    <Compile Include="Model\Conference.cs" />
+    <Compile Include="Model\ConferenceResult.cs" />
     <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
     <Compile Include="Model\Enum\AccountStatus.cs" />
     <Compile Include="Model\Enum\AudioDirection.cs" />
@@ -75,12 +78,14 @@
     <Compile Include="Model\Enum\TranscriptionType.cs" />
     <Compile Include="Model\IncomingPhoneNumber.cs" />
     <Compile Include="Model\IncomingPhoneNumberResult.cs" />
+    <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Notification.cs" />
     <Compile Include="Model\NotificationResult.cs" />
     <Compile Include="Model\PlayAudioOptions.cs" />
     <Compile Include="Model\Recording.cs" />
     <Compile Include="Model\RecordingResult.cs" />
     <Compile Include="Model\Resources\RequestUri.cs" />
+    <Compile Include="Model\Response.cs" />
     <Compile Include="Model\RestException.cs" />
     <Compile Include="Model\SmsMessageListOptions.cs" />
     <Compile Include="Model\SmsMessage.cs" />
