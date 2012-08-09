@@ -33,10 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.103.4\lib\net35-client\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +53,30 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountTest.cs" />
+    <Compile Include="ApplicationTest.cs" />
+    <Compile Include="AvaliablePhoneNumberTest.cs" />
+    <Compile Include="TelAPIBaseTest.cs" />
+    <Compile Include="CallTest.cs" />
+    <Compile Include="CarrierServiceTest.cs" />
+    <Compile Include="ConferenceTest.cs" />
+    <Compile Include="FraudTest.cs" />
+    <Compile Include="IncomingPhoneNumberTest.cs" />
+    <Compile Include="NotificationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordingTest.cs" />
+    <Compile Include="SmsTest.cs" />
+    <Compile Include="TelAPIRestClientTest.cs" />
+    <Compile Include="TranscriptionTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TelAPI.Api\TelAPI.Api.csproj">
+      <Project>{A3649E48-7A76-402D-B9A7-E1BC4490A952}</Project>
+      <Name>TelAPI.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
