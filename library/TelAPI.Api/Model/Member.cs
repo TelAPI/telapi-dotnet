@@ -4,7 +4,7 @@ namespace TelAPI
 {
     public class Member
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public bool Muted { get; set; }
         public bool Deaf { get; set; }
         public string CallerName { get; set; }

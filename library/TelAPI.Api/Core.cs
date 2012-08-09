@@ -59,10 +59,11 @@ namespace TelAPI
         /// </summary>
         public void Connect()
         {
-            var version = Assembly.GetEntryAssembly().GetName().Version;
+            //turned off because of testing purpose
+            //var version = Assembly.GetEntryAssembly().GetName().Version;
 
             _client = new RestClient();
-            _client.UserAgent = "TelAPI-dotnet/" + version;
+            _client.UserAgent = "TelAPI-dotnet/" + "1.0";
             _client.Authenticator = new HttpBasicAuthenticator(AccountSid, AuthToken);
             _client.BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion);
 

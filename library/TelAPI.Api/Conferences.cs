@@ -167,15 +167,19 @@ namespace TelAPI
         /// <param name="conferenceName">Conference name</param>
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <returns></returns>
-        public Conference DeafMeber(string conferenceName, int memberId)
+        public Conference DeafMember(string conferenceName, List<string> members)
         {
             Require.Argument("ConferenceName", conferenceName);
-            Require.Argument("MemberId", memberId);
+            Require.Argument("MemberId", members);
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.ConferenceDeafMemberUri;
             request.AddUrlSegment(RequestUriParams.ConferenceName, conferenceName);
-            request.AddParameter("MemberId", memberId);
+
+            if (members.Count > 0)
+            {
+                request.AddParameter("MemberId", CreateMemberIds(members));
+            }
 
             return Execute<Conference>(request);
         }
@@ -186,7 +190,7 @@ namespace TelAPI
         /// <param name="conferenceName">Conference name</param>
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <returns></returns>
-        public Conference UndeafMeber(string conferenceName, List<string> members)
+        public Conference UndeafMember(string conferenceName, List<string> members)
         {
             Require.Argument("ConferenceName", conferenceName);
             Require.Argument("MemberId", members);
@@ -209,7 +213,7 @@ namespace TelAPI
         /// <param name="conferenceName">Conference name</param>
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <returns></returns>
-        public Conference HangupMeber(string conferenceName, List<string> members)
+        public Conference HangupMember(string conferenceName, List<string> members)
         {
             Require.Argument("ConferenceName", conferenceName);
             Require.Argument("MemberId", members);
@@ -232,7 +236,7 @@ namespace TelAPI
         /// <param name="conferenceName">Conference name</param>
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <returns></returns>
-        public Conference KickMeber(string conferenceName, List<string> members)
+        public Conference KickMember(string conferenceName, List<string> members)
         {
             Require.Argument("ConferenceName", conferenceName);
             Require.Argument("MemberId", members);
@@ -250,13 +254,13 @@ namespace TelAPI
         }
 
         /// <summary>
-        /// Speach text to member of conference call
+        /// Speak text to member of conference call
         /// </summary>
         /// <param name="conferenceName">Conference name</param>
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <param name="text">Text to speech</param>
         /// <returns></returns>
-        public Response SpeachTextToMember(string conferenceName, List<string> members, string text)
+        public Response SpeakTextToMember(string conferenceName, List<string> members, string text)
         {
             Require.Argument("ConferenceName", conferenceName);
             Require.Argument("MemberId", members);
