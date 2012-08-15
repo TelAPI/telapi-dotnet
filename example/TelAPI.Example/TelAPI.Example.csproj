@@ -49,6 +49,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\TelAPI.Api.dll</HintPath>
     </Reference>
+    <Reference Include="TelAPI.InboundXML">
+      <HintPath>..\..\library\TelAPI.InboundXML\bin\Debug\TelAPI.InboundXML.dll</HintPath>
+    </Reference>
+    <Reference Include="YAXLib, Version=2.9.0.0, Culture=neutral, PublicKeyToken=7cc39f8266ad1835, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\YAXLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultTelAPIConfiguration.cs" />
