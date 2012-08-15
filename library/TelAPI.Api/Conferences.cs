@@ -260,7 +260,7 @@ namespace TelAPI
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <param name="text">Text to speech</param>
         /// <returns></returns>
-        public Response SpeakTextToMember(string conferenceName, List<string> members, string text)
+        public ConferenceResponse SpeakTextToMember(string conferenceName, List<string> members, string text)
         {
             Require.Argument("ConferenceName", conferenceName);
             Require.Argument("MemberId", members);
@@ -277,7 +277,7 @@ namespace TelAPI
             
             request.AddParameter("Text", text);
 
-            return Execute<Response>(request);
+            return Execute<ConferenceResponse>(request);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace TelAPI
         /// <param name="memberId">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each memberID.</param>
         /// <param name="url">Url where audio is located</param>
         /// <returns></returns>
-        public Response PlayAudioToMember(string conferenceName, List<string> members, string url)
+        public ConferenceResponse PlayAudioToMember(string conferenceName, List<string> members, string url)
         {
             Require.Argument("ConferenceName", conferenceName);
             Require.Argument("MemberId", members);
@@ -304,7 +304,7 @@ namespace TelAPI
 
             request.AddParameter("Url", url);
 
-            return Execute<Response>(request);
+            return Execute<ConferenceResponse>(request);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace TelAPI
         /// </summary>
         /// <param name="conferenceName">Conference name</param>
         /// <returns></returns>
-        public Response StartRecordingConference(string conferenceName)
+        public ConferenceResponse StartRecordingConference(string conferenceName)
         {
             Require.Argument("ConferenceName", conferenceName);
 
@@ -320,7 +320,7 @@ namespace TelAPI
             request.Resource = RequestUri.ConferenceStartRecordingUri;
             request.AddUrlSegment(RequestUriParams.ConferenceName, conferenceName);
 
-            return Execute<Response>(request);
+            return Execute<ConferenceResponse>(request);
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace TelAPI
         /// </summary>
         /// <param name="conferenceName">Conference name</param>
         /// <returns></returns>
-        public Response StopRecordingConference(string conferenceName)
+        public ConferenceResponse StopRecordingConference(string conferenceName)
         {
             Require.Argument("ConferenceName", conferenceName);
 
@@ -336,7 +336,7 @@ namespace TelAPI
             request.Resource = RequestUri.ConferenceStopRecording;
             request.AddUrlSegment(RequestUriParams.ConferenceName, conferenceName);
 
-            return Execute<Response>(request);
+            return Execute<ConferenceResponse>(request);
         }
 
         #region Helper methods

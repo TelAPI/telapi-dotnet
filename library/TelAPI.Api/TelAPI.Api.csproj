@@ -88,7 +88,7 @@
     <Compile Include="Model\Recording.cs" />
     <Compile Include="Model\RecordingResult.cs" />
     <Compile Include="Model\Resources\RequestUri.cs" />
-    <Compile Include="Model\Response.cs" />
+    <Compile Include="Model\ConferenceResponse.cs" />
     <Compile Include="Model\RestException.cs" />
     <Compile Include="Model\SmsMessageListOptions.cs" />
     <Compile Include="Model\SmsMessage.cs" />

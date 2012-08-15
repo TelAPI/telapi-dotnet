@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.InboundXML", "TelAPI.InboundXML\TelAPI.InboundXML.csproj", "{AEB3F404-3D07-4FF2-B273-59A829A739F7}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TelAPI.vsmdi
@@ -29,6 +31,10 @@ Global
 		{27E945D4-27E2-4C22-8389-A8F0BA963059}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27E945D4-27E2-4C22-8389-A8F0BA963059}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27E945D4-27E2-4C22-8389-A8F0BA963059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB3F404-3D07-4FF2-B273-59A829A739F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB3F404-3D07-4FF2-B273-59A829A739F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB3F404-3D07-4FF2-B273-59A829A739F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB3F404-3D07-4FF2-B273-59A829A739F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
