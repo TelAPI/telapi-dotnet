@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AEB3F404-3D07-4FF2-B273-59A829A739F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TelAPI.InboundXML</RootNamespace>
+    <AssemblyName>TelAPI.InboundXML</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="YAXLib, Version=2.9.0.0, Culture=neutral, PublicKeyToken=7cc39f8266ad1835, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Renato\Desktop\YAXLib-2.9-Bin\YAXLib-2.9-Bin\YAXLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Element\Conference.cs" />
+    <Compile Include="Element\Dial.cs" />
+    <Compile Include="Element\DialElement.cs" />
+    <Compile Include="Element\Gather.cs" />
+    <Compile Include="Element\GatherElement.cs" />
+    <Compile Include="Element\GetSpeech.cs" />
+    <Compile Include="Element\GetSpeechElement.cs" />
+    <Compile Include="Element\Hangup.cs" />
+    <Compile Include="Element\Number.cs" />
+    <Compile Include="Element\Pause.cs" />
+    <Compile Include="Element\Play.cs" />
+    <Compile Include="Element\Record.cs" />
+    <Compile Include="Element\Redirect.cs" />
+    <Compile Include="Element\Reject.cs" />
+    <Compile Include="Element\Sip.cs" />
+    <Compile Include="Element\Sms.cs" />
+    <Compile Include="Enum\HttpMethod.cs" />
+    <Compile Include="Enum\RecordingFileFormat.cs" />
+    <Compile Include="Enum\RejectReason.cs" />
+    <Compile Include="Enum\Voice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response.cs" />
+    <Compile Include="Element\ResponseElement.cs" />
+    <Compile Include="Element\Say.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
