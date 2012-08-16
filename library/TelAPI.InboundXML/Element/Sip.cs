@@ -29,6 +29,14 @@ namespace TelAPI.InboundXML.Element
 
         }
 
+        /// <summary>
+        /// The Sip element is nested within the Dial element, and is used to call to sip addresses.
+        /// </summary>
+        /// <param name="sipAddress">Sip address</param>
+        /// <param name="sendDigits">Specifies which DTFM tones to play to the called party. w indicates a half second pause.</param>
+        /// <param name="url">URL that the called party can be directed to before the call beings.</param>
+        /// <param name="method">method used to request the url.</param>
+        /// <returns></returns>
         public static Sip Create(string sipAddress, string sendDigits, string url, HttpMethod? method)
         {
             Sip sip = new Sip();

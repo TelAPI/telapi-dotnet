@@ -19,6 +19,12 @@ namespace TelAPI.InboundXML.Element
 
         }
       
+        /// <summary>
+        /// The Play element plays an mp3 file for the caller.
+        /// </summary>
+        /// <param name="resource">Url of mp3 audio</param>
+        /// <param name="loop">The amount of times the Play should be repeated. 0 indicates an infinite loop.</param>
+        /// <returns></returns>
         public static Play Create(string resource, long? loop)
         {
             var play = new Play();

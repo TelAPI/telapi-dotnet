@@ -25,6 +25,13 @@ namespace TelAPI.InboundXML.Element
             
         }               
 
+        /// <summary>
+        /// The <Say> element reads text to the caller using a text-to-speech engine. 
+        /// </summary>
+        /// <param name="text">Text to say</param>
+        /// <param name="voice">The type of voice that will read the text to caller.</param>
+        /// <param name="loop">The amount of times the spoken text should be repeated. 0 indicates an infinite loop.</param>
+        /// <returns></returns>
         public static Say Create(string text, Voice? voice, long? loop)
         {
             var say = new Say();   

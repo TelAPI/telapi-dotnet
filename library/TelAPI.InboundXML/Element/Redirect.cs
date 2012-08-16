@@ -21,6 +21,12 @@ namespace TelAPI.InboundXML.Element
 
         }
 
+        /// <summary>
+        /// The Redirect element directs the call to another InboundXML document.
+        /// </summary>
+        /// <param name="url">Url to another InboundXML document</param>
+        /// <param name="method">Method used to request the InboundXML doucment the call is being redirected to.</param>
+        /// <returns></returns>
         public static Redirect Create(string url, HttpMethod? method)
         {
             var redirect = new Redirect();

@@ -53,6 +53,11 @@ namespace TelAPI.InboundXML.Element
 
         }
 
+        /// <summary>
+        /// The Record element is used to record audio during a call.
+        /// </summary>
+        /// <param name="action">URL where some parameters specific to <Record> will be sent for further processing.</param>
+        /// <returns></returns>
         public static Record Create(string action)
         {
             Record record = new Record();
@@ -61,6 +66,20 @@ namespace TelAPI.InboundXML.Element
             return record;
         }
 
+        /// <summary>
+        /// The Record element is used to record audio during a call.
+        /// </summary>
+        /// <param name="action">URL where some parameters specific to <Record> will be sent for further processing.</param>
+        /// <param name="method">Specifies the method to use when requesting the action or transcribeCallback URL.</param>
+        /// <param name="timeout">The number of seconds Record should wait during silence before ending.</param>
+        /// <param name="finishOnKey">The key a caller can press to end the Record.</param>
+        /// <param name="maxLength">The maximum length in seconds a recording should be.</param>
+        /// <param name="transcribe">Boolean value specifying if the recording should be transcribed.</param>
+        /// <param name="transcribeCallback">URL where the recording transcription will be sent.</param>
+        /// <param name="playBeep">Boolean value specifying if a beep should be played when the recording begins.</param>
+        /// <param name="bothLegs">Boolean value specifying if both call legs should be recorded.</param>
+        /// <param name="fileFormat">The recording file format. Can be mp3 or wav. Default is mp3.</param>
+        /// <returns></returns>
         public static Record Create(string action, HttpMethod? method, long? timeout, string finishOnKey, long? maxLength, bool? transcribe, string transcribeCallback, bool? playBeep, bool? bothLegs, RecordingFileFormat? fileFormat)
         {
             Record record = new Record();

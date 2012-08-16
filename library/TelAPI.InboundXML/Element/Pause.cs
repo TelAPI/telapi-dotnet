@@ -16,6 +16,11 @@ namespace TelAPI.InboundXML.Element
 
         }        
 
+        /// <summary>
+        /// The Pause element will pause the call, holding for the number of seconds set by the length attribute.
+        /// </summary>
+        /// <param name="length">The length in seconds the pause should be.</param>
+        /// <returns></returns>
         public static Pause Create(long? length)
         {
             var pause = new Pause();

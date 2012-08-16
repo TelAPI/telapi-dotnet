@@ -5,6 +5,7 @@ using YAXLib;
 
 using TelAPI.InboundXML.Enum;
 using TelAPI.InboundXML.Element;
+using TelAPI.InboundXML.Option;
 
 
 namespace TelAPI.InboundXML
@@ -74,6 +75,28 @@ namespace TelAPI.InboundXML
         public Response Record(string action)
         {
             Elements.Add(Element.Record.Create(action));
+            return this;
+        }
+
+        /// <summary>
+        /// The Record element is used to record audio during a call.
+        /// </summary>
+        /// <param name="recordOptions">Record options</param>
+        /// <returns></returns>
+        public Response Record(RecordOptions recordOptions)
+        {
+            Elements.Add(Element.Record.Create(recordOptions.Action,
+                recordOptions.Method,
+                recordOptions.Timeout,
+                recordOptions.FinishOnKey,
+                recordOptions.MaxLength,
+                recordOptions.Transcribe,
+                recordOptions.TranscribeCallback,
+                recordOptions.PlayBeep,
+                recordOptions.BothLegs,
+                recordOptions.FileFormat
+                ));
+
             return this;
         }
 

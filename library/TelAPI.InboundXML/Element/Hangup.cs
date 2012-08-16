@@ -16,6 +16,11 @@ namespace TelAPI.InboundXML.Element
 
         }
 
+        /// <summary>
+        /// The Hangup element will hangup the current call.
+        /// </summary>
+        /// <param name="schedule">Specifies in seconds when a hangup should occur during a call.</param>
+        /// <returns></returns>
         public static Hangup Create(long? schedule)
         {
             var hangup = new Hangup();

@@ -18,6 +18,11 @@ namespace TelAPI.InboundXML.Element
 
         }
 
+        /// <summary>
+        /// The Reject element will reject an incoming call. 
+        /// </summary>
+        /// <param name="reason">The reason to list as why the call was rejected.</param>
+        /// <returns></returns>
         public static Reject Create(RejectReason? reason)
         {
             var reject = new Reject();            

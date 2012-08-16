@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using YAXLib;
 using TelAPI.InboundXML.Enum;
+using TelAPI.InboundXML.Option;
 
 
 namespace TelAPI.InboundXML.Element
@@ -97,6 +98,28 @@ namespace TelAPI.InboundXML.Element
 
             return dial;
         }
+
+        public static Dial Create(DialOptions dialOptions)
+        {
+            return Create(dialOptions.Value,
+                dialOptions.Action,
+                dialOptions.Method,
+                dialOptions.Timeout,
+                dialOptions.HangupOnStar,
+                dialOptions.Timelimit,
+                dialOptions.CallerId,
+                dialOptions.HideCallerId,
+                dialOptions.DialMusic,
+                dialOptions.CallbackUrl,
+                dialOptions.CallbackMethod,
+                dialOptions.ConfirmSound,
+                dialOptions.DigitsMatch,
+                dialOptions.StraightToVm,
+                dialOptions.HeartbeatUrl,
+                dialOptions.HeartbeatMethod,
+                dialOptions.ForwardedFrom);
+        }
+                
 
         /// <summary>
         /// The Dial element starts an outgoing dial from the current call.
