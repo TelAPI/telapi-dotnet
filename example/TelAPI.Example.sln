@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.Example", "TelAPI.Example\TelAPI.Example.csproj", "{CEAC0039-A16F-4162-A78F-9F9DA7B809F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.Api.Example", "TelAPI.Example\TelAPI.Api.Example.csproj", "{CEAC0039-A16F-4162-A78F-9F9DA7B809F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.InboundXML.Example", "TelAPI.InboundXML.Example\TelAPI.InboundXML.Example.csproj", "{9016F650-6616-4BDE-AC0B-7F80D8DC6D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{CEAC0039-A16F-4162-A78F-9F9DA7B809F7}.Debug|x86.Build.0 = Debug|x86
 		{CEAC0039-A16F-4162-A78F-9F9DA7B809F7}.Release|x86.ActiveCfg = Release|x86
 		{CEAC0039-A16F-4162-A78F-9F9DA7B809F7}.Release|x86.Build.0 = Release|x86
+		{9016F650-6616-4BDE-AC0B-7F80D8DC6D25}.Debug|x86.ActiveCfg = Debug|x86
+		{9016F650-6616-4BDE-AC0B-7F80D8DC6D25}.Debug|x86.Build.0 = Debug|x86
+		{9016F650-6616-4BDE-AC0B-7F80D8DC6D25}.Release|x86.ActiveCfg = Release|x86
+		{9016F650-6616-4BDE-AC0B-7F80D8DC6D25}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

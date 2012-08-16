@@ -1,269 +1,194 @@
 ﻿using System;
 using System.Threading;
-using TelAPI.InboundXML;
-using TelAPI.InboundXML.Element;
+
+using TelAPI;
 
 namespace TelAPI.Example
 {
     class Program
     {
+        /// <summary>
+        /// TelApi account sid. You can get it from TelApi dashboard.
+        /// </summary>
+        private const string AccountSid = "your-account-sid";
+
+        /// <summary>
+        /// TelApi auth token. You can get it from TelApi dashboard
+        /// </summary>
+        private const string AuthToken = "your-auth-token";
+
+        /// <summary>
+        /// Phone number which will receive our sms and calls from TelApi service
+        /// </summary>
+        private const string PhoneNumberTo = "phone-number-to";
+
+        /// <summary>
+        /// Our valid Telapi phone number that we purchased and we will use it for sending SMS and calls
+        /// </summary>
+        private const string PhoneNumberFrom = "phone-number-from";    
+
         static void Main(string[] args)
         {
-            //var telApi = new TelAPIRestClient("{your-account-sid}", "{your-auth-token}");
+            /// First we need to create TelApi Rest client. To do so, we need to provide accountSid, and authToken.
+            var telApi = new TelAPIRestClient(AccountSid, AuthToken);
             
-            // another way of creating client with config class
+            // Also there is another way of creating TelApi Rest client with TelAPIConfiguration interface.
+            // Check DefaultTelAPIConfiguration class for exammple
             // var telApi = new TelAPIRestClient(new DefaultTelAPIConfiguration());
 
-            //var account = telApi.GetAccount();
-            //Console.WriteLine("Account Balance : {0}", account.AccountBalance);
 
-            //Console.WriteLine("-------------------------------------------");
-
-            //Console.WriteLine("SMSMessage GET");
-
-            //try
-            //{
-            //    var smsMessage = telApi.GetSmsMessage("just-fake-sid");
-            //    Console.WriteLine("SMS : {0}", smsMessage.Status);
-            //}
-            //catch (TelAPIException ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-
-            //}
-
-            //Console.WriteLine("-------------------------------------------");
-
-            //Console.WriteLine("SMSMessages  GET LIST");
-            //var messages = telApi.GetSmsMessages();
-            //foreach (var m in messages.SmsMessages)
-            //{
-            //    Console.WriteLine("From : {0}", m.From);
-            //    Console.WriteLine("To : {0}", m.To);
-            //    Console.WriteLine("Body : {0}", m.Body);
-            //}
-
-            //Console.WriteLine("SMSMessages  GET LIST - Condition");
-            //var messagesWithCondition = telApi.GetSmsMessages(new SmsMessageListOptions
-            //{
-            //    To = "++1234567899",
-            //    PageSize = 3
-            //});
-
-            //foreach (var m in messagesWithCondition.SmsMessages)
-            //{
-            //    Console.WriteLine("From : {0}", m.From);
-            //    Console.WriteLine("To : {0}", m.To);
-            //    Console.WriteLine("Body : {0}", m.Body);
-            //}
-
-            //Console.WriteLine("-------------------------------------------");
-
-            //Console.WriteLine("SMSMessages SEND");
-            //var message = telApi.SendSmsMessage("+1234567898", "+1234567899", "hello world from telapi-dotnet lib");
-            //Console.WriteLine(message.Status);  
-
-            //Console.WriteLine("Calls GET");
-            //var calls = telApi.GetCalls();
-            //foreach (var c in calls.Calls)
-            //{
-            //    Console.WriteLine("From : {0}", c.From);
-            //    Console.WriteLine("To : {0}", c.To);
-            //    Console.WriteLine("Price : {0}", c.Price);
-            //    Console.WriteLine("Duration : {0}", c.Duration);
-            //}
-
-
-            //Console.WriteLine("-------------------------------------------");
-
-            //Console.WriteLine("Calls GET - condition");
-            //var callsCondition = telApi.GetCalls(new CallListOptions
-            //{
-            //    To = "+1234567899",
-            //    PageSize = 2
-            //});
-
-            //foreach (var c in callsCondition.Calls)
-            //{
-            //    Console.WriteLine("From : {0}", c.From);
-            //    Console.WriteLine("To : {0}", c.To);
-            //    Console.WriteLine("Price : {0}", c.Price);
-            //    Console.WriteLine("Duration : {0}", c.Duration);
-            //}
-
-            //Console.WriteLine("-------------------------------------------");
-
-            // wait 5 seconds and do few call actions
-            //Thread.Sleep(5000);
-
-            //var call = telApi.MakeCall("+1234567899", "+1234567899", "http://www.xyz.com/fake-fake");
-            //Console.WriteLine("Call : {0} -> {1}", call.Sid, call.Status);
-
-            //var digits = telApi.SendDigits(call.Sid, "www12www", null);
-            //Console.WriteLine("Send digits : {0}", digits.DateUpdated);
-
-            //var audio = telApi.PlayAudio(call.Sid, "http://www.xyz.com/sound.fake.mp3");
-            //Console.WriteLine("Play audio : {0}", audio.DateUpdated);
-
-            //var effect = telApi.VoiceEffects(call.Sid, new VoiceEffectOptions
-            //{
-            //    Pitch = 0,
-            //    Rate = 1
-            //});
-            //Console.WriteLine("Voice effect : {0}", effect.DateUpdated);
-
-            //var record = telApi.RecordCall(call.Sid, true);
-            //Console.WriteLine("Recording call [START] - {0} : {1}", record.Sid, record.Status);
-
-            //Thread.Sleep(5000);
-
-            //var stopRecord = telApi.RecordCall(call.Sid, false);
-            //Console.WriteLine("Recording call [STOP] -  {0} : {1}", record.Sid, record.Status);
-
-            //Thread.Sleep(5000);
-
-            //var interrupt = telApi.InterruptLiveCall(call.Sid, "http://www.xyz.com/call", HttpMethod.Get, HangupCallStatus.Canceled);
-            //Console.WriteLine("Interrupt live call [CANCELED] : {0}", interrupt.Status);
-
-            //var hangupCall = telApi.HangupCall(call.Sid);
-            //Console.WriteLine("Call {0} ended", hangupCall.Sid);
-
-            //try
-            //{
-            //    var notification = telApi.GetNotification("neki-fake-sid");
-            //}
-            //catch (TelAPIException e)
-            //{
-            //    Console.WriteLine("Notification : {0}", e.Message);
-            //}
-
-            //Console.WriteLine("Account Notification - GET");
-            //var accountNotifications = telApi.GetAccountNotifications(NotificationLog.Info, 1, 2);
-            //foreach (var an in accountNotifications.Notifications)
-            //{
-            //    Console.WriteLine("Account notification : {0}", an.ErrorCode);
-            //}
-
-            //Console.WriteLine("Avaliable phone numbers - GET");
-            //var avaliableNum = telApi.GetAvailablePhoneNumbers("US");
-            //foreach (var a in avaliableNum.AvailablePhoneNumbers)
-            //{
-            //    Console.WriteLine("Avaliable phone number : {0}", a.PhoneNumber);
-            //}
-
-            //Console.WriteLine("Incoming phone numbers - GET LIST");
-            //var numbers = telApi.GetIncomingPhoneNumbers();
-            //foreach (var num in numbers.IncomingPhoneNumbers)
-            //{
-            //    Console.WriteLine("Incoming phone numbers : {0}", num.PhoneNumber);
-            //}
-
-            //Console.WriteLine("Buy incoming phone number - ADD");
-            //try
-            //{
-            //    var buy = telApi.AddIncomingPhoneNumber(avaliableNum.AvailablePhoneNumbers[0].PhoneNumber, avaliableNum.AvailablePhoneNumbers[0].NPA);
-            //    Console.WriteLine("New number : {0} ({1})", buy.PhoneNumber, buy.DateCreated);
-            //}
-            //catch (TelAPIException e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
-
-            //try
-            //{
-            //    var delete = telApi.DeleteIncomingPhoneNumber(numbers.IncomingPhoneNumbers[0].Sid);
-            //    Console.WriteLine("Delete phone number : {0} ({1}", delete.PhoneNumber, delete.DateUpdated);
-            //}
-            //catch (TelAPIException e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
-
-            //var n = numbers.IncomingPhoneNumbers[0];
-            //n.SmsFallbackUrl = "http://www.fakeaddress.com/sms-fallback";
-            //var updatedNumber = telApi.UpdateIncomingPhoneNumber(n);
-            //Console.WriteLine("Updated number : {0} ({1}", updatedNumber.SmsFallbackUrl, updatedNumber.DateUpdated);
-
-            //Console.WriteLine("New application - GET");
-            //var app = telApi.CreateApplication(new Application
-            //{
-            //    FriendlyName = "renato app #2"
-            //});
-            //Console.WriteLine("APP : {0}", app.DateCreated);
-
-            //Console.WriteLine("List app - GET");
-            //var singleApp = telApi.GetApplication("adsfasdfasdfasd");
-            //Console.WriteLine("APP :");
-
-            //Console.WriteLine("Applications - GET LIST");
-            //var apps = telApi.GetApplications();
-            //foreach (var a in apps.Applications)
-            //{
-            //    Console.WriteLine("App : {0}", a.FriendlyName);
-            //}
-
-            //var applicationEdit = apps.Applications[1];
-            //applicationEdit.FriendlyName = "renato edit putem api-ja";
-            //applicationEdit.HangupCallbackMethod = "GET";
-            //telApi.UpdateApplication(applicationEdit);
-
-            //telApi.DeleteApplication(applicationEdit.Sid);
-
-            //var recordings = telApi.GetAccountRecordings();
-            //foreach (var r in recordings.Recordings)
-            //{
-            //    Console.WriteLine("Record : {0}", r.RecordingUrl);
-            //}
-
-            //var transcription = telApi.GetAccountTranscriptions();
-            //foreach (var t in transcription.Transcriptions)
-            //{
-            //    Console.WriteLine("Transcription : {0}", t.TranscriptionText);
-            //}
-
-            //var text = telApi.GetTranscriptionText(transcription.Transcriptions[1].Sid);
-            //Console.WriteLine("Text : {0}", text);
-
-            //var transcribe = telApi.TranscribeAudio("http://www.freeinfosociety.com/media/sounds/13.mp3");
-            //Console.WriteLine("Transcribe started : {0}", transcribe.TranscriptionText);
-
-            //var carrier = telApi.CarrierLookup("+12408446005");
-            //Console.WriteLine("Carrier : {0}, {1}", carrier.Carrier, carrier.Country);
-
-            //var cnam = telApi.CNAMLookup("+12408446005");
-            //Console.WriteLine("CNAM : {0}, {1}", cnam.Body, cnam.Price);
-
-            //var frauds = telApi.GetFraudControlResources();
-            //foreach (var f in frauds.Frauds)
-            //{
-            //    Console.WriteLine("Resources : {0}", f.Outbound.MaxOutboundRate);
-            //}
-
-            var response = new Response();
-            response.Say("Test");
-            response.Dial(Dial.Create("+385989189623", "http://www.google.com", InboundXML.Enum.HttpMethod.POST, 5000, null, null, null, null, null, null, null, null, null, null, null, null, null).Number("+385989189623", "*121*", null, null));
-            response.Sms("hello from inboundXml", "+385989189623", "+385918762345");
-            response.Gather(Gather.Create("http://www.gather.com").Play("jupi", 102));
-            response.Hangup();
-            response.Hangup(5);
-            response.Pause();
-            response.Pause(10);
-            response.Play("http://www.play.com");
-            response.Play("http://www.play.com/null", 10);
-            response.Redirect("http://www.google.com");
-            response.Reject();
-            response.Reject(InboundXML.Enum.RejectReason.busy);
-            response.Record("http://www.record.com");
-            response.Record("http://www.record.com/null", null, 100, "*", 10, true, null, true, true, InboundXML.Enum.RecordingFileFormat.mp3);
-            response.GetSpeech(GetSpeech.Create("http://www.grammar.com", "http://www.action.com").Say("Hello", null, null));
-            response.Gather(Gather.Create("http://www.gather.com").Pause());
+            /// First we will get our Telapi account information
             
-            
-            var xml = response.CreateXml();
+            var account = telApi.GetAccount();
+            Console.WriteLine("Account Sid     : {0}", account.Sid);
+            Console.WriteLine("Account Balance : {0}", account.AccountBalance);
+            Console.WriteLine("Account Created : {0}", account.DateCreated);
+            Console.WriteLine("Account Status  : {0}", account.Status);
 
-            Console.ReadKey();   
-         
-            // the end :)
+            Console.WriteLine();
+
+            // Now we will try to send our first SMS message using TelAPI service.
+            // It's always good to decorate all API calls with the try / catch block
+            // so that we can catch any exception if something wrong occurs.
+
+            try
+            {
+                var sms = telApi.SendSmsMessage(PhoneNumberFrom, PhoneNumberTo, "Hello from TelApi.");
+                Console.WriteLine("SMS Sid  : {0}", sms.Sid);
+                Console.WriteLine("SMS Cost : {0}", sms.Price);
+                Console.WriteLine("SMS Sent : {0}", sms.DateSent);
+                Console.WriteLine("SMS Type : {0}", sms.Direction);
+            }
+            catch (TelAPIException ex)
+            {
+                //If something wrong happens we will catch Telapi exception and print it out
+                Console.WriteLine("Error message         : {0}", ex.Message);                
+            }
+
+            Console.WriteLine();
+
+            // We can also get all SMS messages that we SENT and RECEIVED from TelApi service.
+            // We can also filter list with some Sms message options using SmsMessageListOptions() class
+            // We will ask for all SMS that we sent or received today.
+
+            Console.WriteLine("SMS Messages List");
+            
+            var messageOptions = new SmsMessageListOptions();
+            messageOptions.DateSent = DateTime.Today;
+
+            var messages = telApi.GetSmsMessages(messageOptions);
+            foreach (var m in messages.SmsMessages)
+            {
+                Console.WriteLine("From : {0}  To : {1}   Body : {2}", m.From, m.To, m.Body);                
+            }
+
+            Console.WriteLine();
+      
+            // Also we can make calls with just one method call.
+            // We need to provide number from which we will make call (our Telapi purchased number)
+            // and number which we will call. Also valid URL is needed where Telapi will send some call data
+
+            var call = telApi.MakeCall(PhoneNumberFrom, PhoneNumberTo, "http://www.some-url-for-telapi-data.com");
+            Console.WriteLine("Call Sid     : {0}", call.Sid);            
+            Console.WriteLine("Call Status  : {0}", call.Status.ToString());
+            Console.WriteLine("Call Created : {0}", call.DateCreated);
+
+            Console.WriteLine();
+
+            // We can do various task on calls like sending digits, voice effects, interrupt or hangup call
+            // We can also RECORD call which we will do in the next lines. We will wait some time, before turning recording ON
+            // Then after another SLEEP we will turn OFF recording
+                        
+            Thread.Sleep(5000);
+
+            try
+            {
+                var startRecord = telApi.RecordCall(call.Sid, true);
+                Console.WriteLine("[ON] Recording Call Sid     : {0}", startRecord.Sid);
+                Console.WriteLine("[ON] Recording Call Started : {0}", startRecord.DateUpdated);
+            }
+            catch (TelAPIException ex)
+            {
+                //If something wrong happens we will catch Telapi exception and print it out
+                Console.WriteLine("Error message         : {0}", ex.Message);                
+            }
+
+            Console.WriteLine();
+            Thread.Sleep(5000);
+
+            try
+            {
+                var stopRecord = telApi.RecordCall(call.Sid, false);
+                Console.WriteLine("[0FF] Recording Call Sid     : {0}", stopRecord.Sid);
+                Console.WriteLine("[OFF] Recording Call Started : {0}", stopRecord.DateUpdated);
+            }
+            catch (TelAPIException ex)
+            {
+                //If something wrong happens we will catch Telapi exception and print it out
+                Console.WriteLine("Error message         : {0}", ex.Message);                
+            }
+
+            Console.WriteLine();
+
+            // Now we will hangup our call using HangupCall(). Also you can hangup call using
+            // InterruptCall() method and specify the reason of interruption
+
+            var hangupCall = telApi.HangupCall(call.Sid);
+            Console.WriteLine("Hangup Call Sid      : {0}", hangupCall.Sid);
+            Console.WriteLine("Hangup Call Duration : {0}", hangupCall.Duration);
+            Console.WriteLine("Hangup Call Status   : {0}", hangupCall.Status.ToString());
+
+            Console.WriteLine();
+            
+            // We also can query TelApi service for avaliable phone number which we want to purchase.
+            // We can also filter that list with various parameters
+            // For example we will query for all avaliable US numbers
+
+            var numbers = telApi.GetAvailablePhoneNumbers("US");
+            foreach (var a in numbers.AvailablePhoneNumbers)
+            {
+                Console.WriteLine("Avaliable Phone Number : {0}", a.PhoneNumber);                
+            }
+
+            Console.WriteLine();
+
+            // There is also options to query our own TelApi numbers that we purchased            
+            
+            var incomingNumbers = telApi.GetIncomingPhoneNumbers();
+            foreach (var i in incomingNumbers.IncomingPhoneNumbers)
+            {
+                Console.WriteLine("Incoming Phone Number : {0}", i.PhoneNumber);
+            }
+
+            Console.WriteLine();
+
+            // Telapi service provide us with Transcribing feauture. That means
+            // that we can provide some external audio Url which Telapi will transcribe for us
+            // and save result on our account which then we can get using TelApi api
+
+            var transcribe = telApi.TranscribeAudio("http://www.some-external-audio-url.com");
+            Console.WriteLine("Transcribe Sid     : {0}", transcribe.Sid);
+            Console.WriteLine("Transcribe Started : {0}", transcribe.DateCreated);
+            Console.WriteLine("Transcribe Status  : {0}", transcribe.Status.ToString());
+
+            Console.WriteLine();
+
+            // If we want to find some information about Phone or Landline numbers
+            // we can use Carrier and CNAM lookup using TelApi service
+            
+            var carrier = telApi.CarrierLookup(PhoneNumberFrom);
+            Console.WriteLine("Carrier Name         : {0}", carrier.Carrier);
+            Console.WriteLine("Carrier Country      : {0}", carrier.Country);
+            Console.WriteLine("Carrier Lookup Price : {0}", carrier.Price);
+
+            Console.WriteLine();
+
+            var cnam = telApi.CNAMLookup(PhoneNumberFrom);
+            Console.WriteLine("CNAM Body : {0}", cnam.Body);
+
+            // The End :)
+            Console.WriteLine("The end :)");
+            Console.ReadKey();            
         }
     }
 }
