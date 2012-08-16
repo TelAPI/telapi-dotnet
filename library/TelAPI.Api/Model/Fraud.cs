@@ -5,11 +5,6 @@ namespace TelAPI
 {
     public class Fraud : TelAPIBase
     {
-        public Outbound Outbound { get; set; }
-    }
-
-    public class Outbound
-    {
         /// <summary>
         /// The price limit an outbound call may be. Calls which cost more will be rejected.
         /// </summary>
@@ -19,9 +14,9 @@ namespace TelAPI
 
     public class Destinations
     {
-        public Country Blocked { get; set; }
-        public Country Authorized { get; set; }
-        public Country Whitelisted { get; set; }
+        public List<Country> Blocked { get; set; }
+        public List<Country> Authorized { get; set; }
+        public List<Country> Whitelisted { get; set; }
     }
 
     public class Country
