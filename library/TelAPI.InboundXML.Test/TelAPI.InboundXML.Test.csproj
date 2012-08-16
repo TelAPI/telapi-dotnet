@@ -63,7 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordTest.cs" />
     <Compile Include="RedirectTest.cs" />
-    <Compile Include="Reject.cs" />
+    <Compile Include="RejectTest.cs" />
     <Compile Include="ResponseTest.cs" />
     <Compile Include="SayTest.cs" />
     <Compile Include="SipTest.cs" />

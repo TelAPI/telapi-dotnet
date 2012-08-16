@@ -3,7 +3,7 @@ using TelAPI.InboundXML.Enum;
 
 namespace TelAPI.InboundXML.Test
 {
-    public class Reject : TelAPIBaseTest
+    public class RejectTest : TelAPIBaseTest
     {
         [Fact]
         public void Can_I_Generate_Reject()
