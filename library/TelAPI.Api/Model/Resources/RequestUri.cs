@@ -75,7 +75,12 @@ namespace TelAPI
         /// <summary>
         /// Uri to get notification
         /// </summary>
-        public const string NotificationUri = "Accounts/{AccountSid}/Notifications.json";
+        public const string NotificationUri = "Accounts/{AccountSid}/Notifications/{NotificationsSid}.json";
+
+       /// <summary>
+       /// Uri to get notifications
+       /// </summary>
+        public const string NotificationsUri = "Accounts/{AccountSid}/Notifications.json";
 
         /// <summary>
         /// Uri to get call notifications
@@ -286,7 +291,7 @@ namespace TelAPI
         /// <summary>
         /// Sms message Sid
         /// </summary>
-        public const string SmsMessageSid = "SmsMessageSid";
+        public const string SmsMessageSid = "SMSMessageSid";
         
         /// <summary>
         /// Call Sid
@@ -296,7 +301,7 @@ namespace TelAPI
         /// <summary>
         /// Notification Sid
         /// </summary>
-        public const string NotificationSid = "NotificationSid";
+        public const string NotificationSid = "NotificationsSid";
 
         /// <summary>
         /// Iso country code
@@ -306,7 +311,7 @@ namespace TelAPI
         /// <summary>
         /// Incoming phone number
         /// </summary>
-        public const string IncomingPhoneNumber = "IncomingPhoneNumberSid";
+        public const string IncomingPhoneNumberSid = "IncomingPhoneNumberSid";
 
         /// <summary>
         /// Application Sid

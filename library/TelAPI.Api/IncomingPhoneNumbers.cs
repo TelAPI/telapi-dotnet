@@ -19,7 +19,7 @@ namespace TelAPI
 
             var request = new RestRequest();
             request.Resource = RequestUri.IncomingPhoneNumberUri;
-            request.AddUrlSegment(RequestUriParams.IncomingPhoneNumber, phoneNumberSid);
+            request.AddUrlSegment(RequestUriParams.IncomingPhoneNumberSid, phoneNumberSid);
 
             return Execute<IncomingPhoneNumber>(request);
         }
@@ -62,15 +62,15 @@ namespace TelAPI
         /// <param name="page">Used to return a particular page withing the list.</param>
         /// <param name="pageSize">Used to specify the amount of list items to return per page.</param>
         /// <returns></returns>
-        public IncomingPhoneNumberResult GetIncomingPhoneNumbers(string phoneNumber, string friendlyName, string page, string pageSize)
+        public IncomingPhoneNumberResult GetIncomingPhoneNumbers(string phoneNumber, string friendlyName, int? page, int? pageSize)
         {
             var request = new RestRequest();
             request.Resource = RequestUri.IncomingPhoneNumbersUri;
             
             if (phoneNumber.HasValue()) request.AddParameter("PhoneNumber", phoneNumber);
             if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
-            if (page.HasValue()) request.AddParameter("Page", page);
-            if (pageSize.HasValue()) request.AddParameter("PageSize", pageSize);
+            if (page.HasValue) request.AddParameter("Page", page);
+            if (pageSize.HasValue) request.AddParameter("PageSize", pageSize);
 
             return Execute<IncomingPhoneNumberResult>(request);
         }
@@ -99,13 +99,13 @@ namespace TelAPI
         /// </summary>
         /// <param name="phoneNumber">Desired phone number to delete from account</param>
         /// <returns></returns>
-        public IncomingPhoneNumber DeleteIncomingPhoneNumber(string phoneNumber)
+        public IncomingPhoneNumber DeleteIncomingPhoneNumber(string phoneNumberSid)
         {
-            Require.Argument("IncomingPhoneNumberSid", phoneNumber);
+            Require.Argument("IncomingPhoneNumberSid", phoneNumberSid);
 
             var request = new RestRequest(Method.DELETE);
             request.Resource = RequestUri.DeleteIncomingPhoneNumberUri;
-            request.AddUrlSegment(RequestUriParams.IncomingPhoneNumber, phoneNumber);
+            request.AddUrlSegment(RequestUriParams.IncomingPhoneNumberSid, phoneNumberSid);
 
             return Execute<IncomingPhoneNumber>(request);
         }
@@ -119,7 +119,7 @@ namespace TelAPI
         {
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.UpdateIncomingPhoneNumberUri;
-            request.AddUrlSegment(RequestUriParams.IncomingPhoneNumber, phoneNumber.Sid);
+            request.AddUrlSegment(RequestUriParams.IncomingPhoneNumberSid, phoneNumber.Sid);
 
             CreateIncomingPhoneNumberParams(phoneNumber, request);
 

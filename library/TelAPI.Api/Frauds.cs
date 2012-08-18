@@ -85,7 +85,7 @@ namespace TelAPI
         /// <param name="Landlinebreakout">Landline breakout status for the destination.</param>
         /// <param name="smsEnabled">SMS status for the destination.</param>
         /// <returns></returns>
-        public FraudResult BlockDestination(string countryCode, bool? mobileBreakout, bool? Landlinebreakout, bool? smsEnabled)
+        public FraudResult BlockDestination(string countryCode, bool? mobileBreakout, bool? landlinebreakout, bool? smsEnabled)
         {
             Require.Argument("CountryCode", countryCode);
 
@@ -94,7 +94,7 @@ namespace TelAPI
             request.AddUrlSegment(RequestUriParams.IsoCountryCode, countryCode);
 
             if (mobileBreakout.HasValue) request.AddParameter("MobileBreakout", mobileBreakout);
-            if (Landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", Landlinebreakout);
+            if (landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", landlinebreakout);
             if (smsEnabled.HasValue) request.AddParameter("SmsEnabled", smsEnabled);
 
             return Execute<FraudResult>(request);

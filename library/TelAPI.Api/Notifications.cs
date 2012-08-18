@@ -13,7 +13,7 @@ namespace TelAPI
         /// <returns></returns>
         public Notification GetNotification(string notificationSid)
         {
-            Require.Argument("NotificationSid", notificationSid);
+            Require.Argument("NotificationsSid", notificationSid);
 
             var request = new RestRequest();
             request.Resource = RequestUri.NotificationUri;
@@ -41,7 +41,7 @@ namespace TelAPI
         public NotificationResult GetAccountNotifications(NotificationLog? log, int? page, int? pageSize)
         {
             var request = new RestRequest();
-            request.Resource = RequestUri.NotificationUri;
+            request.Resource = RequestUri.NotificationsUri;
 
             if (log.HasValue) request.AddParameter("Log", (int)log);
             if (page.HasValue) request.AddParameter("Page", page);

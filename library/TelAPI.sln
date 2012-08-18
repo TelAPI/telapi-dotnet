@@ -5,21 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.Api", "TelAPI.Api\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.Api.Test", "TelAPI.Api.Test\TelAPI.Api.Test.csproj", "{27E945D4-27E2-4C22-8389-A8F0BA963059}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D78003CF-7686-44C3-8952-5B0B8B76F240}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-		TelAPI.vsmdi = TelAPI.vsmdi
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.InboundXML", "TelAPI.InboundXML\TelAPI.InboundXML.csproj", "{AEB3F404-3D07-4FF2-B273-59A829A739F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelAPI.InboundXML.Test", "TelAPI.InboundXML.Test\TelAPI.InboundXML.Test.csproj", "{EE959FAF-BEC4-466C-AADA-EE90EF54E1BA}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = TelAPI.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
