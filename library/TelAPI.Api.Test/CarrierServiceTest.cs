@@ -8,14 +8,14 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Carrier_Lookup()
         {
-            var carrier = _client.CarrierLookup("+123456789");
+            var carrier = Client.CarrierLookup(PhoneNumberFrom);
             Assert.NotNull(carrier);
         }
 
         [Fact]
         public void Can_I_Get_CNAM_Lookup()
         {
-            var cnam = _client.CNAMLookup("+12345678");
+            var cnam = Client.CNAMLookup(PhoneNumberFrom);
             Assert.NotNull(cnam);
         }
     }

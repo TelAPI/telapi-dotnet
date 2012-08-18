@@ -9,11 +9,9 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Account()
         {
-            var expectedFriendlyName = "igor.belsa@calyx.hr";
-            var account = _client.GetAccount();
+            var account = Client.GetAccount();
 
             Assert.NotNull(account);
-            Assert.Equal(expectedFriendlyName, account.FriendlyName);
         }
     }
 }

@@ -6,46 +6,33 @@ namespace TelAPI.Api.Test
     public class IncomingPhoneNumberTest : TelAPIBaseTest
     {
         [Fact]
-        public void Can_I_Get_Phone_Number()
+        public void Can_I_Add_And_Get_And_Delete_Phone_Number()
         {
-            var list = _client.GetIncomingPhoneNumbers();
-            var numberToCheck = list.IncomingPhoneNumbers[0];
+            var numbers = Client.GetAvailablePhoneNumbers(IsoCountryCode);
+            var possibleNumber = numbers.AvailablePhoneNumbers[0];
+            var newNumber = Client.AddIncomingPhoneNumber(possibleNumber.PhoneNumber, possibleNumber.NPA );
+            var deleteNumber = Client.DeleteIncomingPhoneNumber(newNumber.Sid);
 
-            var numberToGet = _client.GetIncomingPhoneNumber(numberToCheck.Sid);
-
-            Assert.Equal(numberToCheck.Sid, numberToGet.Sid);
+            Assert.NotNull(numbers);
+            Assert.NotNull(possibleNumber);
+            Assert.NotNull(newNumber);
+            Assert.NotNull(deleteNumber);
+            Assert.Equal(possibleNumber.PhoneNumber, newNumber.PhoneNumber);
+            //Assert.Equal(newNumber.Sid, deleteNumber.Sid);
         }
 
         [Fact]
         public void Can_I_Get_Phone_Number_List()
         {
-            var list = _client.GetIncomingPhoneNumbers();
-
+            var list = Client.GetIncomingPhoneNumbers();
             Assert.NotNull(list);
         }
 
         [Fact]
-        public void Can_I_Add_And_Delete_Phone_Number()
+        public void Can_I_Get_Phone_Number_List_With_Attributes()
         {
-            var possibleNumber = _client.GetAvailablePhoneNumbers("US");
-            var newNumber = _client.AddIncomingPhoneNumber(possibleNumber.AvailablePhoneNumbers[0].PhoneNumber, "480");
-
-            var deleteNumber = _client.DeleteIncomingPhoneNumber(newNumber.PhoneNumber);
-
-            Assert.Equal(newNumber.Sid, deleteNumber.Sid);
-        }
-
-        [Fact]
-        public void Can_I_Update_Phone_Number()
-        {
-            var list = _client.GetIncomingPhoneNumbers();
-            var numberToUpdate = list.IncomingPhoneNumbers[0];
-
-            numberToUpdate.VoiceUrl = "http://www.fake.com";
-
-            var numberToCheck = _client.UpdateIncomingPhoneNumber(numberToUpdate);
-
-            Assert.Equal(numberToUpdate.Sid, numberToCheck.Sid);
+            var list = Client.GetIncomingPhoneNumbers(null, null, null, 1);
+            Assert.NotNull(list);
         }
     }
 }

@@ -8,8 +8,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Avaliable_Phone_Numbers()
         {
-            var numbers = _client.GetAvailablePhoneNumbers("US");
-
+            var numbers = Client.GetAvailablePhoneNumbers(IsoCountryCode);
             Assert.NotNull(numbers);
         }       
     }

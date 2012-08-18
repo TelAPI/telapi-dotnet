@@ -8,30 +8,22 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Account_Notifications()
         {
-            var notifications = _client.GetAccountNotifications();
+            var notifications = Client.GetAccountNotifications();
 
             Assert.NotNull(notifications);
         }
 
         [Fact]
-        public void Can_I_Get_Call_Notifications()
+        public void Can_I_Get_Account_Notification()
         {
-            var list = _client.GetCalls();
-            var call = list.Calls[0];
-
-            var notifications = _client.GetCallNotifications(call.Sid);
-
-            Assert.NotNull(notifications);
-        }
-
-        [Fact]
-        public void Can_I_Get_Notification()
-        {
-            var list = _client.GetAccountNotifications();
+            var list = Client.GetAccountNotifications();
             var notification = list.Notifications[0];
 
-            var notificationToCheck = _client.GetNotification(notification.Sid);
+            var notificationToCheck = Client.GetNotification(notification.Sid);
 
+            Assert.NotNull(list);
+            Assert.NotNull(notification);
+            Assert.NotNull(notificationToCheck);
             Assert.Equal(notification.Sid, notificationToCheck.Sid);
         }
     }

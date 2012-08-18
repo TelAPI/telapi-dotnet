@@ -8,71 +8,73 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Call_List()
         {
-            var calls = _client.GetCalls();
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var calls = Client.GetCalls();
+
+            var receivedCall = Client.HangupCall(call.Sid);
 
             Assert.NotNull(calls);
+            Assert.Equal(call.Sid, receivedCall.Sid);
         }
 
         [Fact]
         public void Can_I_Get_Call_List_With_Condition()
         {
-            var pageSize = 2;
+            var pageSize = 1;
             var options = new CallListOptions();            
             options.PageSize = pageSize;
 
-            var calls = _client.GetCalls(options);
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var calls = Client.GetCalls(options);
+
+            var receivedCall = Client.HangupCall(call.Sid);
 
             Assert.NotNull(calls);
             Assert.Equal(pageSize, calls.PageSize);
+            Assert.Equal(call.Sid, receivedCall.Sid);
         }
 
         [Fact]
-        public void Can_I_Make_And_Get_Call()
+        public void Can_I_Make_And_Get_And_Hangup_Call()
         {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.GetCall(call.Sid);
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var receivedCall = Client.GetCall(call.Sid);
+            var hangupCall = Client.HangupCall(call.Sid);
+
+            Assert.NotNull(call);
+            Assert.NotNull(receivedCall);
+            Assert.NotNull(hangupCall);
+            Assert.Equal(call.Sid, receivedCall.Sid);
+            Assert.Equal(call.Sid, hangupCall.Sid);
+        }
+
+        [Fact]
+        public void Can_I_Make_And_Interrupt_Call()
+        {
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var receivedCall = Client.InterruptLiveCall(call.Sid, ActionUrl, HttpMethod.Post, HangupCallStatus.Canceled);
 
             Assert.NotNull(call);
             Assert.Equal(call.Sid, receivedCall.Sid);
         }
 
         [Fact]
-        public void Can_I_Hangup_Call()
+        public void Can_I_Send_Digits_To_Call()
         {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.HangupCall(call.Sid);
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var receivedCall = Client.SendDigits(call.Sid, "12ww12", PlayDtmfLeg.Aleg);
+            Client.HangupCall(call.Sid);
 
             Assert.NotNull(call);
             Assert.Equal(call.Sid, receivedCall.Sid);
         }
 
         [Fact]
-        public void Can_I_Interrupt_Call()
+        public void Can_I_Play_Sound_On_Call()
         {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.InterruptLiveCall(call.Sid, "http://www.test.com", HttpMethod.Get, HangupCallStatus.Canceled);
-
-            Assert.NotNull(call);
-            Assert.Equal(call.Sid, receivedCall.Sid);
-        }
-
-        [Fact]
-        public void Can_I_Send_Digits()
-        {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.SendDigits(call.Sid, "12ww12", PlayDtmfLeg.Aleg);
-            _client.HangupCall(call.Sid);
-
-            Assert.NotNull(call);
-            Assert.Equal(call.Sid, receivedCall.Sid);
-        }
-
-        [Fact]
-        public void Can_I_Play_Sound()
-        {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.PlayAudio(call.Sid, "http://www.telapi.com/ivr/welcome/call");
-            _client.HangupCall(call.Sid);
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var receivedCall = Client.PlayAudio(call.Sid,AudioUrl);
+            Client.HangupCall(call.Sid);
 
             Assert.NotNull(call);
             Assert.Equal(call.Sid, receivedCall.Sid);
@@ -81,14 +83,16 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Set_Voice_Effect()
         {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.VoiceEffects(call.Sid, new VoiceEffectOptions
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var receivedCall = Client.VoiceEffects(call.Sid, new VoiceEffectOptions
             {
-                Pitch = 1,
-                Rate = 1
+                Pitch = 0.5,
+                Rate = 0,
+                PitchOctaves = -0.6,
+                AudioDirection = AudioDirection.In
             });
 
-            _client.HangupCall(call.Sid);
+            Client.HangupCall(call.Sid);
 
             Assert.NotNull(call);
             Assert.Equal(call.Sid, receivedCall.Sid);
@@ -97,18 +101,17 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Record_Call()
         {
-            var call = _client.MakeCall("+123456789", "+123456788", "http://www.telapi.com/ivr/call");
-            var receivedCall = _client.RecordCall(call.Sid, true);
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var receivedCall = Client.RecordCall(call.Sid, true);
 
             Assert.NotNull(receivedCall);
             Assert.Equal(call.Sid, receivedCall.Sid);
 
-            var stopedCall = _client.RecordCall(receivedCall.Sid, false);
+            var stopedCall = Client.RecordCall(receivedCall.Sid, false);
+            Client.HangupCall(call.Sid);
 
             Assert.NotNull(stopedCall);
-            Assert.Equal(receivedCall.Sid, stopedCall.Sid);
-
-            _client.HangupCall(call.Sid);
+            Assert.Equal(call.Sid, stopedCall.Sid);
         }
 
     }

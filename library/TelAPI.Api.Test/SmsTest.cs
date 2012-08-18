@@ -9,16 +9,16 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_And_Send_Sms()
         {
-            //var newSms = _client.SendSmsMessage("+12408446005 ", "+12246321739", "Hello world");
-            //var receivedSms = _client.GetSmsMessage(newSms.Sid);
+            var newSms = Client.SendSmsMessage(PhoneNumberFrom, PhoneNumberTo, "Hello world");
+            var receivedSms = Client.GetSmsMessage(newSms.Sid);
 
-            //Assert.Equal(newSms.Sid, receivedSms.Sid);
+            Assert.Equal(newSms.Sid, receivedSms.Sid);
         }
 
         [Fact]
         public void Can_I_Get_Sms_List()
         {
-            var smsList = _client.GetSmsMessages();
+            var smsList = Client.GetSmsMessages();
 
             Assert.NotNull(smsList);            
         }
@@ -29,7 +29,7 @@ namespace TelAPI.Api.Test
             var conditions = new SmsMessageListOptions();
             conditions.PageSize = 5;
 
-            var smsListWithCondition = _client.GetSmsMessages(conditions);
+            var smsListWithCondition = Client.GetSmsMessages(conditions);
 
             Assert.NotNull(smsListWithCondition);
             Assert.Equal(conditions.PageSize, smsListWithCondition.PageSize);

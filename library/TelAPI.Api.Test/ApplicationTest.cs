@@ -6,59 +6,82 @@ namespace TelAPI.Api.Test
     public class ApplicationTest : TelAPIBaseTest
     {
         [Fact]
-        public void Can_I_Create_And_Get_Application()
+        public void Can_I_Create_And_Get__And_Delete_Application()
         {
             var newApp = new Application();
-            newApp.FriendlyName = "Test app";
+            newApp.FriendlyName = "Application By xUnit";
+            newApp.HeartbeatMethod = HttpMethod.Get.ToString();
 
-            var application = _client.CreateApplication(newApp);
-            var receivedApplication = _client.GetApplication(application.Sid);
+            var application = Client.CreateApplication(newApp);
+            var receivedApplication = Client.GetApplication(application.Sid);
+            var deleteApplication = Client.DeleteApplication(application.Sid);
 
             Assert.NotNull(application);
             Assert.NotNull(receivedApplication);
+            Assert.NotNull(deleteApplication);
             Assert.Equal(application.Sid, receivedApplication.Sid);
+            Assert.Equal(application.Sid, deleteApplication.Sid);
         }
 
         [Fact]
         public void Can_I_Get_Application_List()
         {
-            var apps = _client.GetApplications();
+            var newApp = new Application();
+            newApp.FriendlyName = "Application By xUnit";
+
+            var application = Client.CreateApplication(newApp);
+            var apps = Client.GetApplications();
+            Client.DeleteApplication(application.Sid);
 
             Assert.NotNull(apps);
+            Assert.NotEmpty(apps.Applications);
         }
 
         [Fact]
         public void Can_I_Get_Application_List_With_Conditions()
         {
-            var pageSize = 1;
-            var appsWithCondition = _client.GetApplications("Test app", null, pageSize);
+            var newApp = new Application();
+            newApp.FriendlyName = "Application By xUnit";
 
-            Assert.NotNull(appsWithCondition);
-            Assert.Equal(pageSize, appsWithCondition.PageSize);
+            var application = Client.CreateApplication(newApp);
+            var apps = Client.GetApplications(newApp.FriendlyName);
+            Client.DeleteApplication(application.Sid);
+
+            Assert.NotNull(apps);
+            Assert.NotEmpty(apps.Applications);
         }
 
         [Fact]
         public void Can_I_Update_Application()
         {
-            var newAppName = "Test app updated";
+            var newApp = new Application();
+            newApp.FriendlyName = "Application By xUnit";
 
-            var app = _client.GetApplications("Test app").Applications[0];
-            app.FriendlyName = newAppName;
+            var application = Client.CreateApplication(newApp);
 
-            var receivedApp = _client.UpdateApplication(app);
+            string newFriendlyName = "Applicaton By xUnit #update";
+            application.FriendlyName = newFriendlyName;
 
+            var receivedApp = Client.UpdateApplication(application);
+            Client.DeleteApplication(application.Sid);
+
+            Assert.NotNull(application);
             Assert.NotNull(receivedApp);
-            Assert.Equal(newAppName, receivedApp.FriendlyName);
+            Assert.Equal(newFriendlyName, receivedApp.FriendlyName);
         }
 
         [Fact]
         public void Can_I_Delete_Application()
         {
-            var app = _client.GetApplications("Test app").Applications[0];
-            var receivedApp = _client.DeleteApplication(app.Sid);
+            var newApp = new Application();
+            newApp.FriendlyName = "Application By xUnit";
 
+            var application = Client.CreateApplication(newApp);
+            var receivedApp = Client.DeleteApplication(application.Sid);
+
+            Assert.NotNull(application);
             Assert.NotNull(receivedApp);
-            Assert.Equal(app.Sid, receivedApp.Sid);
+            Assert.Equal(application.Sid, receivedApp.Sid);
         }           
 
     }

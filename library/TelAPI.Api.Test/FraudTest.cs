@@ -8,31 +8,28 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Fraud_Resources()
         {
-            var resources = _client.GetFraudControlResources();
-
+            var resources = Client.GetFraudControlResources();
             Assert.NotNull(resources);
         }
 
         [Fact]
         public void Can_I_Authorize_Destination()
         {
-            var destination = _client.AuthorizeDestination("HR");
-
+            var destination = Client.AuthorizeDestination(IsoCountryCode);
             Assert.NotNull(destination);
         }
 
         [Fact]
         public void Can_I_Block_Destination()
         {
-            var destination = _client.BlockDestination("HR");
-
+            var destination = Client.BlockDestination(IsoCountryCode);
             Assert.NotNull(destination);
         }
 
         [Fact]
         public void Can_I_Extend_Destination()
         {
-            var destination = _client.ExtendDestinationAuth("HR");
+            var destination = Client.ExtendDestinationAuth(IsoCountryCode);
 
             Assert.NotNull(destination);
         }
@@ -40,7 +37,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Whitelist_Destination()
         {
-            var destination = _client.WhitelistDestination("HR");
+            var destination = Client.WhitelistDestination(IsoCountryCode);
 
             Assert.NotNull(destination);
         }

@@ -8,18 +8,19 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Transcribe_Audio()
         {
-            var transcribe = _client.TranscribeAudio("http://www.test.hr");
+            var transcribe = Client.TranscribeAudio(TranscribeAudioUrl);
 
+            Assert.Equal(transcribe.Status, TranscriptionStatus.InProgress);
             Assert.NotNull(transcribe);
         }
 
         [Fact]
         public void Can_I_Get_Transcription()
         {
-            var list = _client.GetAccountTranscriptions();
+            var list = Client.GetAccountTranscriptions();
             var transcription = list.Transcriptions[0];
 
-            var transcriptionToCheck = _client.GetTranscription(transcription.Sid);
+            var transcriptionToCheck = Client.GetTranscription(transcription.Sid);
 
             Assert.NotNull(transcriptionToCheck);
         }
@@ -27,8 +28,8 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Transcription_Text()
         {
-            var transcribe = _client.TranscribeAudio("http://www.test.hr");
-            var text = _client.GetTranscriptionText(transcribe.Sid);
+            var transcribe = Client.TranscribeAudio(TranscribeAudioUrl);
+            var text = Client.GetTranscriptionText(transcribe.Sid);
 
             Assert.NotNull(text);
         }
@@ -36,18 +37,18 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Account_Transcriptions()
         {
-            var transcriptions = _client.GetAccountTranscriptions();
+            var transcriptions = Client.GetAccountTranscriptions();
 
             Assert.NotNull(transcriptions);
         }
 
         [Fact]
-        public void Can_I_Recort_Transcriptions()
+        public void Can_I_Record_Transcriptions()
         {
-            var list = _client.GetAccountRecordings();
+            var list = Client.GetAccountRecordings();
             var recording = list.Recordings[0];
 
-            var transcriptionToCheck = _client.TranscribeRecording(recording.Sid);
+            var transcriptionToCheck = Client.TranscribeRecording(recording.Sid);
 
             Assert.NotNull(transcriptionToCheck);
         }
