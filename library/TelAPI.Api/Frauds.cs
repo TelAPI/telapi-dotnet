@@ -52,16 +52,16 @@ namespace TelAPI
         /// <param name="Landlinebreakout">Landline breakout status for the destination.</param>
         /// <param name="smsEnabled">SMS status for the destination.</param>
         /// <returns></returns>
-        public FraudResult AuthorizeDestination(string countryCode, bool? mobileBreakout, bool? Landlinebreakout, bool? smsEnabled)
+        public FraudResult AuthorizeDestination(string countryCode, bool? mobileBreakout, bool? landlinebreakout, bool? smsEnabled)
         {
             Require.Argument("CountryCode", countryCode);
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.FraudAuthorizeDestination;
-            request.AddUrlSegment(RequestUriParams.IsoCountryCode, countryCode);
+            request.AddUrlSegment(RequestUriParams.CountryCode, countryCode);
 
             if (mobileBreakout.HasValue) request.AddParameter("MobileBreakout", mobileBreakout);
-            if (Landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", Landlinebreakout);
+            if (landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", landlinebreakout);
             if (smsEnabled.HasValue) request.AddParameter("SmsEnabled", smsEnabled);
 
             return Execute<FraudResult>(request);
@@ -91,7 +91,7 @@ namespace TelAPI
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.FraudBlockDestination;
-            request.AddUrlSegment(RequestUriParams.IsoCountryCode, countryCode);
+            request.AddUrlSegment(RequestUriParams.CountryCode, countryCode);
 
             if (mobileBreakout.HasValue) request.AddParameter("MobileBreakout", mobileBreakout);
             if (landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", landlinebreakout);
@@ -118,16 +118,16 @@ namespace TelAPI
         /// <param name="Landlinebreakout">Landline breakout status for the destination.</param>
         /// <param name="smsEnabled">SMS status for the destination.</param>
         /// <returns></returns>
-        public FraudResult ExtendDestinationAuth(string countryCode, bool? mobileBreakout, bool? Landlinebreakout, bool? smsEnabled)
+        public FraudResult ExtendDestinationAuth(string countryCode, bool? mobileBreakout, bool? landlinebreakout, bool? smsEnabled)
         {
             Require.Argument("CountryCode", countryCode);
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.FraudExtendDestinationAuthUri;
-            request.AddUrlSegment(RequestUriParams.IsoCountryCode, countryCode);
+            request.AddUrlSegment(RequestUriParams.CountryCode, countryCode);
 
             if (mobileBreakout.HasValue) request.AddParameter("MobileBreakout", mobileBreakout);
-            if (Landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", Landlinebreakout);
+            if (landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", landlinebreakout);
             if (smsEnabled.HasValue) request.AddParameter("SmsEnabled", smsEnabled);
 
             return Execute<FraudResult>(request);
@@ -151,16 +151,16 @@ namespace TelAPI
         /// <param name="Landlinebreakout">Landline breakout status for the destination.</param>
         /// <param name="smsEnabled">SMS status for the destination.</param>
         /// <returns></returns>
-        public FraudResult WhitelistDestination(string countryCode, bool? mobileBreakout, bool? Landlinebreakout, bool? smsEnabled)
+        public FraudResult WhitelistDestination(string countryCode, bool? mobileBreakout, bool? landlinebreakout, bool? smsEnabled)
         {
             Require.Argument("CountryCode", countryCode);
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.FraudWhitelistDestination;
-            request.AddUrlSegment(RequestUriParams.IsoCountryCode, countryCode);
+            request.AddUrlSegment(RequestUriParams.CountryCode, countryCode);
 
             if (mobileBreakout.HasValue) request.AddParameter("MobileBreakout", mobileBreakout);
-            if (Landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", Landlinebreakout);
+            if (landlinebreakout.HasValue) request.AddParameter("LandlineBreakout", landlinebreakout);
             if (smsEnabled.HasValue) request.AddParameter("SmsEnabled", smsEnabled);
 
             return Execute<FraudResult>(request);

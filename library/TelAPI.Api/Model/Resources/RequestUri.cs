@@ -309,6 +309,11 @@ namespace TelAPI
         public const string IsoCountryCode = "IsoCountryCode";
 
         /// <summary>
+        /// Country code
+        /// </summary>
+        public const string CountryCode = "CountryCode";
+
+        /// <summary>
         /// Incoming phone number
         /// </summary>
         public const string IncomingPhoneNumberSid = "IncomingPhoneNumberSid";

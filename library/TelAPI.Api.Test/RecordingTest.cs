@@ -9,7 +9,8 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Recording()
         {
-            //
+            var recording = Client.GetRecording("recording-sid");
+            Assert.NotNull(recording);
         }
 
         [Fact]

@@ -15,21 +15,21 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Authorize_Destination()
         {
-            var destination = Client.AuthorizeDestination(IsoCountryCode);
+            var destination = Client.AuthorizeDestination(TestCountryCode);
             Assert.NotNull(destination);
         }
 
         [Fact]
         public void Can_I_Block_Destination()
         {
-            var destination = Client.BlockDestination(IsoCountryCode);
+            var destination = Client.BlockDestination(TestCountryCode);
             Assert.NotNull(destination);
         }
 
         [Fact]
         public void Can_I_Extend_Destination()
         {
-            var destination = Client.ExtendDestinationAuth(IsoCountryCode);
+            var destination = Client.ExtendDestinationAuth(TestCountryCode);
 
             Assert.NotNull(destination);
         }
@@ -37,7 +37,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Whitelist_Destination()
         {
-            var destination = Client.WhitelistDestination(IsoCountryCode);
+            var destination = Client.WhitelistDestination(TestCountryCode);
 
             Assert.NotNull(destination);
         }
