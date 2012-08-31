@@ -200,7 +200,7 @@ namespace TelAPI
         /// <summary>
         /// Uri to conference
         /// </summary>
-        public const string ConferenceUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}.json";
+        public const string ConferenceUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}.json";
 
         /// <summary>
         /// Uri to conferences
@@ -210,52 +210,52 @@ namespace TelAPI
         /// <summary>
         /// Uri to mute member in conference call
         /// </summary>
-        public const string ConferenceMuteMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Mute.json";
+        public const string ConferenceMuteMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Mute.json";
 
         /// <summary>
         /// Uri to unmute member in conference call
         /// </summary>
-        public const string ConferenceUnmuteMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/UnMute.json";
+        public const string ConferenceUnmuteMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/UnMute.json";
 
         /// <summary>
         /// Uri to deaf member in conference call
         /// </summary>
-        public const string ConferenceDeafMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Deaf.json";
+        public const string ConferenceDeafMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Deaf.json";
 
         /// <summary>
         /// Uri to undeaf member in conference call
         /// </summary>
-        public const string ConferenceUndeafMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/UnDeaf.json";
+        public const string ConferenceUndeafMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/UnDeaf.json";
 
         /// <summary>
         /// Uri to hangup member in conference call
         /// </summary>
-        public const string ConferenceHangupMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Hangup.json";
+        public const string ConferenceHangupMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Hangup.json";
 
         /// <summary>
         /// Uri to kick member from conference call
         /// </summary>
-        public const string ConferenceKickMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Kick.json";
+        public const string ConferenceKickMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Kick.json";
 
         /// <summary>
         /// Uri to speach text to member in conference call
         /// </summary>
-        public const string ConferenceSpeachTextToMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Say.json";
+        public const string ConferenceSpeachTextToMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Say.json";
 
         /// <summary>
         /// Uri to play audio to member in conference call
         /// </summary>
-        public const string ConferencePlayAudioToMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/Play.json";
+        public const string ConferencePlayAudioToMemberUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/Play.json";
 
         /// <summary>
         /// Uri to start recording conference call
         /// </summary>
-        public const string ConferenceStartRecordingUri = "Accounts/{AccountSid}/Conferences/{ConferenceName}/RecordStart.json";
+        public const string ConferenceStartRecordingUri = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/RecordStart.json";
 
         /// <summary>
         /// Uri to stop recording conference call
         /// </summary>
-        public const string ConferenceStopRecording = "Accounts/{AccountSid}/Conferences/{ConferenceName}/RecordStop.json";
+        public const string ConferenceStopRecording = "Accounts/{AccountSid}/Conferences/{ConferenceSid}/RecordStop.json";
 
         /// <summary>
         /// Uri to get all fraud control resources
@@ -341,6 +341,6 @@ namespace TelAPI
         /// <summary>
         /// Conference name
         /// </summary>
-        public const string ConferenceName = "ConferenceName";
+        public const string ConferenceSid = "ConferenceSid";
     }
 }

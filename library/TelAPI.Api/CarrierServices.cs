@@ -28,7 +28,7 @@ namespace TelAPI
         /// </summary>
         /// <param name="phoneNumber">The number of the phone you are attempting to perform the CNAM look up on.</param>
         /// <returns></returns>
-        public CNAMLookup CNAMLookup(string phoneNumber)
+        public CNAMDipResult CNAMLookup(string phoneNumber)
         {
             Require.Argument("PhoneNumber", phoneNumber);
 
@@ -36,7 +36,7 @@ namespace TelAPI
             request.Resource = RequestUri.CNAMLookupUri;
             request.AddParameter(RequestUriParams.PhoneNumber, phoneNumber);
 
-            return Execute<CNAMLookup>(request);
+            return Execute<CNAMDipResult>(request);
         }
     }
 }

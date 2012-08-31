@@ -66,6 +66,7 @@
     <Compile Include="Model\Conference.cs" />
     <Compile Include="Model\ConferenceResult.cs" />
     <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
+    <Compile Include="Model\CNAMLookupResult.cs" />
     <Compile Include="Model\Enum\AccountStatus.cs" />
     <Compile Include="Model\Enum\AudioDirection.cs" />
     <Compile Include="Model\Enum\CallStatus.cs" />

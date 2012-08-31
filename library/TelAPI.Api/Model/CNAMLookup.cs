@@ -2,7 +2,7 @@
 
 namespace TelAPI
 {
-    public class CNAMLookup : TelAPIBase
+    public class CNAMDip : TelAPIBase
     {
         /// <summary>
         /// The Api Version being used when the CNAM look up was made.
