@@ -1,0 +1,26 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class TranscribeRecording
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var recording = client.GetRecording("recording-sid");
+                var transcription = client.TranscribeRecording(recording.Sid, TranscriptionType.Gold);
+
+                Console.WriteLine("Transcription sid : {0}", transcription.Sid);
+
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message);
+            }
+        }
+    }
+}

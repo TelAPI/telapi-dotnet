@@ -1,0 +1,29 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class CreateApplication
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var app = client.CreateApplication(new Application()
+                        {
+                            FriendlyName = "my app",
+                            VoiceUrl = "http://telapi.com/ivr/welcome/call",
+                            SmsUrl = "http://telapi.com/ivr/welcome/sms"
+                        });
+
+                Console.WriteLine("App sid : {0}", app.Sid);
+            }
+            catch (TelAPIException ex)
+            {
+               Console.WriteLine("{0}", ex.Message);
+            }
+        }
+    }
+}

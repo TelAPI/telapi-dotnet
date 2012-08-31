@@ -1,0 +1,23 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class GetSmsMessage
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var sms = client.GetSmsMessage("sms-message-sid");
+                Console.WriteLine("Sms body : {0}", sms.Body);
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message); 
+            }
+        }
+    }
+}

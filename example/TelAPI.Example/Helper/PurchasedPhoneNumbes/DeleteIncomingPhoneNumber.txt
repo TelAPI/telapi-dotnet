@@ -1,0 +1,23 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class DeleteIncomingPhoneNumber
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var number = client.DeleteIncomingPhoneNumber("phone-number-sid");
+                Console.WriteLine("number sid : {0}", number.Sid);
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message);
+            }
+        }
+    }
+}

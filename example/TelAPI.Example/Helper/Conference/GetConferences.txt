@@ -1,0 +1,27 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class GetConferences
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var result = client.GetConferences();
+
+                foreach (var conference in result.Conferences)
+                {
+                    Console.WriteLine("Conference name : {0}", conference.Name);
+                }
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message); 
+            }
+        }
+    }
+}

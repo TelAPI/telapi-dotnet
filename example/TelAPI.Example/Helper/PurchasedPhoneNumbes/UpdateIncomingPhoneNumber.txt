@@ -1,0 +1,26 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class UpdateIncomingPhoneNumber
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var number = client.GetIncomingPhoneNumber("phone-number-sid");
+                number.VoiceUrl = "http://some-other-url.com";
+
+                var update = client.UpdateIncomingPhoneNumber(number);
+                Console.WriteLine("number sid : {0}", update.Sid);
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message); 
+            }
+        }
+    }
+}
