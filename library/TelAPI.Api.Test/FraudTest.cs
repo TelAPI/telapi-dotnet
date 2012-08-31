@@ -1,5 +1,6 @@
 ﻿using System;
 using Xunit;
+using System.Threading;
 
 namespace TelAPI.Api.Test
 {
@@ -10,36 +11,84 @@ namespace TelAPI.Api.Test
         {
             var resources = Client.GetFraudControlResources();
             Assert.NotNull(resources);
+
+            foreach (var resource in resources.Frauds)
+            {
+                foreach (var country in resource.Destinations.Authorized)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+
+                foreach (var country in resource.Destinations.Blocked)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+
+                foreach (var country in resource.Destinations.Whitelisted)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+            }
         }
 
         [Fact]
         public void Can_I_Authorize_Destination()
         {
-            var destination = Client.AuthorizeDestination(TestCountryCode);
-            Assert.NotNull(destination);
+            var resources = Client.AuthorizeDestination(TestCountryCode);
+            Assert.NotNull(resources);
+
+            foreach (var resource in resources.Frauds)
+            {
+                foreach (var country in resource.Destinations.Authorized)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+            }
         }
 
         [Fact]
         public void Can_I_Block_Destination()
         {
-            var destination = Client.BlockDestination(TestCountryCode);
-            Assert.NotNull(destination);
+            var resources = Client.BlockDestination(TestCountryCode);
+            Assert.NotNull(resources);
+
+            foreach (var resource in resources.Frauds)
+            {
+                foreach (var country in resource.Destinations.Blocked)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+            }
         }
 
         [Fact]
         public void Can_I_Extend_Destination()
         {
-            var destination = Client.ExtendDestinationAuth(TestCountryCode);
+            var resources = Client.ExtendDestinationAuth(TestCountryCode);
+            Assert.NotNull(resources);
 
-            Assert.NotNull(destination);
+            foreach (var resource in resources.Frauds)
+            {
+                foreach (var country in resource.Destinations.Authorized)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+            }
         }
 
         [Fact]
         public void Can_I_Whitelist_Destination()
         {
-            var destination = Client.WhitelistDestination(TestCountryCode);
+            var resources = Client.WhitelistDestination(TestCountryCode);
+            Assert.NotNull(resources);
 
-            Assert.NotNull(destination);
+            foreach (var resource in resources.Frauds)
+            {
+                foreach (var country in resource.Destinations.Whitelisted)
+                {
+                    Console.WriteLine("{0}", country.CountryName);
+                }
+            }
         }
     }
 }

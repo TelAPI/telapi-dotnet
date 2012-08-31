@@ -10,13 +10,20 @@ namespace TelAPI.Api.Test
         {
             var carrier = Client.CarrierLookup(PhoneNumberFrom);
             Assert.NotNull(carrier);
+
+            Console.WriteLine("{0}", carrier.Carrier);
         }
 
         [Fact]
         public void Can_I_Get_CNAM_Lookup()
         {
-            var cnam = Client.CNAMLookup(PhoneNumberFrom);
-            Assert.NotNull(cnam);
+            var cnamDips = Client.CNAMLookup(PhoneNumberFrom);
+            Assert.NotNull(cnamDips);
+
+            foreach (var cnamDip in cnamDips.CNAMDips)
+            {
+                Console.WriteLine("{0}", cnamDip.Body);
+            }
         }
     }
 }

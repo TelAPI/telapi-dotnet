@@ -10,6 +10,11 @@ namespace TelAPI.Api.Test
         {
             var numbers = Client.GetAvailablePhoneNumbers(IsoCountryCode);
             Assert.NotNull(numbers);
+
+            foreach (var number in numbers.AvailablePhoneNumbers)
+            {
+                Console.WriteLine("{0}", number.PhoneNumber);
+            }
         }       
     }
 }

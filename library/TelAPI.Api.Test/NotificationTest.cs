@@ -14,7 +14,7 @@ namespace TelAPI.Api.Test
         }
 
         [Fact]
-        public void Can_I_Get_Account_Notification()
+        public void Can_I_Get_Notification()
         {
             var list = Client.GetAccountNotifications();
             var notification = list.Notifications[0];
