@@ -49,6 +49,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Helper\Sms.txt" />
+    <Content Include="Helper\Pause.txt" />
+    <Content Include="Helper\Reject.txt" />
+    <Content Include="Helper\Redirect.txt" />
+    <Content Include="Helper\Hangup.txt" />
+    <Content Include="Helper\DialSip.txt" />
+    <Content Include="Helper\DialConference.txt" />
+    <Content Include="Helper\DialNumber.txt" />
+    <Content Include="Helper\Dial.txt" />
+    <Content Include="Helper\GetSpeech.txt" />
+    <Content Include="Helper\Record.txt" />
+    <Content Include="Helper\Gather.txt" />
+    <Content Include="Helper\Play.txt" />
+    <Content Include="Helper\Say.txt" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

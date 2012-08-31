@@ -45,6 +45,7 @@ namespace TelAPI.InboundXML.Example
                     .Play(UrlWhatToPlay)
                     .GetSpeech(GetSpeech.Create(UrlOfGrammar, UrlWhereToPost).Say("Pausing...", null, null).Pause())                    
                     .Say("I will hangup now. Goodbye!", null, null)
+                    .Dial(new Dial().Number("number", "www123", "http://action-url.com", HttpMethod.POST))
                     .Hangup();
 
             // On the end we need to call CreateXml on Response object
