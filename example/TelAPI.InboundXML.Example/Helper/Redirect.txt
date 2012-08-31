@@ -1,0 +1,20 @@
+﻿using System;
+using TelAPI.InboundXML;
+using TelAPI.InboundXML.Enum;
+using TelAPI.InboundXML.Element;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class RedirectExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Say("I will redirect you now")
+                .Redirect("http://action-to-redirect.com")
+                .Say("You will never hear this");
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

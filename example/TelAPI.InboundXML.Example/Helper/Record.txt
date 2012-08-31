@@ -1,0 +1,18 @@
+﻿using System;
+using TelAPI.InboundXML;
+using TelAPI.InboundXML.Enum;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class RecordExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Say("Please state your name")
+                .Record("http://some-action.com");
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

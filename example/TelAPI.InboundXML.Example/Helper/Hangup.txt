@@ -1,0 +1,17 @@
+﻿using System;
+using TelAPI.InboundXML;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class HangupExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Say("I will hangup now")
+                .Hangup();
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}
