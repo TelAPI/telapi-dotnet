@@ -52,9 +52,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultTelAPIConfiguration.cs" />
+    <Content Include="Helper\Application\DeleteApplication.txt" />
+    <Content Include="Helper\Application\UpdateApplication.txt" />
+    <Content Include="Helper\Application\CreateApplication.txt" />
+    <Content Include="Helper\Application\GetApplications.txt" />
+    <Content Include="Helper\Application\GetApplication.txt" />
+    <Content Include="Helper\AvaliablePhoneNumbers\GetAvaliablePhoneNumbers.txt" />
+    <Content Include="Helper\Call\RecordCall.txt" />
+    <Content Include="Helper\Call\VoiceEffects.txt" />
+    <Content Include="Helper\Call\PlayAudio.txt" />
+    <Content Include="Helper\Call\SendDigits.txt" />
+    <Content Include="Helper\Call\HangupCall.txt" />
+    <Content Include="Helper\Call\MakeCall.txt" />
+    <Content Include="Helper\Call\GetCalls.txt" />
+    <Content Include="Helper\Call\GetCall.txt" />
+    <Content Include="Helper\CarrierService\CarrierLookup.txt" />
+    <Content Include="Helper\CarrierService\CnamLookup.txt" />
+    <Content Include="Helper\Conference\PlayAudioToMember.txt" />
+    <Content Include="Helper\Conference\KickMember.txt" />
+    <Content Include="Helper\Conference\HangupMember.txt" />
+    <Content Include="Helper\Conference\UndeafMember.txt" />
+    <Content Include="Helper\Conference\DeafMember.txt" />
+    <Content Include="Helper\Conference\UnmuteMember.txt" />
+    <Content Include="Helper\Conference\MuteMember.txt" />
+    <Content Include="Helper\Conference\GetConferences.txt" />
+    <Content Include="Helper\Conference\GetConference.txt" />
+    <Content Include="Helper\Fraud\AuthorizeDestination.txt" />
+    <Content Include="Helper\Fraud\BlockDestination.txt" />
+    <Content Include="Helper\Fraud\WhitelistDestination.txt" />
+    <Content Include="Helper\Fraud\ExtendAuth.txt" />
+    <Content Include="Helper\Fraud\ListFrauds.txt" />
+    <Content Include="Helper\Notification\GetNotifications.txt" />
+    <Content Include="Helper\Notification\GetNotification.txt" />
+    <Content Include="Helper\PurchasedPhoneNumbes\AddIncomingPhoneNumber.txt" />
+    <Content Include="Helper\PurchasedPhoneNumbes\UpdateIncomingPhoneNumber.txt" />
+    <Content Include="Helper\PurchasedPhoneNumbes\DeleteIncomingPhoneNumber.txt" />
+    <Content Include="Helper\PurchasedPhoneNumbes\GetIncomingPhoneNumbers.txt" />
+    <Content Include="Helper\PurchasedPhoneNumbes\GetIncomingPhoneNumber.txt" />
+    <Content Include="Helper\Recordings\GetRecordings.txt" />
+    <Content Include="Helper\Recordings\GetRecording.txt" />
+    <Content Include="Helper\Sms\SendSmsMessage.txt" />
+    <Content Include="Helper\Sms\GetSmsMessages.txt" />
+    <Content Include="Helper\Sms\GetSmsMessage.txt" />
+    <Content Include="Helper\Account\GetAccount.txt" />
+    <Content Include="Helper\Transcription\TranscribeAudio.txt" />
+    <Content Include="Helper\Transcription\TranscribeRecording.txt" />
+    <Content Include="Helper\Transcription\GetTranscriptions.txt" />
+    <Content Include="Helper\Transcription\GetTranscription.txt" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -29,7 +29,7 @@ namespace TelAPI.Example
 
         static void Main(string[] args)
         {
-            /// First we need to create TelApi Rest client. To do so, we need to provide accountSid, and authToken.
+            // First we need to create TelApi Rest client. To do so, we need to provide accountSid, and authToken.
             var telApi = new TelAPIRestClient(AccountSid, AuthToken);
             
             // Also there is another way of creating TelApi Rest client with TelAPIConfiguration interface.
@@ -37,7 +37,7 @@ namespace TelAPI.Example
             // var telApi = new TelAPIRestClient(new DefaultTelAPIConfiguration());
 
 
-            /// First we will get our Telapi account information
+            // First we will get our Telapi account information
             
             var account = telApi.GetAccount();
             Console.WriteLine("Account Sid     : {0}", account.Sid);
@@ -183,8 +183,11 @@ namespace TelAPI.Example
 
             Console.WriteLine();
 
-            var cnam = telApi.CNAMLookup(PhoneNumberFrom);
-            Console.WriteLine("CNAM Body : {0}", cnam.Body);
+            var cnams = telApi.CNAMLookup(PhoneNumberFrom);
+            foreach (var cnam in cnams.CNAMDips)
+            {
+                Console.WriteLine("CNAM Body : {0}", cnam.Body);
+            }
 
             // The End :)
             Console.WriteLine("The end :)");
