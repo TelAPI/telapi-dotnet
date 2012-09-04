@@ -22,7 +22,7 @@ namespace TelAPI
         /// <summary>
         /// Time of recording in seconds.
         /// </summary>
-        public int Duration { get; set; }
+        public string Duration { get; set; }
 
         /// <summary>
         /// The date the recording resource was created.
