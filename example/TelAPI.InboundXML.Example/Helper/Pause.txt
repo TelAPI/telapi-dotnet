@@ -1,0 +1,18 @@
+﻿using System;
+using TelAPI.InboundXML;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class PauseExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Say("Hello.")
+                .Pause(5)
+                .Say("Are you still there?");
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

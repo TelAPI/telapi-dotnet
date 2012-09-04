@@ -1,0 +1,17 @@
+﻿using System;
+using TelAPI.InboundXML;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class SmsExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Say("I will send SMS now")
+                .Sms("Hello world!", "phone-number-from", "phone-number-to");
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

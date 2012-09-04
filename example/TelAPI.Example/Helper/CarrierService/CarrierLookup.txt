@@ -1,0 +1,23 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class CarrierLookup
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var carrier = client.CarrierLookup("phone-number-to-look");
+                Console.WriteLine("Carrier : {0}", carrier.Country);
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message);
+            }
+        }
+    }
+}

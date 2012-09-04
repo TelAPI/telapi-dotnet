@@ -1,0 +1,20 @@
+﻿using System;
+
+using TelAPI.InboundXML;
+using TelAPI.InboundXML.Enum;
+using TelAPI.InboundXML.Element;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class GatherExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Gather(Gather.Create("http://some-action.com"))
+                .Gather(Gather.Create("http://some-action.com", HttpMethod.GET, 10, "#", 4).Say("Please enter your pin", null, null));
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

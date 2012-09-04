@@ -1,0 +1,20 @@
+﻿using System;
+using TelAPI.InboundXML;
+using TelAPI.InboundXML.Enum;
+using TelAPI.InboundXML.Element;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class GetSpeechExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.GetSpeech(
+                GetSpeech.Create("http://grammar-url.com", "http://action-url.com").Say(
+                    "Speak and we will interpret what you say", Voice.woman, null));
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

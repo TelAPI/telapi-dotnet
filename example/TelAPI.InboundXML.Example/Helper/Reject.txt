@@ -1,0 +1,17 @@
+﻿using System;
+using TelAPI.InboundXML;
+using TelAPI.InboundXML.Enum;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class RejectExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Reject(RejectReason.busy);
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}

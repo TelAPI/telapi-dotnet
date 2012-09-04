@@ -1,0 +1,18 @@
+﻿using System;
+using TelAPI.InboundXML;
+using TelAPI.InboundXML.Enum;
+using TelAPI.InboundXML.Element;
+
+namespace TelAPI.InboundXML.Example
+{
+    public class DialSipExample
+    {
+        static void Main(string[] args)
+        {
+            var response = new Response();
+            response.Dial(new Dial().Sip("some@someone.com"));
+
+            Console.WriteLine("{0}", response.CreateXml());
+        }
+    }
+}
