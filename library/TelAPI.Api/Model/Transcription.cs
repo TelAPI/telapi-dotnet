@@ -73,10 +73,5 @@ namespace TelAPI
         /// Method to request TranscribeCallback URL. Can be POST or GET. Default is POST
         /// </summary>
         public string CallbackMethod { get; set; }
-
-        /// <summary>
-        /// The path appended to the base TelAPI URL, https://api.telapi.com, where the resource is located.
-        /// </summary>
-        public string Url { get; set; }
     }
 }

@@ -39,11 +39,6 @@ namespace TelAPI
         public DateTime DateUpdated { get; set; }
 
         /// <summary>
-        /// The path appended to the base TelAPI URL, https://api.telapi.com, where the resource is located.
-        /// </summary>
-        public string Url { get; set; }
-
-        /// <summary>
         /// The type of account being requested. If the account is not yet funded Type is Trial. Otherwise, Type for upgraded accounts is Full.
         /// </summary>
         public string Type { get; set; }

@@ -58,10 +58,6 @@ namespace TelAPI
         /// Carrier Identification Code. A four digit code used to route and switch calls.
         /// </summary>
         public string CICCode { get; set; }
-
-        /// <summary>
-        /// The path appended to the base TelAPI URL, https://api.telapi.com, where the resource is located.
-        /// </summary>
-        public string Url { get; set; }
+        
     }
 }

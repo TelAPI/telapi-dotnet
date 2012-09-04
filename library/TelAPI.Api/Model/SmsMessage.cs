@@ -68,9 +68,5 @@ namespace TelAPI
         /// </summary>
         public Decimal Price { get; set; }
 
-        /// <summary>
-        /// The path appended to the base TelAPI URL, https://api.telapi.com, where the resource is located.
-        /// </summary>
-        public string Url { get; set; }
     }
 }
