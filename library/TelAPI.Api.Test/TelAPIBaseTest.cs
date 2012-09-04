@@ -12,7 +12,7 @@ namespace TelAPI.Api.Test
 
         public const string PhoneNumberFrom = "+123456789";
         public const string PhoneNumberTo = "+123456788";
-        public const string ConferenceName = "TelAPIExampleChat";
+        public const string ConferenceSid = "conference sid";
         public const string IsoCountryCode = "US";
         public const string TestCountryCode = "RU";
         public const string ActionUrl = "http://some-action-url.com";
