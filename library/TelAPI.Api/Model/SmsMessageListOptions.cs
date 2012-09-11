@@ -21,6 +21,11 @@ namespace TelAPI
         public DateTime? DateSent { get; set; }
 
         /// <summary>
+        /// Comparison type for date sent
+        /// </summary>
+        public ComparisonType DateSentComparison { get; set; }
+
+        /// <summary>
         /// Used to return a particular page withing the list.
         /// </summary>
         public int? Page { get; set; }

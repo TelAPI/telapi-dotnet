@@ -201,7 +201,7 @@ namespace TelAPI
         /// <param name="callSid">An alphanumeric string used for identification of calls</param>
         /// <param name="isRecording">Specifies if call recording should beging or end. To start recording a call, value must be true. To stop recording a call, value must be false.</param>
         /// <returns></returns>
-        public Call RecordCall(string callSid, bool isRecording)
+        public RecordingResult RecordCall(string callSid, bool isRecording)
         {
             return RecordCall(callSid, isRecording, null, null);
         }
@@ -214,7 +214,7 @@ namespace TelAPI
         /// <param name="timeLimit">The time in seconds the duration a call recording should not exceed. If no value specified, recordings are 60 seconds by default.</param>
         /// <param name="callbackUrl">URL where recording information will be relayed to after it has completed.</param>
         /// <returns></returns>
-        public Call RecordCall(string callSid, bool isRecording, int? timeLimit, string callbackUrl)
+        public RecordingResult RecordCall(string callSid, bool isRecording, int? timeLimit, string callbackUrl)
         {
             Require.Argument("CallSid", callSid);
             Require.Argument("Record", isRecording);
@@ -227,7 +227,7 @@ namespace TelAPI
             if (timeLimit.HasValue) request.AddParameter("TimeLimit", timeLimit);
             if (callbackUrl.HasValue()) request.AddParameter("CallbackUrl", callbackUrl);
 
-            return Execute<Call>(request);
+            return Execute<RecordingResult>(request);
         }
 
         #region Options helpers
@@ -261,10 +261,12 @@ namespace TelAPI
         /// <param name="request">Rest Request</param>
         private void CreateCallListOptions(CallListOptions callListOptions, RestRequest request)
         {
+            var startDateParameterName = GetParameterNameWithEquality(callListOptions.StartTimeComaparasion, "StartTime");
+
             if (callListOptions.To.HasValue()) request.AddParameter("To", callListOptions.To);
             if (callListOptions.From.HasValue()) request.AddParameter("From", callListOptions.From);
             if (callListOptions.Status.HasValue()) request.AddParameter("Status", callListOptions.Status);
-            if (callListOptions.StartTime.HasValue) request.AddParameter("StartTime", callListOptions.StartTime.Value.ToString("yyyy-MM-dd"));
+            if (callListOptions.StartTime.HasValue) request.AddParameter(startDateParameterName, callListOptions.StartTime.Value.ToString("yyyy-MM-dd"));
             if (callListOptions.Page.HasValue) request.AddParameter("Page", callListOptions.Page);
             if (callListOptions.PageSize.HasValue) request.AddParameter("PageSize", callListOptions.PageSize);
         }

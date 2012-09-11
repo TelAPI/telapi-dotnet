@@ -91,6 +91,9 @@ namespace TelAPI
                 case 404: throw new TelAPINotFoundException(response.ErrorMessage, response.ErrorException.InnerException);
                 case 500: throw new TelAPIInternalErrorException(response.ErrorMessage, response.ErrorException.InnerException);
             }  
+
+            //print out JSON response for testing purpose
+            System.Diagnostics.Debug.WriteLine(response.Content);
         
             return response.Data;
 		}
@@ -104,5 +107,29 @@ namespace TelAPI
 		{
 			return _client.Execute(request);
 		}
+
+        /// <summary>
+        /// Helper for adding inequalities for DateTime parameters
+        /// </summary>
+        /// <param name="comparisonType">Comparasion type (less or greater)</param>
+        /// <param name="parameterName">DateTime parameter name</param>
+        /// <returns></returns>
+        private string GetParameterNameWithEquality(ComparisonType? comparisonType, string parameterName)
+        {
+            if (comparisonType.HasValue)
+            {
+                switch (comparisonType)
+                {
+                    case ComparisonType.GreaterThanOrEqualTo:
+                        parameterName += ">";
+                        break;
+                    case ComparisonType.LessThanOrEqualTo:
+                        parameterName += "<";
+                        break;
+                }
+            }
+
+            return parameterName;
+        }
     }
 }

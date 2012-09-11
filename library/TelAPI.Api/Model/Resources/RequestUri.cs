@@ -70,7 +70,7 @@ namespace TelAPI
         /// <summary>
         /// Uri to start/stop recording call
         /// </summary>
-        public const string RecordCallUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+        public const string RecordCallUri = "Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json";
 
         /// <summary>
         /// Uri to get notification

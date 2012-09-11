@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using RestSharp;
 using RestSharp.Validation;
 using RestSharp.Extensions;
-using RestSharp;
 
 namespace TelAPI
 {

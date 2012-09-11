@@ -50,7 +50,7 @@ namespace TelAPI
         /// <summary>
         /// The status of the call: queued, ringing, in-progress, completed, failed, busy, no-answer.
         /// </summary>
-        public CallStatus Status { get; set; }
+        public string Status { get; set; }
         
         /// <summary>
         /// The date the call started.
@@ -95,6 +95,16 @@ namespace TelAPI
         /// <summary>
         /// Specifies whether the caller ID of the inbound phone number was blocked.
         /// </summary>
-        public bool CallerIdBlocked { get; set; }
+        public string CallerName { get; set; }
+
+        /// <summary>
+        /// Sip privacy
+        /// </summary>
+        public string SipPrivacy { get; set; }
+
+        /// <summary>
+        /// Privacy hide number
+        /// </summary>
+        public bool PrivacyHideNumber { get; set; }
     }
 }

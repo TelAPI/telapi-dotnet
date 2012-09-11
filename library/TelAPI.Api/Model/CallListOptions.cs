@@ -28,6 +28,11 @@ namespace TelAPI
         public DateTime? StartTime { get; set; }
 
         /// <summary>
+        /// Comparison type for start time date
+        /// </summary>
+        public ComparisonType StartTimeComaparasion { get; set; }
+
+        /// <summary>
         /// Used to return a particular page withing the list.
         /// </summary>
         public int? Page { get; set; }

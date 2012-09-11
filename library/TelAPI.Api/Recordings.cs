@@ -30,7 +30,7 @@ namespace TelAPI
         /// <returns></returns>
         public RecordingResult GetAccountRecordings()
         {
-            return GetAccountRecordings(null, null, null);
+            return GetAccountRecordings(null, null, null, null);
         }
 
         /// <summary>
@@ -40,22 +40,25 @@ namespace TelAPI
         /// <returns></returns>
         public RecordingResult GetAccountRecordings(DateTime dateCreated)
         {
-            return GetAccountRecordings(dateCreated, null, null);
+            return GetAccountRecordings(dateCreated, null, null, null);
         }
 
         /// <summary>
         /// Get account recordings
         /// </summary>
         /// <param name="dateCreated">Lists all recordings created on or after a certain date. </param>
+        /// <param name="dateCreatedComparasion">Date created comparasion</param>
         /// <param name="page">Used to return a particular page withing the list.</param>
         /// <param name="pageSize">Used to specify the amount of list items to return per page.</param>
         /// <returns></returns>
-        public RecordingResult GetAccountRecordings(DateTime? dateCreated, int? page, int? pageSize)
+        public RecordingResult GetAccountRecordings(DateTime? dateCreated, ComparisonType? dateCreatedComparasion, int? page, int? pageSize)
         {
             var request = new RestRequest();
             request.Resource = RequestUri.AccountRecordingsUri;
 
-            if (dateCreated.HasValue) request.AddParameter("DateCreated", dateCreated);
+            var dateCreatedParameterName = GetParameterNameWithEquality(dateCreatedComparasion, "DateCreated");
+
+            if (dateCreated.HasValue) request.AddParameter(dateCreatedParameterName, dateCreated.Value.ToString("yyyy-MM-dd"));
             if (page.HasValue) request.AddParameter("Page", page);
             if (pageSize.HasValue) request.AddParameter("PageSize", pageSize);
 
@@ -69,7 +72,7 @@ namespace TelAPI
         /// <returns></returns>
         public RecordingResult GetCallRecordings(string callSid)
         {
-            return GetCallRecordings(callSid, null, null, null);
+            return GetCallRecordings(callSid, null, null, null, null);
         }
 
         /// <summary>
@@ -80,7 +83,7 @@ namespace TelAPI
         /// <returns></returns>
         public RecordingResult GetCallRecordings(string callSid, DateTime dateCreated)
         {
-            return GetCallRecordings(callSid, dateCreated, null, null);
+            return GetCallRecordings(callSid, dateCreated, null, null, null);
         }
 
         /// <summary>
@@ -88,10 +91,11 @@ namespace TelAPI
         /// </summary>
         /// <param name="callSid">An alphanumeric string used to identify each call</param>
         /// <param name="dateCreated">Lists all recordings created on or after a certain date</param>
+        /// <param name="dateCreatedComparasion">Date created comparasion</param>
         /// <param name="page">Used to return a particular page withing the list.</param>
         /// <param name="pageSize">Used to specify the amount of list items to return per page.</param>
         /// <returns></returns>
-        public RecordingResult GetCallRecordings(string callSid, DateTime? dateCreated, int? page, int? pageSize)
+        public RecordingResult GetCallRecordings(string callSid, DateTime? dateCreated, ComparisonType? dateCreatedComparasion, int? page, int? pageSize)
         {
             Require.Argument("CallSid", callSid);
 
@@ -99,7 +103,9 @@ namespace TelAPI
             request.Resource = RequestUri.CallRecordingsUri;
             request.AddUrlSegment(RequestUriParams.CallSid, callSid);
 
-            if (dateCreated.HasValue) request.AddParameter("DateCreated", dateCreated);
+            var dateCreatedParameterName = GetParameterNameWithEquality(dateCreatedComparasion, "DateCreated");
+
+            if (dateCreated.HasValue) request.AddParameter(dateCreatedParameterName, dateCreated.Value.ToString("yyyy-MM-dd"));
             if (page.HasValue) request.AddParameter("Page", page);
             if (pageSize.HasValue) request.AddParameter("PageSize", pageSize);
 

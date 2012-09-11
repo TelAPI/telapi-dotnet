@@ -30,6 +30,11 @@ namespace TelAPI
         public string Type { get; set; }
 
         /// <summary>
+        /// Voice application sid
+        /// </summary>
+        public string VoiceApplicationSid { get; set; }
+
+        /// <summary>
         /// The URL returning InboundXML incoming calls should execute when connected.
         /// </summary>
         public string VoiceUrl { get; set; }
@@ -52,7 +57,7 @@ namespace TelAPI
         /// <summary>
         /// Look up the callers caller-ID name from the CNAM database (additional charges apply). Either true or false.
         /// </summary>
-        public string VoiceCallerIdLookup { get; set; }
+        public bool VoiceCallerIdLookup { get; set; }
 
         /// <summary>
         /// The date the incoming phone number resource was created.
@@ -64,6 +69,11 @@ namespace TelAPI
         /// </summary>
         public DateTime DateUpdated { get; set; }
 
+        /// <summary>
+        /// Sms application sid
+        /// </summary>
+        public string SmsApplicationSid { get; set; }
+        
         /// <summary>
         /// The URL returning InboundXML incoming phone numbers should execute when receiving an sms.
         /// </summary>

@@ -91,9 +91,11 @@ namespace TelAPI
         /// <param name="request">Rest request</param>
         private void CreateSmsMessageListOptions(SmsMessageListOptions smsMessageOptions, RestRequest request)
         {
+            var dateSentParameterName = GetParameterNameWithEquality(smsMessageOptions.DateSentComparison, "DateSent");
+
             if (smsMessageOptions.To.HasValue()) request.AddParameter("To", smsMessageOptions.To);
             if (smsMessageOptions.From.HasValue()) request.AddParameter("From", smsMessageOptions.From);
-            if (smsMessageOptions.DateSent.HasValue) request.AddParameter("DateSent", smsMessageOptions.DateSent.Value.ToString("yyyy-MM-dd"));
+            if (smsMessageOptions.DateSent.HasValue) request.AddParameter(dateSentParameterName, smsMessageOptions.DateSent.Value.ToString("yyyy-MM-dd"));
             if (smsMessageOptions.Page.HasValue) request.AddParameter("Page", smsMessageOptions.Page.Value);
             if (smsMessageOptions.PageSize.HasValue) request.AddParameter("PageSize", smsMessageOptions.PageSize.Value);
         }

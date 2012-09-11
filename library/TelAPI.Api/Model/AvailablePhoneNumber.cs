@@ -85,6 +85,11 @@ namespace TelAPI
         public decimal MonthlyCost { get; set; }
 
         /// <summary>
+        /// Unblock support
+        /// </summary>
+        public bool UnblockSupport { get; set; }
+
+        /// <summary>
         /// Is Voice enabled for this phone number
         /// </summary>
         public bool VoiceEnabled { get; set; }

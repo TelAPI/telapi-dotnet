@@ -42,7 +42,7 @@ namespace TelAPI
         /// <summary>
         /// Identifies the specific error type. For more information on error codes see the Error Dictionary.
         /// </summary>
-        public int ErrorCode { get; set; }
+        public long ErrorCode { get; set; }
 
         /// <summary>
         /// URL leading to our error dictionary for more information on the error.

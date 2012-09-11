@@ -135,7 +135,7 @@ namespace TelAPI
             if (phoneNumber.VoiceMethod.HasValue()) request.AddParameter("VoiceMethod", phoneNumber.VoiceMethod);
             if (phoneNumber.VoiceFallbackUrl.HasValue()) request.AddParameter("VoiceFallbackUrl", phoneNumber.VoiceFallbackUrl);
             if (phoneNumber.VoiceFallbackMethod.HasValue()) request.AddParameter("VoiceFallbackMethod", phoneNumber.VoiceFallbackMethod);
-            if (phoneNumber.VoiceCallerIdLookup.HasValue()) request.AddParameter("VoiceCallerIdLookup", phoneNumber.VoiceCallerIdLookup);
+            if (phoneNumber.VoiceCallerIdLookup) request.AddParameter("VoiceCallerIdLookup", phoneNumber.VoiceCallerIdLookup);
             if (phoneNumber.SmsUrl.HasValue()) request.AddParameter("SmsUrl", phoneNumber.SmsUrl);
             if (phoneNumber.SmsMethod.HasValue()) request.AddParameter("SmsMethod", phoneNumber.SmsMethod);
             if (phoneNumber.SmsFallbackUrl.HasValue()) request.AddParameter("SmsFallbackUrl", phoneNumber.SmsFallbackUrl);

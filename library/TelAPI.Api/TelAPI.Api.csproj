@@ -70,6 +70,7 @@
     <Compile Include="Model\Enum\AccountStatus.cs" />
     <Compile Include="Model\Enum\AudioDirection.cs" />
     <Compile Include="Model\Enum\CallStatus.cs" />
+    <Compile Include="Model\Enum\ComparasionType.cs" />
     <Compile Include="Model\Enum\HangupCallStatus.cs" />
     <Compile Include="Model\Enum\HttpMethod.cs" />
     <Compile Include="Model\Enum\NotificationLog.cs" />

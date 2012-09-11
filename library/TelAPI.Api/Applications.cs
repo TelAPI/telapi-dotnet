@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Validation;
 using RestSharp.Extensions;
 
@@ -61,8 +59,6 @@ namespace TelAPI
 
             return Execute<ApplicationResult>(request);
         }
-
-        //TODO : Bug when returning App. Instead of single app info, service returns list of all apps
 
         /// <summary>
         /// Create a new application for managing TelAPI phone numbers
