@@ -22,6 +22,7 @@ namespace TelAPI.InboundXML.Test
             var response = new Response();
             var options = new DialOptions();
 
+            options.Value = PhoneNumberToDial;
             options.Action = "http://www.action-url.com";
             options.HangupOnStar = false;
             options.HideCallerId = true;

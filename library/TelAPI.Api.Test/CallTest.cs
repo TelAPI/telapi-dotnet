@@ -35,6 +35,28 @@ namespace TelAPI.Api.Test
         }
 
         [Fact]
+        public void Can_I_Get_Call_List_With_StartTimeComparasion()
+        {
+            var pageSize = 1;
+            var options = new CallListOptions();
+            options.StartTimeComaparasion = ComparisonType.GreaterThanOrEqualTo;
+            options.StartTime = new DateTime(2012, 8, 5);
+
+            var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
+            var calls = Client.GetCalls(options);
+
+            var receivedCall = Client.HangupCall(call.Sid);
+
+            foreach (var c in calls.Calls)
+            {
+                Console.WriteLine("call sid : {0} date: {1}", c.Sid, c.StartTime);
+            }
+
+            Assert.NotNull(calls);
+            Assert.Equal(call.Sid, receivedCall.Sid);
+        }
+
+        [Fact]
         public void Can_I_Make_And_Get_And_Hangup_Call()
         {
             var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
@@ -105,13 +127,11 @@ namespace TelAPI.Api.Test
             var receivedCall = Client.RecordCall(call.Sid, true);
 
             Assert.NotNull(receivedCall);
-            Assert.Equal(call.Sid, receivedCall.Sid);
 
-            var stopedCall = Client.RecordCall(receivedCall.Sid, false);
+            var stopedCall = Client.RecordCall(call.Sid, false);
             Client.HangupCall(call.Sid);
 
             Assert.NotNull(stopedCall);
-            Assert.Equal(call.Sid, stopedCall.Sid);
         }
 
     }

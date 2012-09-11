@@ -27,7 +27,7 @@ namespace TelAPI.Api.Test
             var conference = Client.GetConference(ConferenceSid);
             var member = conference.Members[0];
 
-            var status = Client.MuteMember(conference.Name, member);
+            var status = Client.MuteMember(conference.Sid, member);
 
             Assert.NotNull(status);
            
@@ -39,7 +39,7 @@ namespace TelAPI.Api.Test
             var conference = Client.GetConference(ConferenceSid);
             var member = conference.Members[0];
 
-            var status = Client.UnmuteMember(conference.Name, member);
+            var status = Client.UnmuteMember(conference.Sid, member);
 
             Assert.NotNull(status);
         }
@@ -72,7 +72,7 @@ namespace TelAPI.Api.Test
             var conference = Client.GetConference(ConferenceSid);
             var member = conference.Members[0];
 
-            var status = Client.HangupMember(conference.Name, member);
+            var status = Client.HangupMember(conference.Sid, member);
 
             Assert.NotNull(status);
         }
@@ -88,17 +88,6 @@ namespace TelAPI.Api.Test
             Assert.NotNull(status);
         }
 
-        //[Fact]
-        //public void Can_I_Speak_Text_To_Member()
-        //{
-        //    var conference = Client.GetConference(ConferenceSid);
-        //    var member = conference.Members[0];
-
-        //    var status = Client.SpeakTextToMember(conference.Name, member, "hello world. I'm conference robot");
-
-        //    Assert.NotNull(status);
-        //}
-
         [Fact]
         public void Can_I_Play_Audio_To_Member()
         {
@@ -110,6 +99,17 @@ namespace TelAPI.Api.Test
             Assert.NotNull(status);
         }
 
+        //[Fact]
+        //public void Can_I_Speak_Text_To_Member()
+        //{
+        //    var conference = Client.GetConference(ConferenceSid);
+        //    var member = conference.Members[0];
+
+        //    var status = Client.SpeakTextToMember(conference.Name, member, "hello world. I'm conference robot");
+
+        //    Assert.NotNull(status);
+        //}
+        
         //[Fact]
         //public void Can_I_Start_Recording_Conference()
         //{
