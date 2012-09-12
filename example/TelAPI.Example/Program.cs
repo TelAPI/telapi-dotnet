@@ -29,7 +29,7 @@ namespace TelAPI.Example
 
         static void Main(string[] args)
         {
-            /// First we need to create TelApi Rest client. To do so, we need to provide accountSid, and authToken.
+            // First we need to create TelApi Rest client. To do so, we need to provide accountSid, and authToken.
             var telApi = new TelAPIRestClient(AccountSid, AuthToken);
             
             // Also there is another way of creating TelApi Rest client with TelAPIConfiguration interface.
@@ -37,7 +37,7 @@ namespace TelAPI.Example
             // var telApi = new TelAPIRestClient(new DefaultTelAPIConfiguration());
 
 
-            /// First we will get our Telapi account information
+            // First we will get our Telapi account information
             
             var account = telApi.GetAccount();
             Console.WriteLine("Account Sid     : {0}", account.Sid);
@@ -104,8 +104,6 @@ namespace TelAPI.Example
             try
             {
                 var startRecord = telApi.RecordCall(call.Sid, true);
-                Console.WriteLine("[ON] Recording Call Sid     : {0}", startRecord.Sid);
-                Console.WriteLine("[ON] Recording Call Started : {0}", startRecord.DateUpdated);
             }
             catch (TelAPIException ex)
             {
@@ -119,8 +117,6 @@ namespace TelAPI.Example
             try
             {
                 var stopRecord = telApi.RecordCall(call.Sid, false);
-                Console.WriteLine("[0FF] Recording Call Sid     : {0}", stopRecord.Sid);
-                Console.WriteLine("[OFF] Recording Call Started : {0}", stopRecord.DateUpdated);
             }
             catch (TelAPIException ex)
             {
@@ -176,16 +172,22 @@ namespace TelAPI.Example
             // If we want to find some information about Phone or Landline numbers
             // we can use Carrier and CNAM lookup using TelApi service
             
-            var carrier = telApi.CarrierLookup(PhoneNumberFrom);
-            Console.WriteLine("Carrier Name         : {0}", carrier.Carrier);
-            Console.WriteLine("Carrier Country      : {0}", carrier.Country);
-            Console.WriteLine("Carrier Lookup Price : {0}", carrier.Price);
-
+            var resultCarrier = telApi.CarrierLookup(PhoneNumberFrom);
+            foreach (var carrier in resultCarrier.CarrierLookups)
+            {
+                Console.WriteLine("Carrier Name         : {0}", carrier.Carrier);
+                Console.WriteLine("Carrier Country      : {0}", carrier.Country);
+                Console.WriteLine("Carrier Lookup Price : {0}", carrier.Price);    
+            }
+            
             Console.WriteLine();
 
-            var cnam = telApi.CNAMLookup(PhoneNumberFrom);
-            Console.WriteLine("CNAM Body : {0}", cnam.Body);
-
+            var resultCnam = telApi.CNAMLookup(PhoneNumberFrom);
+            foreach (var cnam in resultCnam.CNAMDips)
+            {
+                Console.WriteLine("CNAM Body : {0}", cnam.Body);    
+            }
+            
             // The End :)
             Console.WriteLine("The end :)");
             Console.ReadKey();            

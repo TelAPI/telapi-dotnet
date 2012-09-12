@@ -15,7 +15,7 @@ namespace TelAPI.Example
 
                 foreach (var conference in result.Conferences)
                 {
-                    Console.WriteLine("Conference name : {0}", conference.Name);
+                    Console.WriteLine("Conference name : {0}", conference.FriendlyName);
                 }
             }
             catch (TelAPIException ex)

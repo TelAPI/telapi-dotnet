@@ -12,7 +12,6 @@ namespace TelAPI.Example
             try
             {
                 var result = client.CNAMLookup("phone-number-to-look");
-
                 foreach (var cnam in result.CNAMDips)
                 {
                     Console.WriteLine("Cnam : {0}", cnam.Body);

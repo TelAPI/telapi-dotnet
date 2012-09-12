@@ -12,7 +12,7 @@ namespace TelAPI.Example
             try
             {
                 var conference = client.GetConference("conference-sid");
-                Console.WriteLine("Conference name : {0}", conference.Name);
+                Console.WriteLine("Conference name : {0}", conference.FriendlyName);
             }
             catch (TelAPIException ex)
             {

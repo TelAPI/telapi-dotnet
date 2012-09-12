@@ -11,10 +11,12 @@ namespace TelAPI.Example
 
             try
             {
-                var conference = client.GetConference("conference-sid");
-                var result = client.PlayAudioToMember(conference.Sid, conference.Members[0], "http://audio-url.com");
+                var conference = client.GetConference(ConferenceSid);
+				var member = client.GetConferenceParticipants(conference.Sid)[0];
 
-                Console.WriteLine("Conference name : {0}", result.Name);
+				var participant = client.PlayAudioToParticipant(conference.Sid, member, "http://audio-url.com/something.mp3");
+
+                Console.WriteLine("Participant name : {0}", participant.CallerName);
             }
             catch (TelAPIException ex)
             {

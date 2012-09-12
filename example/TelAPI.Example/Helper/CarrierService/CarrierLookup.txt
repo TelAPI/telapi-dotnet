@@ -11,8 +11,11 @@ namespace TelAPI.Example
 
             try
             {
-                var carrier = client.CarrierLookup("phone-number-to-look");
-                Console.WriteLine("Carrier : {0}", carrier.Country);
+                var result = client.CarrierLookup("phone-number-to-look");
+                foreach (var carrier in result.CarrierLookups)
+				{
+					Console.WriteLine("{0}", carrier.Country);
+				}
             }
             catch (TelAPIException ex)
             {

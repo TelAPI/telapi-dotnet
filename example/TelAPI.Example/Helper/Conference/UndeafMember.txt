@@ -12,9 +12,11 @@ namespace TelAPI.Example
             try
             {
                 var conference = client.GetConference("conference-sid");
-                var result = client.UndeafMember(conference.Sid, conference.Members[0]);
+                var member = client.GetConferenceParticipants(conference.Sid)[0];
 
-                Console.WriteLine("Conference name : {0}", result.Name);
+				var participant = client.DeafParticipant(conference.Sid, member, false);
+
+                Console.WriteLine("Participant deaf : {0}", participant.Deaf);
             }
             catch (TelAPIException ex)
             {

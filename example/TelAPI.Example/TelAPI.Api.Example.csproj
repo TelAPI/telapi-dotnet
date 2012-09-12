@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="TelAPI.Api, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\TelAPI.Api.dll</HintPath>
+      <HintPath>..\..\dll\TelAPI.Api.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
