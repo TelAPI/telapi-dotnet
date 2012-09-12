@@ -22,111 +22,70 @@ namespace TelAPI.Api.Test
         }
 
         [Fact]
-        public void Can_I_Mute_Member()
+        public void Can_I_Mute_Participant()
         {
             var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
+            var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
-            var status = Client.MuteMember(conference.Sid, member);
+            var status = Client.MuteParticipant(conference.Sid, member, true);
 
             Assert.NotNull(status);
            
         }
 
         [Fact]
-        public void Can_I_Unmute_Member()
+        public void Can_I_Unmute_Participant()
         {
             var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
+            var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
-            var status = Client.UnmuteMember(conference.Sid, member);
+            var status = Client.MuteParticipant(conference.Sid, member, false);
 
             Assert.NotNull(status);
         }
 
         [Fact]
-        public void Can_I_Deaf_Member()
+        public void Can_I_Deaf_Participant()
         {
             var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
+            var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
-            var status = Client.DeafMember(conference.Name, member);
+            var status = Client.DeafParticipant(conference.Sid, member, true);
 
             Assert.NotNull(status);
         }
 
         [Fact]
-        public void Can_I_Undeaf_Member()
+        public void Can_I_Undeaf_Participant()
         {
             var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
+            var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
-            var status = Client.UndeafMember(conference.Name, member);
+            var status = Client.DeafParticipant(conference.Sid, member, false);
 
             Assert.NotNull(status);
         }
 
         [Fact]
-        public void Can_I_Hangup_Member()
+        public void Can_I_Hangup_Participant()
         {
             var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
+            var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
-            var status = Client.HangupMember(conference.Sid, member);
+            var status = Client.HangupParticipant(conference.Sid, member);
 
             Assert.NotNull(status);
         }
 
         [Fact]
-        public void Can_I_Kick_Member()
+        public void Can_I_Play_Audio_To_Participant()
         {
             var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
+            var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
-            var status = Client.KickMember(conference.Name, member);
+            var status = Client.PlayAudioToParticipant(conference.Sid, member, "http://funny-stuff.audio4fun.com/download/audioclips/159.mp3");
 
             Assert.NotNull(status);
         }
-
-        [Fact]
-        public void Can_I_Play_Audio_To_Member()
-        {
-            var conference = Client.GetConference(ConferenceSid);
-            var member = conference.Members[0];
-
-            var status = Client.PlayAudioToMember(conference.Name, member, "http://funny-stuff.audio4fun.com/download/audioclips/159.mp3");
-
-            Assert.NotNull(status);
-        }
-
-        //[Fact]
-        //public void Can_I_Speak_Text_To_Member()
-        //{
-        //    var conference = Client.GetConference(ConferenceSid);
-        //    var member = conference.Members[0];
-
-        //    var status = Client.SpeakTextToMember(conference.Name, member, "hello world. I'm conference robot");
-
-        //    Assert.NotNull(status);
-        //}
-        
-        //[Fact]
-        //public void Can_I_Start_Recording_Conference()
-        //{
-        //    var conference = Client.GetConference(ConferenceSid);
-        //    var status = Client.StartRecordingConference(conference.Name);
-
-        //    Assert.NotNull(status);
-        //}
-
-        //[Fact]
-        //public void Can_I_Stop_Recording_Conference()
-        //{
-        //    var conference = Client.GetConference(ConferenceSid);
-        //    var status = Client.StopRecordingConference(conference.Name);
-
-        //    Assert.NotNull(status);
-        //}
-
     }
 }

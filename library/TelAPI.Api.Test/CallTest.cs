@@ -37,7 +37,6 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Call_List_With_StartTimeComparasion()
         {
-            var pageSize = 1;
             var options = new CallListOptions();
             options.StartTimeComaparasion = ComparisonType.GreaterThanOrEqualTo;
             options.StartTime = new DateTime(2012, 8, 5);
