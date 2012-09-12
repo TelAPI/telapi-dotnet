@@ -1,5 +1,6 @@
 ﻿using System;
 using Xunit;
+using System.Threading;
 
 namespace TelAPI.Api.Test
 {
@@ -84,6 +85,7 @@ namespace TelAPI.Api.Test
         {
             var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
             var receivedCall = Client.SendDigits(call.Sid, "12ww12", PlayDtmfLeg.Aleg);
+            
             Client.HangupCall(call.Sid);
 
             Assert.NotNull(call);

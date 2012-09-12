@@ -51,6 +51,7 @@ namespace TelAPI.Api.Test
             var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
             var status = Client.DeafParticipant(conference.Sid, member, true);
+           
 
             Assert.NotNull(status);
         }
@@ -73,7 +74,7 @@ namespace TelAPI.Api.Test
             var member = Client.GetConferenceParticipants(conference.Sid)[0];
 
             var status = Client.HangupParticipant(conference.Sid, member);
-
+            
             Assert.NotNull(status);
         }
 
