@@ -1,0 +1,25 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class GetParticipant
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var conference = client.GetConference("conference-sid");
+                var participant = client.GetConferenceParticipant("conference-sid", "call-sid);				
+
+                Console.WriteLine("Participant deaf : {0}", participant.CallerName);
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message); 
+            }
+        }
+    }
+}
