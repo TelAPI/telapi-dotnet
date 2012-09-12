@@ -7,38 +7,71 @@ For more information about TelAPI, please visit:  [telapi.com/features](http://w
 
 ---
 
-### REST Introduction
+Installation
+============
 
-Everything you need to know how to use the TelAPI .NET Helper can be found in the [/examples directory](https://github.com/teltechsystems/telapi-dotnet/tree/master/example).
-Just replace `{AccountSid}` and `{AuthToken}` with the values from your [TelAPI Account Dashboard](https://www.telapi.com/dashboard/).
+Usage
+======
 
-##### Currently available REST API resources
+### REST
 
-* **accounts**                  - Fetch or set account details
-* **notifications**             - View notifications, such as application errors
-* **recordings**                - List recordings
-* **sms_messages**              - Send or view SMS messages
-* **transcriptions**            - View or submit a recording for transcribing to text
-* **calls**                     - View or place calls
-* **carrier**                   - Lookup the carrier for a number
-* **cnam**                      - Look up the caller ID for a number
-* **incoming_phone_numbers**    - List or purchase a phone number
-* **available_phone_numbers**   - Search for available phone numbers
-* **conferences**               - List conference details
-* **fraud**                     - Manage destinations and grant/rewoke priviledge access priviledges
-* **applications**              - Automate common number configurations for one or many phone numbers
+[TelAPI REST API documenatation](http://www.telapi.com/docs/api/rest/) 
 
-##### Example usage - Sending an SMS
+##### Send SMS Example
 
-```c#
+```csharp
+using System;
+using TelAPI;
+ 
+namespace TelAPI.Example
+{
+    public class SendSmsMessage
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient(
+                "********************************", 
+                "********************************"
+            );
+ 
+            try
+            {
+                var sms = client.SendSmsMessage(
+                    "(XXX) XXX-XXXX",
+                    "(XXX) XXX-XXXX",
+                    "This is an SMS message sent from the TelAPI .NET helper! Easy as 1, 2, 3!",
+                );
+                Console.WriteLine("Sms Sid : {0}", sms.Sid);
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message);
+            }
+        }
+    }
+}
+```
+
+### InboundXML
+
+InboundXML is an XML dialect which enables you to control phone call flow. For more information please visit the [TelAPI InboundXML documenatation](http://www.telapi.com/docs/api/inboundxml/)
+
+##### <Say> Example
+
+```csharp
 var telApi = new TelAPIRestClient("{your-account-sid}", "{your-auth-token}");
 
 var message = telApi.SendSmsMessage("+12233312344", "+12233312345", "hello world!");
-Console.WriteLine(message.Status);  
+Console.WriteLine(message.Status);   
 ```
 
+will render
 
-For more information such as which properties are available for existing resources, please visit [TelAPI REST Documenatation](http://www.telapi.com/docs/api/rest/)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say voice="man">Welcome to TelAPI. This is a sample InboundXML document.</Say>
+</Response>
+```
 
-----
-
+---
