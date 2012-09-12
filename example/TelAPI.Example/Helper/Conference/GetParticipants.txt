@@ -16,7 +16,7 @@ namespace TelAPI.Example
 
                 foreach(var participant in participants)
 				{
-					Console.WriteLine("Participant deaf : {0}", participant.CallerName);
+					Console.WriteLine("Participant name : {0}", participant.CallerName);
 				}
             }
             catch (TelAPIException ex)

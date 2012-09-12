@@ -14,7 +14,7 @@ namespace TelAPI.Example
                 var conference = client.GetConference("conference-sid");
                 var participant = client.GetConferenceParticipant("conference-sid", "call-sid);				
 
-                Console.WriteLine("Participant deaf : {0}", participant.CallerName);
+                Console.WriteLine("Participant name : {0}", participant.CallerName);
             }
             catch (TelAPIException ex)
             {
