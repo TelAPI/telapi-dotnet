@@ -12,7 +12,7 @@ namespace TelAPI
         /// </summary>
         /// <param name="phoneNumber">The number of the phone you are attempting to perform the carrier look up on.</param>
         /// <returns></returns>
-        public CarrierLookup CarrierLookup(string phoneNumber)
+        public CarrierLookupResult CarrierLookup(string phoneNumber)
         {
             Require.Argument("PhoneNumber", phoneNumber);
 
@@ -20,7 +20,7 @@ namespace TelAPI
             request.Resource = RequestUri.CarrierLookupUri;
             request.AddParameter(RequestUriParams.PhoneNumber, phoneNumber);
 
-            return Execute<CarrierLookup>(request);
+            return Execute<CarrierLookupResult>(request);
         }
 
         /// <summary>

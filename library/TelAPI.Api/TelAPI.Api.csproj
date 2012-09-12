@@ -67,6 +67,9 @@
     <Compile Include="Model\ConferenceResult.cs" />
     <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
     <Compile Include="Model\CNAMLookupResult.cs" />
+    <Compile Include="Model\CarrierLookupResult.cs" />
+    <Compile Include="Model\Enum\ConferenceStatus.cs" />
+    <Compile Include="Model\ParticipantResult.cs" />
     <Compile Include="Model\Enum\AccountStatus.cs" />
     <Compile Include="Model\Enum\AudioDirection.cs" />
     <Compile Include="Model\Enum\CallStatus.cs" />
@@ -83,7 +86,7 @@
     <Compile Include="Model\FraudResult.cs" />
     <Compile Include="Model\IncomingPhoneNumber.cs" />
     <Compile Include="Model\IncomingPhoneNumberResult.cs" />
-    <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\Participant.cs" />
     <Compile Include="Model\Notification.cs" />
     <Compile Include="Model\NotificationResult.cs" />
     <Compile Include="Model\PlayAudioOptions.cs" />

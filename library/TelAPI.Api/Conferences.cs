@@ -15,64 +15,14 @@ namespace TelAPI
         /// <returns></returns>
         public Conference GetConference(string conferenceSid)
         {
-            return GetConference(conferenceSid, null, null, null);
-        }
-
-        /// <summary>
-        /// Return resource properties about conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Used to identify specific conference members you wish to view the information of.</param>
-        /// <returns></returns>
-        public Conference GetConference(string conferenceSid, List<Member> members)
-        {
-            return GetConference(conferenceSid, members, null, null);
-        }
-
-        /// <summary>
-        /// Return resource properties about conference call
-        /// </summary>
-        /// <param name="conferenceSid">>Conference sid</param>
-        /// <param name="member">Used to identify specific conference member you wish to view the information of</param>
-        /// <returns></returns>
-        public Conference GetConference(string conferenceSid, Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return GetConference(conferenceSid, list);
-        }
-
-        /// <summary>
-        /// Return resource properties about conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Used to identify specific conference members you wish to view the information of.</param>
-        /// <param name="muted">Specifies whether only muted conference members should be returned. Default value is false and all conference members are returned.</param>
-        /// <param name="deafed">Specifies whether only deafed conference members should be returned. Default value is false and all conference members are returned.</param>
-        /// <returns></returns>
-
-        public Conference GetConference(string conferenceSid, List<Member> members, bool? muted, bool? deafed)
-        {
             Require.Argument("ConferenceSid", conferenceSid);
 
             var request = new RestRequest();
             request.Resource = RequestUri.ConferenceUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
-
-            if (muted.HasValue) request.AddParameter("Muted", muted);
-            if (deafed.HasValue) request.AddParameter("Deafed", deafed);
-
             return Execute<Conference>(request);
-        }        
+        }
 
         /// <summary>
         /// Return list of all conference resources associated with a given account
@@ -80,68 +30,56 @@ namespace TelAPI
         /// <returns></returns>
         public ConferenceResult GetConferences()
         {
-            return GetConferences(null, null, null, null, null);
+            return GetConferences(null, null, null, null, null, null, null, null);
         }
 
         /// <summary>
         /// Return list of all conference resources associated with a given account
         /// </summary>
-        /// <param name="members">Used to identify and return conferences only specific members were involved in.</param>
+        /// <param name="friendlyName">List conferences with the given FriendlyName.</param>
         /// <returns></returns>
-        public ConferenceResult GetConferences(List<Member> members)
+        public ConferenceResult GetConferences(string friendlyName)
         {
-            return GetConferences(members, null, null, null, null);
+            return GetConferences(friendlyName, null, null, null, null, null, null, null);
         }
 
         /// <summary>
         /// Return list of all conference resources associated with a given account
         /// </summary>
-        /// <param name="members">Used to identify and return conferences only specific members were involved in.</param>
-        /// <param name="muted">Specifies whether only conferences with muted members should be returned.</param>
-        /// <param name="deafed">Specifies whether only conferences with deafed members should be returned.</param>
+        /// <param name="status">List conferences with the given status.</param>
+        /// <param name="dateCreated">List conferences created on, after, or before a given date. </param>
+        /// <param name="dateCreatedComaparasion">Date range can be specified using inequalities</param>
         /// <returns></returns>
-        public ConferenceResult GetConferences(List<Member> members, bool? muted, bool? deafed)
+        public ConferenceResult GetConferences(ConferenceStatus status, DateTime dateCreated, ComparisonType dateCreatedComaparasion)
         {
-            return GetConferences(members, muted, deafed, null, null);
+            return GetConferences(null, status, dateCreated, dateCreatedComaparasion, null, null, null, null);
         } 
        
         /// <summary>
         /// Return list of all conference resources associated with a given account
         /// </summary>
-        /// <param name="member">Used to identify and return conferences only specific member were involved in.</param>
-        /// <returns></returns>
-        public ConferenceResult GetConferences(Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return GetConferences(list);
-        }
-
-        /// <summary>
-        /// Return list of all conference resources associated with a given account
-        /// </summary>
-        /// <param name="members">Used to identify and return conferences only specific members were involved in.</param>
-        /// <param name="muted">Specifies whether only conferences with muted members should be returned.</param>
-        /// <param name="deafed">Specifies whether only conferences with deafed members should be returned.</param>
+        /// <param name="friendlyName">List conferences with the given FriendlyName.</param>
+        /// <param name="status">List conferences with the given status.</param>
+        /// <param name="dateCreated">List conferences created on, after, or before a given date.</param>
+        /// <param name="dateCreatedComparasion">Date range can be specified using inequalities.</param>
+        /// <param name="dateUpdated">List conferences updated on, after, or before a given date.</param>
+        /// <param name="dateUpdatedComparasion">Date range can be specified using inequalities.</param>
         /// <param name="page">Used to return a particular page withing the list.</param>
         /// <param name="pageSize">Used to specify the amount of list items to return per page.</param>
         /// <returns></returns>
-        public ConferenceResult GetConferences(List<Member> members, bool? muted, bool? deafed, int? page, int? pageSize)
+        public ConferenceResult GetConferences(string friendlyName, ConferenceStatus? status, DateTime? dateCreated, ComparisonType? dateCreatedComparasion,
+            DateTime? dateUpdated, ComparisonType? dateUpdatedComparasion, int? page, int?pageSize)
         {
             var request = new RestRequest();
             request.Resource = RequestUri.ConferencesUri;
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
+            var dateCreatedParameterName = GetParameterNameWithEquality(dateCreatedComparasion, "DateCreated");
+            var dateUpdatedParemeterName = GetParameterNameWithEquality(dateUpdatedComparasion, "DateUpdated");
 
-            if (muted.HasValue) request.AddParameter("Muted", muted);
-            if (deafed.HasValue) request.AddParameter("Deafed", deafed);
+            if (friendlyName.HasValue()) request.AddParameter("FriendlyName", friendlyName);
+            if (status.HasValue) request.AddParameter("Status", status.ToString().ToLower());
+            if (dateCreated.HasValue) request.AddParameter(dateCreatedParameterName, dateCreated.Value.ToString("yyyy-MM-dd"));
+            if (dateUpdated.HasValue) request.AddParameter(dateUpdatedParemeterName, dateUpdated.Value.ToString("yyyy-MM-dd"));
             if (page.HasValue) request.AddParameter("Page", page);
             if (pageSize.HasValue) request.AddParameter("PageSize", pageSize);
 
@@ -149,389 +87,143 @@ namespace TelAPI
         }
 
         /// <summary>
-        /// Mute member of conference call
+        /// Participants of a conference are identified by the CallSid created when they dial into the conference.
         /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to mute.</param>
+        /// <param name="conferenceSid"></param>
+        /// <param name="callSid">The CallSid identifying this participant.</param>
         /// <returns></returns>
-        public Conference MuteMember(string conferenceSid, List<Member> members)
+        public Participant GetConferenceParticipant(string conferenceSid, string callSid)
         {
             Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
+            Require.Argument("CallSid", callSid);
 
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceMuteMemberUri;
+            var request = new RestRequest();
+            request.Resource = RequestUri.ConferenceParticipantActionUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
+            request.AddUrlSegment(RequestUriParams.CallSid, callSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
-
-            return Execute<Conference>(request);
+            return Execute<Participant>(request);
         }
 
         /// <summary>
-        /// Mute member of conference call
+        /// Return list of all conference participants
         /// </summary>
         /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to mute.</param>
         /// <returns></returns>
-        public Conference MuteMember(string conferenceSid, Member member)
+        public List<Participant> GetConferenceParticipants(string conferenceSid)
         {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return MuteMember(conferenceSid, list);
+            return GetConferenceParticipants(conferenceSid, null, null, null, null);
         }
 
         /// <summary>
-        /// Unmute member of conference call
+        /// Return list of all conference participants
         /// </summary>
         /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to unmute.</param>
+        /// <param name="muted">Only list participants that are muted.</param>
+        /// <param name="deafed">Only list participants that are deaf.</param>
+        /// <param name="page">Used to return a particular page withing the list.</param>
+        /// <param name="pageSize">Used to specify the amount of list items to return per page.</param>
         /// <returns></returns>
-        public Conference UnmuteMember(string conferenceSid, List<Member> members)
+        public List<Participant> GetConferenceParticipants(string conferenceSid, bool? muted, bool? deafed, int? page, int? pageSize)
         {
             Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
 
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceUnmuteMemberUri;
+            var request = new RestRequest();
+            request.Resource = RequestUri.ConferenceParticipantsUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
+            if (muted.HasValue) request.AddParameter("Muted", muted);
+            if (deafed.HasValue) request.AddParameter("Deafed", deafed);
+            if (page.HasValue) request.AddParameter("Page", page);
+            if (pageSize.HasValue) request.AddParameter("PageSize", pageSize);
 
-            return Execute<Conference>(request);
+            return Execute<List<Participant>>(request);
         }
-
+        
         /// <summary>
-        /// Unmute member of conference call
+        /// Mute participant of conference call
         /// </summary>
         /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to unmute.</param>
+        /// <param name="participant">Specifies the participant to mute.</param>
+        /// <param name="mute">Mute participant?</param>
         /// <returns></returns>
-        public Conference UnmuteMember(string conferenceSid, Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return UnmuteMember(conferenceSid, list);
-        }
-
-        /// <summary>
-        /// Deaf member of conference call  
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to deaf.</param>
-        /// <returns></returns>
-        public Conference DeafMember(string conferenceSid, List<Member> members)
+        public Participant MuteParticipant(string conferenceSid, Participant participant, bool mute)
         {
             Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
+            Require.Argument("CallSid", participant.CallSid);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceDeafMemberUri;
+            request.Resource = RequestUri.ConferenceParticipantActionUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
+            request.AddUrlSegment(RequestUriParams.CallSid, participant.CallSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
+            request.AddParameter("Muted", mute);
 
-            return Execute<Conference>(request);
+            return Execute<Participant>(request);
         }
 
         /// <summary>
-        /// Deaf member of conference call  
+        /// Deaf participant of conference call  
         /// </summary>
         /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to deaf.</param>
+        /// <param name="participant">Specifies the participant to deaf.</param>
+        /// <param name="deaf">Deaf participant?</param>
         /// <returns></returns>
-        public Conference DeafMember(string conferenceSid, Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return DeafMember(conferenceSid, list);
-        }
-
-        /// <summary>
-        /// Undeaf member of conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to undeaf.</param>
-        /// <returns></returns>
-        public Conference UndeafMember(string conferenceSid, List<Member> members)
+        public Participant DeafParticipant(string conferenceSid, Participant participant, bool deaf)
         {
             Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
+            Require.Argument("CallSid", participant.CallSid);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceUndeafMemberUri;
+            request.Resource = RequestUri.ConferenceParticipantActionUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
+            request.AddUrlSegment(RequestUriParams.CallSid, participant.CallSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
+            request.AddParameter("Deaf", deaf);
 
-            return Execute<Conference>(request);
+            return Execute<Participant>(request);
         }
-
+        
         /// <summary>
-        /// Undeaf member of conference call
+        /// Hangup participant of conference call
         /// </summary>
         /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to undeaf.</param>
+        /// <param name="participant">Specifies the participant to hangup.</param>
         /// <returns></returns>
-        public Conference UndeafMember(string conferenceSid, Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return UndeafMember(conferenceSid, list);
-        }
-        /// <summary>
-        /// Hangup member of conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to hangup.</param>
-        /// <returns></returns>
-        public Conference HangupMember(string conferenceSid, List<Member> members)
+        public Participant HangupParticipant(string conferenceSid, Participant participant)
         {
             Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
+            Require.Argument("CallSid", participant.CallSid);
 
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceHangupMemberUri;
+            var request = new RestRequest(Method.DELETE);
+            request.Resource = RequestUri.ConferenceParticipantActionUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
+            request.AddUrlSegment(RequestUriParams.CallSid, participant.CallSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
-
-            return Execute<Conference>(request);
+            return Execute<Participant>(request);
         }
 
         /// <summary>
-        /// Hangup member of conference call
+        /// Play audio to participant of conference call
         /// </summary>
         /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to hangup.</param>
-        /// <returns></returns>
-        public Conference HangupMember(string conferenceSid, Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return HangupMember(conferenceSid, list);
-        }
-
-        /// <summary>
-        /// Kick member from conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to kick.</param>
-        /// <returns></returns>
-        public Conference KickMember(string conferenceSid, List<Member> members)
-        {
-            Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceKickMemberUri;
-            request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
-
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
-
-            return Execute<Conference>(request);
-        }
-
-        /// <summary>
-        /// Kick member from conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to kick.</param>
-        /// <returns></returns>
-        public Conference KickMember(string conferenceSid, Member member)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return KickMember(conferenceSid, list);
-        }
-
-        /// <summary>
-        /// Play audio to member of conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="members">Specifies the members to play audio.</param>
+        /// <param name="participant">Specifies the participant to play audio.</param>
         /// <param name="url">Url where audio is located</param>
         /// <returns></returns>
-        public Conference PlayAudioToMember(string conferenceSid, List<Member> members, string url)
+        public Participant PlayAudioToParticipant(string conferenceSid, Participant participant, string url)
         {
             Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
+            Require.Argument("CallSid", participant.CallSid);
             Require.Argument("Url", url);
 
             var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferencePlayAudioToMemberUri;
+            request.Resource = RequestUri.ConferencePlayAudioToParticipantUri;
             request.AddUrlSegment(RequestUriParams.ConferenceSid, conferenceSid);
+            request.AddUrlSegment(RequestUriParams.CallSid, participant.CallSid);
 
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
+            request.AddParameter("AudioUrl", url);
 
-            request.AddParameter("Url", url);
-
-            return Execute<Conference>(request);
+            return Execute<Participant>(request);
         }
-
-        /// <summary>
-        /// Play audio to member of conference call
-        /// </summary>
-        /// <param name="conferenceSid">Conference sid</param>
-        /// <param name="member">Specifies the member to play audio.</param>
-        /// <param name="url">Url where audio is located</param>
-        /// <returns></returns>
-        public Conference PlayAudioToMember(string conferenceSid, Member member, string url)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return PlayAudioToMember(conferenceSid, list, url);
-        }
-
-        #region Unsupported?
-        /* Removed from documentation??
-
-        /// <summary>
-        /// Speak text to member of conference call
-        /// </summary>
-        /// <param name="conferenceName">Conference name</param>
-        /// <param name="MemberID">Specifies the member to mute. If more than one member is to be muted, a comma is used to separate each MemberID.</param>
-        /// <param name="text">Text to speech</param>
-        /// <returns></returns>
-        public ConferenceResponse SpeakTextToMember(string conferenceSid, List<Member> members, string text)
-        {
-            Require.Argument("ConferenceSid", conferenceSid);
-            Require.Argument("MemberID", members);
-            Require.Argument("Text", text);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceSpeachTextToMemberUri;
-            request.AddUrlSegment(RequestUriParams.ConferenceName, conferenceSid);
-
-            if (members != null)
-            {
-                if (members.Count > 0)
-                {
-                    request.AddParameter("MemberID", CreateMemberIDs(members));
-                }
-            }
-            
-            request.AddParameter("Text", text);
-
-            return Execute<ConferenceResponse>(request);
-        }
-
-        public ConferenceResponse SpeakTextToMember(string conferenceName, Member member, string text)
-        {
-            var list = new List<Member>();
-            list.Add(member);
-
-            return SpeakTextToMember(conferenceName, list, text);
-        }
-        
-        /// <summary>
-        /// Start recording conference call
-        /// </summary>
-        /// <param name="conferenceName">Conference name</param>
-        /// <returns></returns>
-        public ConferenceResponse StartRecordingConference(string conferenceName)
-        {
-            Require.Argument("ConferenceName", conferenceName);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceStartRecordingUri;
-            request.AddUrlSegment(RequestUriParams.ConferenceName, conferenceName);
-
-            return Execute<ConferenceResponse>(request);
-        }
-
-        /// <summary>
-        /// Stop recording conference name
-        /// </summary>
-        /// <param name="conferenceName">Conference name</param>
-        /// <returns></returns>
-        public ConferenceResponse StopRecordingConference(string conferenceName)
-        {
-            Require.Argument("ConferenceName", conferenceName);
-
-            var request = new RestRequest(Method.POST);
-            request.Resource = RequestUri.ConferenceStopRecording;
-            request.AddUrlSegment(RequestUriParams.ConferenceName, conferenceName);
-
-            return Execute<ConferenceResponse>(request);
-        }        
-        
-        */
-        #endregion
-
-        #region Helper methods
-        /// <summary>
-        /// Return list of members id's in one string seperated by comma
-        /// </summary>
-        /// <param name="members"></param>
-        /// <returns></returns>
-        private string CreateMemberIDs(List<Member> members)
-        {
-            string membersIds = string.Empty;
-
-            for (int i = 1; i <= members.Count; i++)
-            {
-                if (i == members.Count)
-                {
-                    membersIds += members[i-1].Id;
-                }
-                else
-                {
-                    membersIds += members[i-1].Id + ",";
-                }
-            }
-
-            return membersIds;
-        } 
-        #endregion
     }
 }
