@@ -10,6 +10,18 @@ For more information about TelAPI, please visit:  [telapi.com/features](http://w
 Installation
 ============
 
+### Windows
+
+### Mac/Linux
+
+The easiest way to work with C# on Mac or Linux is to download [Mono](http://mono-project.com/Main_Page), a cross platform .NET development framework.
+
+Once Mono is set up, you can simply clone this repository:
+
+'git clone git@github.com:TelAPI/telapi-dotnet.git'
+
+Put the cloned repository somewhere your .NET project can access it and then link the .dll files it contains in Mono.
+
 Usage
 ======
 
