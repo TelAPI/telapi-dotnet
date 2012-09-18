@@ -18,9 +18,9 @@ The easiest way to work with C# on Mac or Linux is to download [Mono](http://mon
 
 Once Mono is set up, you can simply clone this repository:
 
-'git clone git@github.com:TelAPI/telapi-dotnet.git'
+`git clone git@github.com:TelAPI/telapi-dotnet.git`
 
-Put the cloned repository somewhere your .NET project can access it and then link the .dll files it contains in Mono.
+Put the cloned repository somewhere your .NET project can access it and then link the helper libraries .dll files in Mono.
 
 Usage
 ======
