@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RestSharp;
 using RestSharp.Extensions;
 using RestSharp.Validation;
+using System.Globalization;
 
 namespace TelAPI
 {
@@ -252,6 +253,13 @@ namespace TelAPI
             if (callOptions.SendDigits.HasValue()) request.AddParameter("SendDigits", callOptions.SendDigits);
             if (callOptions.Timeout.HasValue) request.AddParameter("Timeout", callOptions.Timeout);
             if (callOptions.HideCallerId.HasValue) request.AddParameter("HideCallerId", callOptions.HideCallerId);
+            if (callOptions.HeartbeatUrl.HasValue()) request.AddParameter("HeartbeartUrl", callOptions.HeartbeatUrl);
+            if (callOptions.HeartbeatMethod.HasValue) request.AddParameter("HeartbeatMethod", callOptions.HeartbeatMethod.ToString());
+            if (callOptions.Record.HasValue) request.AddParameter("Record", callOptions.Record);
+            if (callOptions.RecordCallback.HasValue()) request.AddParameter("RecordCallback", callOptions.RecordCallback);
+            if (callOptions.RecordCallbackMethod.HasValue) request.AddParameter("RecordCallbackMethod", callOptions.RecordCallbackMethod.ToString());
+            if (callOptions.Transcribe.HasValue) request.AddParameter("Transcribe", callOptions.Transcribe);
+            if (callOptions.TranscribeCallback.HasValue()) request.AddParameter("TranscribeCallback", callOptions.TranscribeCallback);
         }
 
         /// <summary>

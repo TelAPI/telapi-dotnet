@@ -60,12 +60,12 @@ namespace TelAPI
         /// <summary>
         /// Uri to play audio on call
         /// </summary>
-        public const string PlayAudioUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+        public const string PlayAudioUri = "Accounts/{AccountSid}/Calls/{CallSid}/Play.json";
 
         /// <summary>
         /// Uri to add voice effects
         /// </summary>
-        public const string VoiceEffectsUri = "Accounts/{AccountSid}/Calls/{CallSid}.json";
+        public const string VoiceEffectsUri = "Accounts/{AccountSid}/Calls/{CallSid}/Effect.json";
 
         /// <summary>
         /// Uri to start/stop recording call

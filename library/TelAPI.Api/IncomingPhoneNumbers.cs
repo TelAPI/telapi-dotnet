@@ -142,6 +142,8 @@ namespace TelAPI
             if (phoneNumber.SmsFallbackMethod.HasValue()) request.AddParameter("SmsFallbackMethod", phoneNumber.SmsFallbackMethod);
             if (phoneNumber.HangupCallback.HasValue()) request.AddParameter("HangupCallback", phoneNumber.HangupCallback);
             if (phoneNumber.HangupCallbackMethod.HasValue()) request.AddParameter("HangupCallbackMethod", phoneNumber.HangupCallbackMethod);
+            if (phoneNumber.HeartbeatUrl.HasValue()) request.AddParameter("HeartbeatUrl", phoneNumber.HeartbeatUrl);
+            if (phoneNumber.HeartbeatMethod.HasValue()) request.AddParameter("HeartbeatMethod", phoneNumber.HeartbeatMethod);
         } 
 
         #endregion

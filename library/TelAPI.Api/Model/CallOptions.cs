@@ -49,6 +49,7 @@ namespace TelAPI
         /// Specifies the HTTP method used to request StatusCallbackUrl.
         /// </summary>
         public string StatusCallbackMethod { get; set; }
+               
 
         /// <summary>
         /// Dials digits once call connects. Can be used to forward callers to different extensions or numbers.
@@ -64,5 +65,40 @@ namespace TelAPI
         /// Specifies if the caller id will be hidden.
         /// </summary>
         public bool? HideCallerId { get; set; }
+
+        /// <summary>
+        /// URL that can be requested every 60 seconds during the call to notify of elapsed time and pass other general information.
+        /// </summary>
+        public string HeartbeatUrl { get; set; }
+        
+        /// <summary>
+        /// Specifies the HTTP method used to request the Heartbeat URL.
+        /// </summary>
+        public HttpMethod? HeartbeatMethod { get; set; }
+
+        /// <summary>
+        /// Specifies whether this call should be recorded.
+        /// </summary>
+        public bool? Record { get; set; }
+        
+        /// <summary>
+        /// A URL some parameters regarding the recording will be past to once it is completed.
+        /// </summary>
+        public string RecordCallback { get; set; }
+        
+        /// <summary>
+        /// Method used to request the RecordCalback URL.
+        /// </summary>
+        public HttpMethod? RecordCallbackMethod { get; set; }
+
+        /// <summary>
+        /// Specifies whether this call should be transcribed.
+        /// </summary>
+        public bool? Transcribe { get; set; }
+        
+        /// <summary>
+        /// A URL some parameters regarding the transcription will be past to once it is completed.
+        /// </summary>
+        public string TranscribeCallback { get; set; }
     }
 }

@@ -71,6 +71,25 @@ namespace TelAPI.Api.Test
         }
 
         [Fact]
+        public void Can_I_Make_Call_With_Options()
+        {
+            var options = new CallOptions();
+            options.From = PhoneNumberFrom;
+            options.To = PhoneNumberTo;
+            options.Url = ActionUrl;
+            options.HeartbeatMethod = HttpMethod.Get;
+            options.HeartbeatUrl = "http://some-url.com";
+            options.Record = true;
+            options.RecordCallback = "http://record.com";
+
+            var receivedCall = Client.MakeCall(options);
+            var hangupCall = Client.HangupCall(receivedCall.Sid);
+
+            Assert.NotNull(receivedCall);
+            Assert.Equal(receivedCall.Sid, hangupCall.Sid);
+        }
+
+        [Fact]
         public void Can_I_Make_And_Interrupt_Call()
         {
             var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);

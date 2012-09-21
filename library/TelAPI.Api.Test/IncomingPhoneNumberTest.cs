@@ -36,5 +36,19 @@ namespace TelAPI.Api.Test
             var list = Client.GetIncomingPhoneNumbers(null, null, null, 1);
             Assert.NotNull(list);
         }
+
+        [Fact]
+        public void Can_I_Update_Number()
+        {
+            var number = Client.GetIncomingPhoneNumbers().IncomingPhoneNumbers[0];
+            number.HeartbeatUrl = "http://www.my-heartbeat.com";
+            number.HeartbeatMethod = "GET";
+
+            var update = Client.UpdateIncomingPhoneNumber(number);
+
+            Assert.NotNull(number);
+            Assert.NotNull(update);
+            Assert.Equal(number.Sid, update.Sid);
+        }
     }
 }
