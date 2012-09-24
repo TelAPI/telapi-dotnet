@@ -128,10 +128,11 @@ namespace TelAPI.Api.Test
             var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
             var receivedCall = Client.VoiceEffects(call.Sid, new VoiceEffectOptions
             {
-                Pitch = 0.5,
+                Pitch = -0.5,
                 Rate = 0,
                 PitchOctaves = -0.6,
-                AudioDirection = AudioDirection.In
+                AudioDirection = AudioDirection.In,
+                Tempo = 5.5
             });
 
             Client.HangupCall(call.Sid);

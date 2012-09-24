@@ -9,5 +9,6 @@ namespace TelAPI
         public double? PitchSemiTones { get; set; }
         public double? PitchOctaves { get; set; }
         public double? Rate { get; set; }
+        public double? Tempo { get; set; }
     }
 }

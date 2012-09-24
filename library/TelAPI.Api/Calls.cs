@@ -304,6 +304,7 @@ namespace TelAPI
             if (voiceOptions.PitchSemiTones.HasValue) request.AddParameter("PitchSemiTones", voiceOptions.PitchSemiTones);
             if (voiceOptions.PitchOctaves.HasValue) request.AddParameter("PitchOctaves", voiceOptions.PitchOctaves);
             if (voiceOptions.Rate.HasValue) request.AddParameter("Rate", voiceOptions.Rate);
+            if (voiceOptions.Tempo.HasValue) request.AddParameter("Tempo", voiceOptions.Tempo);
         }
 
         #endregion
