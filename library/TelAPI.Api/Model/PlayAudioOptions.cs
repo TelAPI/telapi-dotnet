@@ -4,7 +4,7 @@ namespace TelAPI
 {
     public class PlayAudioOptions
     {
-        public string Sounds { get; set; }
+        public string AudioUrl { get; set; }
         public int? Length { get; set; }
         public PlayAudioLeg? Leg { get; set; }
         public bool? Loop { get; set; }

@@ -149,11 +149,11 @@ namespace TelAPI
             return Execute<Call>(request);
         }
 
-        public Call PlayAudio(string callSid, string soundUrl)
+        public Call PlayAudio(string callSid, string audioUrl)
         {
             return PlayAudio(callSid, new PlayAudioOptions
                 {
-                    Sounds = soundUrl
+                    AudioUrl = audioUrl
                 });
         }
 
@@ -166,12 +166,12 @@ namespace TelAPI
         public Call PlayAudio(string callSid, PlayAudioOptions audioOptions)
         {
             Require.Argument("CallSid", callSid);
-            Require.Argument("Sounds", audioOptions.Sounds);
+            Require.Argument("AudioUrl", audioOptions.AudioUrl);
 
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.PlayAudioUri;
             request.AddUrlSegment(RequestUriParams.CallSid, callSid);
-
+            
             CreatePlayAudioOptions(audioOptions, request);
 
             return Execute<Call>(request);
@@ -286,6 +286,8 @@ namespace TelAPI
         /// <param name="request">Rest Request</param>
         private void CreatePlayAudioOptions(PlayAudioOptions audioOptions, RestRequest request)
         {
+            request.AddParameter("AudioUrl", audioOptions.AudioUrl);
+
             if (audioOptions.Length.HasValue) request.AddParameter("Length", audioOptions.Length);
             if (audioOptions.Leg.HasValue) request.AddParameter("Legs", audioOptions.Leg.ToString().ToLower());
             if (audioOptions.Loop.HasValue) request.AddParameter("Loop", audioOptions.Loop);

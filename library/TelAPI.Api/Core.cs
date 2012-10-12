@@ -80,13 +80,15 @@ namespace TelAPI
 		{
             request.RequestFormat = DataFormat.Json;
 
-            /*
+            /*            
             foreach (var p in request.Parameters)
             {
-                System.Diagnostics.Debug.WriteLine(String.Format("{0} {1} {2}", p.Name, p.Type, p.Value));
+                System.Diagnostics.Debug.WriteLine(String.Format("{0} = {1}", p.Name, p.Value));
             }
-            */
 
+            System.Diagnostics.Debug.WriteLine(request.Resource);            
+            */
+             
             IRestResponse<T> response;
             response = _client.Execute<T>(request);            
 
