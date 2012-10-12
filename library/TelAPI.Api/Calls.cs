@@ -300,11 +300,11 @@ namespace TelAPI
         private void CreateVoiceEffectsOptions(VoiceEffectOptions voiceOptions, RestRequest request)
         {
             if (voiceOptions.AudioDirection.HasValue) request.AddParameter("AudioDirection", voiceOptions.AudioDirection.ToString().ToLower());
-            if (voiceOptions.Pitch.HasValue) request.AddParameter("Pitch", voiceOptions.Pitch);
-            if (voiceOptions.PitchSemiTones.HasValue) request.AddParameter("PitchSemiTones", voiceOptions.PitchSemiTones);
-            if (voiceOptions.PitchOctaves.HasValue) request.AddParameter("PitchOctaves", voiceOptions.PitchOctaves);
-            if (voiceOptions.Rate.HasValue) request.AddParameter("Rate", voiceOptions.Rate);
-            if (voiceOptions.Tempo.HasValue) request.AddParameter("Tempo", voiceOptions.Tempo);
+            if (voiceOptions.Pitch.HasValue) request.AddParameter("Pitch", voiceOptions.Pitch.Value.ToString(CultureInfo.InvariantCulture));
+            if (voiceOptions.PitchSemiTones.HasValue) request.AddParameter("PitchSemiTones", voiceOptions.PitchSemiTones.Value.ToString(CultureInfo.InvariantCulture));
+            if (voiceOptions.PitchOctaves.HasValue) request.AddParameter("PitchOctaves", voiceOptions.PitchOctaves.Value.ToString(CultureInfo.InvariantCulture));
+            if (voiceOptions.Rate.HasValue) request.AddParameter("Rate", voiceOptions.Rate.Value.ToString(CultureInfo.InvariantCulture));
+            if (voiceOptions.Tempo.HasValue) request.AddParameter("Tempo", voiceOptions.Tempo.Value.ToString(CultureInfo.InvariantCulture));
         }
 
         #endregion
