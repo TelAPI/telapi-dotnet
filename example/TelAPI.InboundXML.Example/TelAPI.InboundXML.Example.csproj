@@ -41,11 +41,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="TelAPI.InboundXML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\TelAPI.InboundXML.dll</HintPath>
+      <HintPath>..\Dependency\TelAPI.InboundXML.dll</HintPath>
     </Reference>
-    <Reference Include="YAXLib, Version=2.9.0.0, Culture=neutral, PublicKeyToken=7cc39f8266ad1835, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\YAXLib.dll</HintPath>
+    <Reference Include="YAXLib-custom">
+      <HintPath>..\..\dll\net-3.5-4\YAXLib-custom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
