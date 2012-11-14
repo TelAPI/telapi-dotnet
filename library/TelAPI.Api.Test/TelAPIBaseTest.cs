@@ -10,11 +10,11 @@ namespace TelAPI.Api.Test
         public const string AccountSid = "your-account-sid";
         public const string AuthToken = "your-auth-token";
 
-        public const string PhoneNumberFrom = "+1234556776";
-        public const string PhoneNumberTo = "+1245656566";
+        public const string PhoneNumberFrom = "+123456789";
+        public const string PhoneNumberTo = "+123456788";
         public const string ConferenceSid = "sid";
-        public const string RecordingSid = "sid";
-        public const string RecordingCallSid = "sid";
+        public const string RecordingSid = "recording-sid";
+        public const string RecordingCallSid = "call-sid";
         public const string IsoCountryCode = "US";
         public const string TestCountryCode = "RU";
         public const string ActionUrl = "http://some-action-url.com";

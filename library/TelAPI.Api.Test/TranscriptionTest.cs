@@ -46,7 +46,7 @@ namespace TelAPI.Api.Test
         public void Can_I_Record_Transcriptions()
         {
             var list = Client.GetAccountRecordings();
-            var recording = list.Recordings[0];
+            var recording = list.Recordings[1];
 
             var transcriptionToCheck = Client.TranscribeRecording(recording.Sid);
 

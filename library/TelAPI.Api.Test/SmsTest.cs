@@ -9,7 +9,8 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_And_Send_Sms()
         {
-            var newSms = Client.SendSmsMessage(PhoneNumberFrom, PhoneNumberTo, "Hello world");
+            var random = new Random();
+            var newSms = Client.SendSmsMessage(PhoneNumberFrom, PhoneNumberTo, "Hello world" + random.Next(500));
             var receivedSms = Client.GetSmsMessage(newSms.Sid);
 
             Assert.Equal(newSms.Sid, receivedSms.Sid);
