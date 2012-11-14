@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4EA530E4-8EF2-44FA-9FC1-ADC8D5545729}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TelAPI.WinRT.Api</RootNamespace>
+    <AssemblyName>TelAPI.WinRT.Api</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\TelAPI.Api\Model\Account.cs">
+      <Link>Model\Account.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Application.cs">
+      <Link>Model\Application.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\ApplicationResult.cs">
+      <Link>Model\ApplicationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\AvailablePhoneNumber.cs">
+      <Link>Model\AvailablePhoneNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\AvailablePhoneNumberResult.cs">
+      <Link>Model\AvailablePhoneNumberResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Call.cs">
+      <Link>Model\Call.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CallListOptions.cs">
+      <Link>Model\CallListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CallOptions.cs">
+      <Link>Model\CallOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CallResult.cs">
+      <Link>Model\CallResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Capabilites.cs">
+      <Link>Model\Capabilites.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CarrierLookup.cs">
+      <Link>Model\CarrierLookup.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CarrierLookupResult.cs">
+      <Link>Model\CarrierLookupResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CNAMLookup.cs">
+      <Link>Model\CNAMLookup.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\CNAMLookupResult.cs">
+      <Link>Model\CNAMLookupResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Conference.cs">
+      <Link>Model\Conference.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\ConferenceResponse.cs">
+      <Link>Model\ConferenceResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\ConferenceResult.cs">
+      <Link>Model\ConferenceResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Configuration\ITelAPIConfiguration.cs">
+      <Link>Model\Configuration\ITelAPIConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Converter\DateTimeConverter.cs">
+      <Link>Model\Converter\DateTimeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\AccountStatus.cs">
+      <Link>Model\Enum\AccountStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\AudioDirection.cs">
+      <Link>Model\Enum\AudioDirection.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\CallStatus.cs">
+      <Link>Model\Enum\CallStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\ComparasionType.cs">
+      <Link>Model\Enum\ComparasionType.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\ConferenceStatus.cs">
+      <Link>Model\Enum\ConferenceStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\HangupCallStatus.cs">
+      <Link>Model\Enum\HangupCallStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\HttpMethod.cs">
+      <Link>Model\Enum\HttpMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\NotificationLog.cs">
+      <Link>Model\Enum\NotificationLog.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\PlayAudioLeg.cs">
+      <Link>Model\Enum\PlayAudioLeg.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\PlayDtmfLeg.cs">
+      <Link>Model\Enum\PlayDtmfLeg.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\SmsMessageStatus.cs">
+      <Link>Model\Enum\SmsMessageStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\TranscriptionStatus.cs">
+      <Link>Model\Enum\TranscriptionStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\TranscriptionType.cs">
+      <Link>Model\Enum\TranscriptionType.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Fraud.cs">
+      <Link>Model\Fraud.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\FraudResult.cs">
+      <Link>Model\FraudResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\IncomingPhoneNumber.cs">
+      <Link>Model\IncomingPhoneNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\IncomingPhoneNumberResult.cs">
+      <Link>Model\IncomingPhoneNumberResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Notification.cs">
+      <Link>Model\Notification.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\NotificationResult.cs">
+      <Link>Model\NotificationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Participant.cs">
+      <Link>Model\Participant.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\ParticipantResult.cs">
+      <Link>Model\ParticipantResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\PlayAudioOptions.cs">
+      <Link>Model\PlayAudioOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Recording.cs">
+      <Link>Model\Recording.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\RecordingResult.cs">
+      <Link>Model\RecordingResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Resources\RequestUri.cs">
+      <Link>Model\Resource\RequestUri.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\RestException.cs">
+      <Link>Model\RestException.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\SmsMessage.cs">
+      <Link>Model\SmsMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\SmsMessageListOptions.cs">
+      <Link>Model\SmsMessageListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\SmsMessageResult.cs">
+      <Link>Model\SmsMessageResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\TelAPIBase.cs">
+      <Link>Model\TelAPIBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\TelAPIException.cs">
+      <Link>Model\TelAPIException.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\TelAPIListBase.cs">
+      <Link>Model\TelAPIListBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Transcription.cs">
+      <Link>Model\Transcription.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\TranscriptionResult.cs">
+      <Link>Model\TranscriptionResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\VoiceEffectOptions.cs">
+      <Link>Model\VoiceEffectOptions.cs</Link>
+    </Compile>
+    <Compile Include="Accounts.cs" />
+    <Compile Include="Applications.cs" />
+    <Compile Include="AvaliablePhoneNumbers.cs" />
+    <Compile Include="Calls.cs" />
+    <Compile Include="CarrierServices.cs" />
+    <Compile Include="Conferences.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="Frauds.cs" />
+    <Compile Include="IncomingPhoneNumbers.cs" />
+    <Compile Include="Notifications.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recordings.cs" />
+    <Compile Include="Sms.cs" />
+    <Compile Include="Transcriptions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dll\WinRT\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleRtRest, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dll\WinRT\SimpleRtRest.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
