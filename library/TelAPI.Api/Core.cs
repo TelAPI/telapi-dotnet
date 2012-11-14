@@ -32,7 +32,7 @@ namespace TelAPI
         /// <param name="authToken">The AuthToken to authenticate with</param>
         public TelAPIRestClient(string accountSid, string authToken)
         {
-            ApiVersion = "2011-07-01";
+            ApiVersion = "v1";
             BaseUrl = "https://api.telapi.com/";
             AccountSid = accountSid;
             AuthToken = authToken;
@@ -79,6 +79,7 @@ namespace TelAPI
         public T Execute<T>(RestRequest request) where T : new()
 		{
             request.RequestFormat = DataFormat.Json;
+            //request.DateFormat = "ddd, dd MMM yyyy HH:mm:ss 0";
 
             /*            
             foreach (var p in request.Parameters)
@@ -102,7 +103,7 @@ namespace TelAPI
             }  
 
             //print out JSON response for testing purpose
-            //System.Diagnostics.Debug.WriteLine(response.Content);
+            System.Diagnostics.Debug.WriteLine(response.Content);
         
             return response.Data;
 		}

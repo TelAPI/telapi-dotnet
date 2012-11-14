@@ -31,6 +31,19 @@ namespace TelAPI
         }
     }
 
+    public class TelAPIForbidenException : TelAPIException
+    {
+        public TelAPIForbidenException(string message)
+            : base(message)
+        {
+        }
+
+        public TelAPIForbidenException(string message, Exception e)
+            : base(message, e)
+        {
+        }
+    }
+
     public class TelAPIUnauthorizedException : TelAPIException
     {
         public TelAPIUnauthorizedException(string message)

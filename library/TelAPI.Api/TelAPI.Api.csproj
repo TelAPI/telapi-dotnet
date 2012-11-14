@@ -32,11 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.103.4\lib\net35-client\RestSharp.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dll\net-3.5-4\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=103.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dll\net-3.5-4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -68,6 +74,7 @@
     <Compile Include="Model\Configuration\ITelAPIConfiguration.cs" />
     <Compile Include="Model\CNAMLookupResult.cs" />
     <Compile Include="Model\CarrierLookupResult.cs" />
+    <Compile Include="Model\Converter\DateTimeConverter.cs" />
     <Compile Include="Model\Enum\ConferenceStatus.cs" />
     <Compile Include="Model\ParticipantResult.cs" />
     <Compile Include="Model\Enum\AccountStatus.cs" />
@@ -109,9 +116,6 @@
     <Compile Include="Recordings.cs" />
     <Compile Include="Sms.cs" />
     <Compile Include="Transcriptions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

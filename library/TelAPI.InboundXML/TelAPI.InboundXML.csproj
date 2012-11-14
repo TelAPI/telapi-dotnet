@@ -36,9 +36,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="YAXLib, Version=2.9.0.0, Culture=neutral, PublicKeyToken=7cc39f8266ad1835, processorArchitecture=MSIL">
+    <Reference Include="YAXLib-custom, Version=2.11.0.0, Culture=neutral, PublicKeyToken=15c43682c986900f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Renato\Desktop\YAXLib-2.9-Bin\YAXLib-2.9-Bin\YAXLib.dll</HintPath>
+      <HintPath>..\..\dll\net-3.5-4\YAXLib-custom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

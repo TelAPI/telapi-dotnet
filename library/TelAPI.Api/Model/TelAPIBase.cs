@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TelAPI
 {
@@ -10,11 +11,13 @@ namespace TelAPI
         /// <summary>
         /// Exception information
         /// </summary>
+        [JsonProperty(PropertyName = "rest_exception")]
         public RestException RestException { get; set; }
         
         /// <summary>
         /// Uri
         /// </summary>
+        [JsonProperty(PropertyName = "uri")]
         public Uri Uri { get; set; }
     }
 }
