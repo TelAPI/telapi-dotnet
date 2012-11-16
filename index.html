@@ -130,7 +130,7 @@ namespace TelAPI.InboundXML.Example
             var response = new Response();
 
             response.Record("http://example.com/")
-                    .Say("Hello!", Voice.man, null);
+                    .Say("Hello!", Voice.man, null)
                     .Dial(new Dial().Conference("ConfRoom"));
 
             Console.WriteLine("{0}", response.CreateXml());
