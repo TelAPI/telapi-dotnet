@@ -83,11 +83,11 @@ namespace TelAPI
 
             switch (response.StatusCode)
             {
-                case HttpStatusCode.BadRequest: throw new TelAPIBadRequestException(response.ErrorMessage);
-                case HttpStatusCode.Unauthorized: throw new TelAPIUnauthorizedException(response.ErrorMessage);
-                case HttpStatusCode.Forbidden:throw new TelAPIForbidenException(response.ErrorMessage);
-                case HttpStatusCode.NotFound: throw new TelAPINotFoundException(response.ErrorMessage);
-                case HttpStatusCode.InternalServerError: throw new TelAPIInternalErrorException(response.ErrorMessage);
+                case HttpStatusCode.BadRequest: throw new TelAPIBadRequestException(response.ErrorMessage + " Details : " + response.RawData);
+                case HttpStatusCode.Unauthorized: throw new TelAPIUnauthorizedException(response.ErrorMessage + " Details : " + response.RawData);
+                case HttpStatusCode.Forbidden: throw new TelAPIForbidenException(response.ErrorMessage + " Details : " + response.RawData);
+                case HttpStatusCode.NotFound: throw new TelAPINotFoundException(response.ErrorMessage + " Details : " + response.RawData);
+                case HttpStatusCode.InternalServerError: throw new TelAPIInternalErrorException(response.ErrorMessage + " Details : " + response.RawData);
             }  
 
             //print out JSON response for testing purpose

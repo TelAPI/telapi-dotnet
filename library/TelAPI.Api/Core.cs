@@ -95,11 +95,11 @@ namespace TelAPI
 
             switch ((int)response.StatusCode)
             {
-                case 0: throw new TelAPIException(response.ErrorMessage, response.ErrorException.InnerException);
-                case 400: throw new TelAPIBadRequestException(response.ErrorMessage, response.ErrorException.InnerException);
-                case 401: throw new TelAPIUnauthorizedException(response.ErrorMessage, response.ErrorException.InnerException);
-                case 404: throw new TelAPINotFoundException(response.ErrorMessage, response.ErrorException.InnerException);
-                case 500: throw new TelAPIInternalErrorException(response.ErrorMessage, response.ErrorException.InnerException);
+                case 0: throw new TelAPIException(response.ErrorMessage + " Details : " + response.Content);
+                case 400: throw new TelAPIBadRequestException(response.ErrorMessage + " Details : " + response.Content);
+                case 401: throw new TelAPIUnauthorizedException(response.ErrorMessage + " Details : " + response.Content);
+                case 404: throw new TelAPINotFoundException(response.ErrorMessage + " Details : " + response.Content);
+                case 500: throw new TelAPIInternalErrorException(response.ErrorMessage + " Details : " + response.Content);
             }  
 
             //print out JSON response for testing purpose
