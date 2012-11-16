@@ -18,9 +18,9 @@ Download the zip of this repo and add the desired DLLs to your project.
 
 **Important!**
 
-*If you are adding TelAPI functionality to a windows 8 metro app, you want the [WinRT DLLs](https://github.com/TelAPI/telapi-dotnet/tree/master/dll/WinRT).
+* If you are adding TelAPI functionality to a windows 8 metro app, you want the [WinRT DLLs](https://github.com/TelAPI/telapi-dotnet/tree/master/dll/WinRT).
 
-*If you are using .NET to for web development or non-metro apps, you want the [net-3.5-4 DLLs](https://github.com/TelAPI/telapi-dotnet/tree/master/dll/net-3.5-4).
+* If you are using .NET to for web development or non-metro apps, you want the [net-3.5-4 DLLs](https://github.com/TelAPI/telapi-dotnet/tree/master/dll/net-3.5-4).
 
 ### Mac/Linux
 
