@@ -243,19 +243,19 @@ namespace TelAPI
             request.AddParameter("Url", callOptions.Url);
 
             if (callOptions.ForwardedFrom.HasValue()) request.AddParameter("ForwardedFrom", callOptions.ForwardedFrom);
-            if (callOptions.Method.HasValue) request.AddParameter("Method", callOptions.Method);
+            if (callOptions.Method.HasValue) request.AddParameter("Method", callOptions.Method.ToString().ToUpper());
             if (callOptions.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", callOptions.FallbackUrl);
-            if (callOptions.FallbackMethod.HasValue) request.AddParameter("FallbackMethod", callOptions.FallbackMethod);
+            if (callOptions.FallbackMethod.HasValue) request.AddParameter("FallbackMethod", callOptions.FallbackMethod.ToString().ToUpper());
             if (callOptions.StatusCallback.HasValue()) request.AddParameter("StatusCallback", callOptions.StatusCallback);
-            if (callOptions.StatusCallbackMethod.HasValue) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod.ToString());
+            if (callOptions.StatusCallbackMethod.HasValue) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod.ToString().ToUpper());
             if (callOptions.SendDigits.HasValue()) request.AddParameter("SendDigits", callOptions.SendDigits);
             if (callOptions.Timeout.HasValue) request.AddParameter("Timeout", callOptions.Timeout);
             if (callOptions.HideCallerId.HasValue) request.AddParameter("HideCallerId", callOptions.HideCallerId);
             if (callOptions.HeartbeatUrl.HasValue()) request.AddParameter("HeartbeartUrl", callOptions.HeartbeatUrl);
-            if (callOptions.HeartbeatMethod.HasValue) request.AddParameter("HeartbeatMethod", callOptions.HeartbeatMethod.ToString());
+            if (callOptions.HeartbeatMethod.HasValue) request.AddParameter("HeartbeatMethod", callOptions.HeartbeatMethod.ToString().ToUpper());
             if (callOptions.Record.HasValue) request.AddParameter("Record", callOptions.Record);
             if (callOptions.RecordCallback.HasValue()) request.AddParameter("RecordCallback", callOptions.RecordCallback);
-            if (callOptions.RecordCallbackMethod.HasValue) request.AddParameter("RecordCallbackMethod", callOptions.RecordCallbackMethod.ToString());
+            if (callOptions.RecordCallbackMethod.HasValue) request.AddParameter("RecordCallbackMethod", callOptions.RecordCallbackMethod.ToString().ToUpper());
             if (callOptions.Transcribe.HasValue) request.AddParameter("Transcribe", callOptions.Transcribe);
             if (callOptions.TranscribeCallback.HasValue()) request.AddParameter("TranscribeCallback", callOptions.TranscribeCallback);
         }

@@ -87,7 +87,6 @@ namespace TelAPI.Api.Test
             callOptions.FallbackMethod = HttpMethod.Get;
             callOptions.HeartbeatUrl = "http://liveoutput.com/EATCN84c";
             callOptions.HeartbeatMethod = HttpMethod.Get;
-            callOptions.ForwardedFrom = "7325551423";
             callOptions.HideCallerId = false;
             callOptions.Record = false;
             callOptions.RecordCallback = "http://liveoutput.com/EATCN84c";

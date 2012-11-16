@@ -69,16 +69,28 @@ namespace TelAPI.Api.Test
         [Fact]
         public async Task Can_I_Make_Call_With_Options()
         {
-            var options = new CallOptions();
-            options.From = PhoneNumberFrom;
-            options.To = PhoneNumberTo;
-            options.Url = ActionUrl;
-            options.HeartbeatMethod = HttpMethod.Get;
-            options.HeartbeatUrl = "http://some-url.com";
-            options.Record = true;
-            options.RecordCallback = "http://record.com";
-            
-            var receivedCall = await Client.MakeCall(options);
+            var callOptions = new CallOptions();
+
+            callOptions.From = PhoneNumberFrom;
+            callOptions.To = PhoneNumberTo;
+            callOptions.Url = "http://liveoutput.com/EATCN84c";
+            callOptions.Method = HttpMethod.Get;
+            callOptions.Timeout = 5;
+            callOptions.SendDigits = "5";
+            callOptions.StatusCallback = "http://liveoutput.com/EATCN84c";
+            callOptions.StatusCallbackMethod = HttpMethod.Post;
+            callOptions.FallbackUrl = "http://liveoutput.com/EATCN84c";
+            callOptions.FallbackMethod = HttpMethod.Get;
+            callOptions.HeartbeatUrl = "http://liveoutput.com/EATCN84c";
+            callOptions.HeartbeatMethod = HttpMethod.Get;
+            callOptions.HideCallerId = false;
+            callOptions.Record = false;
+            callOptions.RecordCallback = "http://liveoutput.com/EATCN84c";
+            callOptions.RecordCallbackMethod = HttpMethod.Post;
+            callOptions.Transcribe = true;
+            callOptions.TranscribeCallback = "http://liveoutput.com/EATCN84c";
+
+            var receivedCall = await Client.MakeCall(callOptions);
             var hangupCall = await Client.HangupCall(receivedCall.Sid);
 
             Assert.NotNull(receivedCall);
