@@ -243,9 +243,9 @@ namespace TelAPI
             request.AddParameter("Url", callOptions.Url);
 
             if (callOptions.ForwardedFrom.HasValue()) request.AddParameter("ForwardedFrom", callOptions.ForwardedFrom);
-            if (callOptions.Method.HasValue()) request.AddParameter("Method", callOptions.Method);
+            if (callOptions.Method.HasValue) request.AddParameter("Method", callOptions.Method);
             if (callOptions.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", callOptions.FallbackUrl);
-            if (callOptions.FallbackMethod.HasValue()) request.AddParameter("FallbackMethod", callOptions.FallbackMethod);
+            if (callOptions.FallbackMethod.HasValue) request.AddParameter("FallbackMethod", callOptions.FallbackMethod);
             if (callOptions.StatusCallback.HasValue()) request.AddParameter("StatusCallback", callOptions.StatusCallback);
             if (callOptions.StatusCallbackMethod.HasValue) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod.ToString());
             if (callOptions.SendDigits.HasValue()) request.AddParameter("SendDigits", callOptions.SendDigits);
