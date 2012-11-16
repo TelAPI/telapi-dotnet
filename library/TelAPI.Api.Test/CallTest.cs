@@ -93,7 +93,7 @@ namespace TelAPI.Api.Test
         public void Can_I_Make_And_Interrupt_Call()
         {
             var call = Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
-            var receivedCall = Client.InterruptLiveCall(call.Sid, ActionUrl, HttpMethod.Post, HangupCallStatus.Canceled);
+            var receivedCall = Client.InterruptLiveCall(call.Sid, null, null, null);
 
             Assert.NotNull(call);
             Assert.Equal(call.Sid, receivedCall.Sid);

@@ -110,19 +110,17 @@ namespace TelAPI
         /// <param name="httpMethod">Specifies the HTTP method used to request forwarding URL. Allowed Value: POST or GET. Default Value: POST</param>
         /// <param name="status">The status used to end the call. canceled only ends queued/ringing calls while completed ends in-progress calls as well as queued/ringing calls. Allowed Value: canceled or completed</param>
         /// <returns></returns>
-        public async Task<Call> InterruptLiveCall(string callSid, string url, HttpMethod httpMethod, HangupCallStatus status)
+        public async Task<Call> InterruptLiveCall(string callSid, string url, HttpMethod? httpMethod, HangupCallStatus? status)
         {
             Require.Argument("CallSid", callSid);
-            Require.Argument("Url", url);
-            Require.Argument("Method", httpMethod);
-            Require.Argument("Status", status);
 
             var request = new RestRequest(System.Net.Http.HttpMethod.Post);
             request.Resource = RequestUri.InterruptLiveCallUri;
             request.AddUrlSegment(RequestUriParams.CallSid, callSid);
-            request.AddParameter("Url", url);
-            request.AddParameter("Method", httpMethod.ToString().ToLower());
-            request.AddParameter("Status", status.ToString().ToLower());
+            
+            if(url != null) request.AddParameter("Url", url);
+            if(httpMethod != null) request.AddParameter("Method", httpMethod.ToString().ToLower());
+            if(status != null) request.AddParameter("Status", status.ToString().ToLower());
 
             return await Execute<Call>(request);
         }
@@ -244,11 +242,11 @@ namespace TelAPI
             request.AddParameter("Url", callOptions.Url);
 
             if (callOptions.ForwardedFrom != null) request.AddParameter("ForwardedFrom", callOptions.ForwardedFrom);
-            if (callOptions.Method != null) request.AddParameter("Method", callOptions.Method);
+            if (callOptions.Method != null) request.AddParameter("Method", callOptions.Method.ToString());
             if (callOptions.FallbackUrl != null) request.AddParameter("FallbackUrl", callOptions.FallbackUrl);
-            if (callOptions.FallbackMethod != null) request.AddParameter("FallbackMethod", callOptions.FallbackMethod);
+            if (callOptions.FallbackMethod != null) request.AddParameter("FallbackMethod", callOptions.FallbackMethod.ToString());
             if (callOptions.StatusCallback != null) request.AddParameter("StatusCallback", callOptions.StatusCallback);
-            if (callOptions.StatusCallbackMethod != null) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod);
+            if (callOptions.StatusCallbackMethod != null) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod.ToString());
             if (callOptions.SendDigits != null) request.AddParameter("SendDigits", callOptions.SendDigits);
             if (callOptions.Timeout.HasValue) request.AddParameter("Timeout", callOptions.Timeout);
             if (callOptions.HideCallerId.HasValue) request.AddParameter("HideCallerId", callOptions.HideCallerId);

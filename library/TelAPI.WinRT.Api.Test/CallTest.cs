@@ -77,7 +77,7 @@ namespace TelAPI.Api.Test
             options.HeartbeatUrl = "http://some-url.com";
             options.Record = true;
             options.RecordCallback = "http://record.com";
-
+            
             var receivedCall = await Client.MakeCall(options);
             var hangupCall = await Client.HangupCall(receivedCall.Sid);
 
@@ -89,7 +89,7 @@ namespace TelAPI.Api.Test
         public async Task Can_I_Make_And_Interrupt_Call()
         {
             var call = await Client.MakeCall(PhoneNumberFrom, PhoneNumberTo, ActionUrl);
-            var receivedCall = await Client.InterruptLiveCall(call.Sid, ActionUrl, HttpMethod.Post, HangupCallStatus.Canceled);
+            var receivedCall = await Client.InterruptLiveCall(call.Sid, null, null, null);
 
             Assert.NotNull(call);
             Assert.Equal(call.Sid, receivedCall.Sid);

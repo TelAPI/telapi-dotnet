@@ -28,7 +28,7 @@ namespace TelAPI
         /// <summary>
         /// Specifies the HTTP method used to request the required URL once call connects.
         /// </summary>
-        public string Method { get; set; }
+        public HttpMethod? Method { get; set; }
 
         /// <summary>
         /// URL used if any errors occur during execution of InboundXML or at initial request of the required Url provided with the POST.
@@ -38,7 +38,7 @@ namespace TelAPI
         /// <summary>
         /// Specifies the HTTP method used to request FallbackUrl.
         /// </summary>
-        public string FallbackMethod { get; set; }
+        public HttpMethod? FallbackMethod { get; set; }
 
         /// <summary>
         /// URL that can be requested to receive notification when call has ended.
@@ -48,8 +48,7 @@ namespace TelAPI
         /// <summary>
         /// Specifies the HTTP method used to request StatusCallbackUrl.
         /// </summary>
-        public string StatusCallbackMethod { get; set; }
-               
+        public HttpMethod? StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Dials digits once call connects. Can be used to forward callers to different extensions or numbers.

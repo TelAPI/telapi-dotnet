@@ -111,19 +111,17 @@ namespace TelAPI
         /// <param name="httpMethod">Specifies the HTTP method used to request forwarding URL. Allowed Value: POST or GET. Default Value: POST</param>
         /// <param name="status">The status used to end the call. canceled only ends queued/ringing calls while completed ends in-progress calls as well as queued/ringing calls. Allowed Value: canceled or completed</param>
         /// <returns></returns>
-        public Call InterruptLiveCall(string callSid, string url, HttpMethod httpMethod, HangupCallStatus status)
+        public Call InterruptLiveCall(string callSid, string url, HttpMethod? httpMethod, HangupCallStatus? status)
         {
             Require.Argument("CallSid", callSid);
-            Require.Argument("Url", url);
-            Require.Argument("Method", httpMethod);
-            Require.Argument("Status", status);
-
+            
             var request = new RestRequest(Method.POST);
             request.Resource = RequestUri.InterruptLiveCallUri;
             request.AddUrlSegment(RequestUriParams.CallSid, callSid);
-            request.AddParameter("Url", url);
-            request.AddParameter("Method", httpMethod.ToString().ToLower());
-            request.AddParameter("Status", status.ToString().ToLower());
+            
+            if(url.HasValue()) request.AddParameter("Url", url);
+            if(httpMethod.HasValue) request.AddParameter("Method", httpMethod.ToString().ToLower());
+            if(status.HasValue) request.AddParameter("Status", status.ToString().ToLower());
 
             return Execute<Call>(request);
         }
@@ -249,7 +247,7 @@ namespace TelAPI
             if (callOptions.FallbackUrl.HasValue()) request.AddParameter("FallbackUrl", callOptions.FallbackUrl);
             if (callOptions.FallbackMethod.HasValue()) request.AddParameter("FallbackMethod", callOptions.FallbackMethod);
             if (callOptions.StatusCallback.HasValue()) request.AddParameter("StatusCallback", callOptions.StatusCallback);
-            if (callOptions.StatusCallbackMethod.HasValue()) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod);
+            if (callOptions.StatusCallbackMethod.HasValue) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod.ToString());
             if (callOptions.SendDigits.HasValue()) request.AddParameter("SendDigits", callOptions.SendDigits);
             if (callOptions.Timeout.HasValue) request.AddParameter("Timeout", callOptions.Timeout);
             if (callOptions.HideCallerId.HasValue) request.AddParameter("HideCallerId", callOptions.HideCallerId);
@@ -265,7 +263,7 @@ namespace TelAPI
         /// <summary>
         /// Helper method to populate Rest params
         /// </summary>
-        /// <param name="callOptions">Call options</param>
+        /// <param name="callListOptions">Call options</param>
         /// <param name="request">Rest Request</param>
         private void CreateCallListOptions(CallListOptions callListOptions, RestRequest request)
         {
@@ -282,7 +280,7 @@ namespace TelAPI
         /// <summary>
         /// Helper method to populate Rest params
         /// </summary>
-        /// <param name="callOptions">Audio options</param>
+        /// <param name="audioOptions">Audio options</param>
         /// <param name="request">Rest Request</param>
         private void CreatePlayAudioOptions(PlayAudioOptions audioOptions, RestRequest request)
         {
@@ -297,7 +295,7 @@ namespace TelAPI
         /// <summary>
         /// Helper method to populate Rest params
         /// </summary>
-        /// <param name="callOptions">Voice effect options</param>
+        /// <param name="voiceOptions">Voice effect options</param>
         /// <param name="request">Rest Request</param>
         private void CreateVoiceEffectsOptions(VoiceEffectOptions voiceOptions, RestRequest request)
         {
