@@ -30,5 +30,17 @@ namespace TelAPI.Api.Test
 
             Assert.NotNull(cnams);
         }
+
+        [Fact]
+        public async Task Can_I_Get_Bna_Lookup()
+        {
+            var result = await Client.BnaLookup(PhoneNumberFrom);
+            foreach (var r in result.BNALookups)
+            {
+                Debug.WriteLine("{0} {1} {2}", r.City, r.FirstName, r.LastName);
+            }
+
+            Assert.NotNull(result);
+        }
     }
 }

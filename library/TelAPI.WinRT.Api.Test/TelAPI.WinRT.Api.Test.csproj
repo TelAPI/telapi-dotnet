@@ -126,6 +126,7 @@
     <Compile Include="TelAPIBaseTest.cs" />
     <Compile Include="TelAPIRestClientTest.cs" />
     <Compile Include="TranscriptionTest.cs" />
+    <Compile Include="UsageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

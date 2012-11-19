@@ -8,7 +8,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Add_And_Get_And_Delete_Phone_Number()
         {
-            var numbers = Client.GetAvailablePhoneNumbers(IsoCountryCode);
+            var numbers = Client.GetAvailablePhoneNumbers(IsoCountryCode, AvaliablePhoneNumberType.Local);
             var possibleNumber = numbers.AvailablePhoneNumbers[0];
             var newNumber = Client.AddIncomingPhoneNumber(possibleNumber.PhoneNumber, possibleNumber.NPA);
             var getNumber = Client.GetIncomingPhoneNumber(newNumber.Sid);

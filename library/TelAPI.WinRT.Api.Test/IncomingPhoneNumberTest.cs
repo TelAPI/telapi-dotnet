@@ -9,7 +9,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public async Task Can_I_Add_And_Get_And_Delete_Phone_Number()
         {
-            var numbers = await Client.GetAvailablePhoneNumbers(IsoCountryCode);
+            var numbers = await Client.GetAvailablePhoneNumbers(IsoCountryCode, AvaliablePhoneNumberType.Local);
             var possibleNumber = numbers.AvailablePhoneNumbers[0];
             var newNumber = await Client.AddIncomingPhoneNumber(possibleNumber.PhoneNumber, possibleNumber.NPA);
             var getNumber = await Client.GetIncomingPhoneNumber(newNumber.Sid);

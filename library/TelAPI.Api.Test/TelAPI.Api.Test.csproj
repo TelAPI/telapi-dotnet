@@ -66,6 +66,7 @@
     <Compile Include="SmsTest.cs" />
     <Compile Include="TelAPIRestClientTest.cs" />
     <Compile Include="TranscriptionTest.cs" />
+    <Compile Include="UsageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TelAPI.Api\TelAPI.Api.csproj">
