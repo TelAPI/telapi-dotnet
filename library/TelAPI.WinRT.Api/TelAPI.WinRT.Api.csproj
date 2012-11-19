@@ -114,6 +114,12 @@
     <Compile Include="..\TelAPI.Api\Model\AvailablePhoneNumberResult.cs">
       <Link>Model\AvailablePhoneNumberResult.cs</Link>
     </Compile>
+    <Compile Include="..\TelAPI.Api\Model\BNALookup.cs">
+      <Link>Model\BNALookup.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\BNALookupResult.cs">
+      <Link>Model\BNALookupResult.cs</Link>
+    </Compile>
     <Compile Include="..\TelAPI.Api\Model\Call.cs">
       <Link>Model\Call.cs</Link>
     </Compile>
@@ -162,6 +168,9 @@
     <Compile Include="..\TelAPI.Api\Model\Enum\AudioDirection.cs">
       <Link>Model\Enum\AudioDirection.cs</Link>
     </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\AvaliablePhoneNumberType.cs">
+      <Link>Model\Enum\AvaliablePhoneNumberType.cs</Link>
+    </Compile>
     <Compile Include="..\TelAPI.Api\Model\Enum\CallStatus.cs">
       <Link>Model\Enum\CallStatus.cs</Link>
     </Compile>
@@ -185,6 +194,9 @@
     </Compile>
     <Compile Include="..\TelAPI.Api\Model\Enum\PlayDtmfLeg.cs">
       <Link>Model\Enum\PlayDtmfLeg.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Enum\Products.cs">
+      <Link>Model\Enum\Products.cs</Link>
     </Compile>
     <Compile Include="..\TelAPI.Api\Model\Enum\SmsMessageStatus.cs">
       <Link>Model\Enum\SmsMessageStatus.cs</Link>
@@ -258,6 +270,12 @@
     <Compile Include="..\TelAPI.Api\Model\TranscriptionResult.cs">
       <Link>Model\TranscriptionResult.cs</Link>
     </Compile>
+    <Compile Include="..\TelAPI.Api\Model\Usage.cs">
+      <Link>Model\Usage.cs</Link>
+    </Compile>
+    <Compile Include="..\TelAPI.Api\Model\UsageResult.cs">
+      <Link>Model\UsageResult.cs</Link>
+    </Compile>
     <Compile Include="..\TelAPI.Api\Model\VoiceEffectOptions.cs">
       <Link>Model\VoiceEffectOptions.cs</Link>
     </Compile>
@@ -275,6 +293,7 @@
     <Compile Include="Recordings.cs" />
     <Compile Include="Sms.cs" />
     <Compile Include="Transcriptions.cs" />
+    <Compile Include="Usages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
