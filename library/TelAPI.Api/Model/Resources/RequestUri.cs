@@ -88,9 +88,14 @@ namespace TelAPI
         public const string CallNotificationUri = "Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json";
 
         /// <summary>
-        /// Uri to get avaliable phone numbers
+        /// Uri to get avaliable phone numbers (local)
         /// </summary>
         public const string AvailablePhoneNumbersUri = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/Local.json";
+
+        /// <summary>
+        /// Uri to get avaliable phone numbers (toll free)
+        /// </summary>
+        public const string AvailableTollFreePhoneNumbersUri = "Accounts/{AccountSid}/AvailablePhoneNumbers/{IsoCountryCode}/TollFree.json";
 
         /// <summary>
         /// Uri to get incoming phone number
@@ -256,6 +261,21 @@ namespace TelAPI
         /// Uri to whitelist destination
         /// </summary>
         public const string FraudWhitelistDestination = "Accounts/{AccountSid}/Fraud/Whitelist/{CountryCode}.json";
+
+        /// <summary>
+        /// Uri to get account usages
+        /// </summary>
+        public const string GetUsagesUri = "Accounts/{AccountSid}/Usages.json";
+
+        /// <summary>
+        /// Uri to get single account usage by sid
+        /// </summary>
+        public const string GetUsageUri = "Accounts/{AccountSid}/Usages/{UsageSid}.json";
+
+        /// <summary>
+        /// Uri to have a BNA lookup on phone number
+        /// </summary>
+        public const string BnaLookup = "Accounts/{AccountSid}/BNA.json";
     }
 
     /// <summary>
@@ -317,5 +337,10 @@ namespace TelAPI
         /// Conference name
         /// </summary>
         public const string ConferenceSid = "ConferenceSid";
+
+        /// <summary>
+        /// Usage sid
+        /// </summary>
+        public const string UsageSid = "UsageSid";
     }
 }

@@ -38,5 +38,22 @@ namespace TelAPI
 
             return await Execute<CNAMDipResult>(request);
         }
+
+        /// <summary>
+        /// TelAPI provides an endpoint for performing BNA (Billing Name Address) lookups on numbers. 
+        /// BNA lookups provide geolocation information for phone numbers. BNA lookups are currently only available for US numbers.
+        /// </summary>
+        /// <param name="phoneNumber">The number of the phone you are attempting to perform the BNA lookup on.</param>
+        /// <returns></returns>
+        public async Task<BNALookupResult> BnaLookup(string phoneNumber)
+        {
+            Require.Argument("PhoneNumber", phoneNumber);
+
+            var request = new RestRequest();
+            request.Resource = RequestUri.BnaLookup;
+            request.AddParameter(RequestUriParams.PhoneNumber, phoneNumber);
+
+            return await Execute<BNALookupResult>(request);
+        }
     }
 }
