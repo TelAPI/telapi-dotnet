@@ -62,7 +62,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public async Task Can_I_Get_Usage_List_By_Options()
         {
-            var usages = await Client.GetUsages(12, 9, 2012, null, 10, null);
+            var usages = await Client.GetUsages(null, 9, 2012, null, 10, null);
 
             foreach (var usage in usages.Usages)
             {

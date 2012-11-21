@@ -60,7 +60,7 @@ namespace TelAPI.Api.Test
         [Fact]
         public void Can_I_Get_Usage_List_By_Options()
         {
-            var usages = Client.GetUsages(12, 9, 2012, null, 10, null);
+            var usages = Client.GetUsages(null, 9, 2012, null, 10, null);
 
             foreach (var usage in usages.Usages)
             {
