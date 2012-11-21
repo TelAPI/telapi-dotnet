@@ -11,7 +11,8 @@ namespace TelAPI.Example
 
             try
             {
-                var result = client.GetAvailablePhoneNumbers("country-iso-code");
+		// AvaliablePhoneNumberType specify which type of numbers to lookup : Local or TollFree
+                var result = client.GetAvailablePhoneNumbers("country-iso-code", AvaliablePhoneNumberType.Local);
 
                 foreach (var number in result.AvailablePhoneNumbers)
                 {

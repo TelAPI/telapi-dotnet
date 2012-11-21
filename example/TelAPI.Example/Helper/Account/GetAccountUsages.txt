@@ -1,0 +1,26 @@
+﻿using System;
+using TelAPI;
+
+namespace TelAPI.Example
+{
+    public class GetAccountUsages
+    {
+        public static void Main(string[] args)
+        {
+            var client = new TelAPIRestClient("your-account-sid", "your-auth-token");
+
+            try
+            {
+                var result = client.GetUsages(Products.InboundCall);
+                foreach (var usage in result.Usages)
+            	{
+                	Console.WriteLine("Usage sid : {0} -> {1}", usage.Sid, usage.Product);
+            	}
+            }
+            catch (TelAPIException ex)
+            {
+                Console.WriteLine("{0}", ex.Message);
+            }
+        }
+    }
+}
