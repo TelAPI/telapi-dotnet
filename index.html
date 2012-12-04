@@ -195,65 +195,33 @@ Console.WriteLine("Account sid : {0}", account.Sid);
 Console.WriteLine("Account friendlyname : {0}", account.FriendlyName);
 </pre>
 
-<!--
+
         <h4 style="display:inline;">View Usage</h4>
 
         <a href="http://www.telapi.com/docs/api/rest/accounts/view-usage/">Documentation</a><br>
 
 
-        <p>When requesting a single resource, the first parameter of the get must be a list to specify a sid:</p>
+        <p>Requesting a usage resource with the <a href="https://github.com/TelAPI/telapi-dotnet/blob/master/library/TelAPI.Api/Usages.cs#L87">GetUsage</a> method:</p>
 
 
 <pre class="prettyprint lang-csharp">
-client.get(
-    ['usages', '{UsageSid}'],
-    null,
-    function(response) {
-        util.log( JSON.stringify(response) );
-    },
-    function(error) {
-        util.log("Error: " + error)
-    }
-);                  
-</pre>
-
-      <p>Example log output:</p>
-
-<pre class="prettyprint lang-csharp">
+try
 {
-  "sid": "{UsageSid}",
-  "product": "Inbound Call",
-  "day": "27",
-  "month": "9",
-  "year": "2012",
-  "quantity": "2",
-  "average_cost": "0.010000",
-  "total_cost": "0.020000",
-  "uri": "/v1/Accounts/{AccountSid}/Usages/{UsageSid}.json"
+  var usage = client.GetUsage("{UsageSid}");
+  Console.WriteLine("Usage sid : {0} -> {1}", usage.Sid, usage.Product);
 }
+catch (TelAPIException ex)
+{
+  Console.WriteLine("{0}", ex.Message);
+}               
 </pre>
-
-<p>Then simply use dot notation to access individual resource properties:</p>
-
-<pre class="prettyprint lang-csharp">
-client.get(
-    ['usages', '{UsageSid}'],
-    null,
-    function(response) {
-        util.log( response.quantity );
-    },
-    function(error) {
-        util.log("Error: " + error)
-    }
-); 
-</pre> 
 
         <h4 style="display:inline;">List Usages</h4>
 
         <a href="http://www.telapi.com/docs/api/rest/accounts/list-usages/">Documentation</a><br>
 
 
-        <p>Request usages list resource filtering for usage only occurring in 2012:</p>
+        <p>Request usages list resource with the <a href="https://github.com/TelAPI/telapi-dotnet/blob/master/library/TelAPI.Api/Usages.cs#L16">GetUsages</a> method:</p>
 
 
 <pre class="prettyprint lang-csharp">
@@ -269,60 +237,6 @@ client.get(
 );               
 </pre>
 
-      <p>Example log output:</p>
-
-<pre class="prettyprint lang-csharp">
-{
-  "page": 0,
-  "num_pages": 1,
-  "page_size": 5,
-  "total": 2,
-  "start": 0,
-  "end": 2,
-  "uri": "/v1/Accounts/{AccountSid}/Usages.json",
-  "first_page_uri": "/v1/Accounts/{AccountSid}/Usages.json?Page=0&amp;PageSize=50",
-  "previous_page_uri": null,
-  "next_page_uri": null,
-  "last_page_uri": "/v1/Accounts/{AccountSid}/Usages.json?Page=0&amp;PageSize=50",
-  "usages": [
-    {
-      "sid": "{UsageSid}",
-      "product": "Inbound Call",
-      "day": "27",
-      "month": "9",
-      "year": "2012",
-      "quantity": "2",
-      "average_cost": "0.010000",
-      "total_cost": "0.020000",
-      "uri": "/v1/Accounts/{AccountSid}/Usages/{UsageSid}.json"
-    },
-    {
-      "sid": "{UsageSid}",
-      "product": "Recurring Inbound Channel",
-      "day": "1",
-      "month": "10",
-      "year": "2012",
-      "quantity": "1",
-      "average_cost": "27.000000",
-      "total_cost": "27.000000",
-      "uri": "/v1/Accounts/{AccountSid}/Usages/{UsageSid}.json"
-    }
-  ]
-}
-</pre>
-
-<p>Iterate over list resources like so:</p>
-
-<pre class="prettyprint lang-csharp">
-function(response) {
-    for ( var usage in response.usages ) {
-        util.log(
-            "Usage SID: " + response.usages[usage].sid
-        );
-    }
-}
-</pre>
--->
 
             <hr><h2 id="sms">SMS</h2>
 
@@ -335,17 +249,11 @@ function(response) {
 <pre class="prettyprint lang-csharp">
 try
 {
-
-    var messageOptions = new SmsMessageListOptions();
-    
-    messageOptions.PageSize = 5;
-
-    var result = client.GetSmsMessages(messageOptions);
-
-    foreach (var sms in result.SmsMessages)
-    {
-        Console.WriteLine("Sms body : {0}", sms.Body);
-    }
+    var result = client.GetUsages(Products.InboundCall);
+    foreach (var usage in result.Usages)
+  {
+      Console.WriteLine("Usage sid : {0} -> {1}", usage.Sid, usage.Product);
+  }
 }
 catch (TelAPIException ex)
 {
@@ -354,7 +262,7 @@ catch (TelAPIException ex)
 </pre> 
 
 
-<p>Note how any available properties of the account object can be accessed via dot notation:</p>
+<p>Note how any available properties of the sms object can be accessed via dot notation:</p>
 
 <pre class="prettyprint lang-csharp">
 Console.WriteLine("SMS body : {0}", sms.Body);
@@ -440,7 +348,7 @@ catch (TelAPIException ex)
 }
 </pre> 
 
-<p>Note how any available properties of the account object can be accessed via dot notation:</p>
+<p>Note how any available properties of the call object can be accessed via dot notation:</p>
 
 <pre class="prettyprint lang-csharp">
 Console.WriteLine("Call sid body : {0}", call.Sid);
@@ -744,7 +652,7 @@ catch (TelAPIException ex)
 
         <a href="http://www.telapi.com/docs/api/rest/conferences/list/">Documentation</a><br>
 
-        <p>Request conferences list resource with the <a href="">GetConferences</a> method:</p>
+        <p>Request conferences list resource with the <a href="https://github.com/TelAPI/telapi-dotnet/blob/master/library/TelAPI.Api/Conferences.cs#L31">GetConferences</a> method:</p>
 
 <pre class="prettyprint lang-csharp">
 try
@@ -1322,17 +1230,28 @@ catch (TelAPIException ex)
 }
 </pre> 
 
-<!--
+
 <h4 style="display:inline;">BNA (billing name address) Lookup</h4>
 
         <a href="http://www.telapi.com/docs/api/rest/carrier-services/bna-lookup/">Documentation</a><br>
 
-        <p>Request a bna lookup resource:</p>
+        <p>Request a bna lookup resource with the <a href="https://github.com/TelAPI/telapi-dotnet/blob/master/library/TelAPI.Api/CarrierServices.cs#L48">BnaLookup</a> method:</p>
 
 <pre class="prettyprint lang-csharp">
-  ...
+try
+{
+    var result = client.BnaLookup("phone-number-to-look");
+    foreach (var carrier in result.BNALookups)
+    {
+        Console.WriteLine("{0} {1} {2}", r.City, r.FirstName, r.LastName);
+    }
+}
+catch (TelAPIException ex)
+{
+    Console.WriteLine("{0}", ex.Message);
+}
 </pre> 
--->
+
 
 <hr><h2 id="fraud">Fraud Control</h2>   
 
