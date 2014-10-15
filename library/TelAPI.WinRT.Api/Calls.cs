@@ -247,7 +247,7 @@ namespace TelAPI
             if (callOptions.FallbackMethod != null) request.AddParameter("FallbackMethod", callOptions.FallbackMethod.ToString().ToUpper());
             if (callOptions.StatusCallback != null) request.AddParameter("StatusCallback", callOptions.StatusCallback);
             if (callOptions.StatusCallbackMethod != null) request.AddParameter("StatusCallbackMethod", callOptions.StatusCallbackMethod.ToString().ToUpper());
-            if (callOptions.SendDigits != null) request.AddParameter("SendDigits", callOptions.SendDigits);
+            if (callOptions.SendDigits != null) request.AddParameter("PlayDtmf", callOptions.SendDigits);
             if (callOptions.Timeout.HasValue) request.AddParameter("Timeout", callOptions.Timeout);
             if (callOptions.HideCallerId.HasValue) request.AddParameter("HideCallerId", callOptions.HideCallerId);
             if (callOptions.HeartbeatUrl != null) request.AddParameter("HeartbeartUrl", callOptions.HeartbeatUrl);
